@@ -1,7 +1,7 @@
 {
     "grf": {
         "author_id": "WFY",
-        "grf_id": 1,
+        "grf_id": 24,
         "name": "Wolfiewolf's UK Trains Community Addon 0.1.0",
         "description": "Silly trains made by a silly programmer",
         "min_compat_version": 1,
@@ -33,6 +33,7 @@
             "nested/running_cost_switch",
             "nested/attach_mu_switch",
             "nested/power_car_check",
+            "nested/inhibit_lead_vehicle",
             "nested/tare_speed_switch",
             "nested/visual_effect_power",
             "nested/preserved_cargo_age_switch"
@@ -40,7 +41,7 @@
     },
     "static_templates": [
         {
-            "template":  "templates/static/community_parameters.nml"
+            "template":  "templates/static/community2_parameters.nml"
         },
         {
             "template":  "templates/static/invisible.nml"
@@ -64,9 +65,6 @@
             "template": "templates/static/sprite_templates_hills.nml"
         },
         {
-            "template": "templates/static/horse_sounds.nml"
-        },
-        {
             "template":  "templates/static/sprite_templates_anim.nml"
         },
         {
@@ -75,7 +73,8 @@
     ],
     "fixed_strings": {
         "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type.",
-        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train."
+        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train.",
+        "str_cannot_lead": "This vehicle cannot lead the train."
     },
     "cargo_table": [        
         "ACID",
