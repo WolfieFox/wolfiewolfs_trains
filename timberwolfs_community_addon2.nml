@@ -2,7 +2,7 @@ grf {
   grfid:                  "WFY\18";
   name:                   string(STR_GRF_NAME);
   desc:                   string(STR_GRF_DESCRIPTION);
-  version:                3699;
+  version:                3734;
   min_compatible_version: 1;
   param 0 {
     param_concept_trains {
@@ -5309,6 +5309,2673 @@ template template_auto_down_16_anim_2x() {
   [ 264, 0, 72, 62, -30, -30, ANIM ]
 }
 
+spriteset(spriteset_class_201_4car_purchase, "1x/class_201_4car_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_class_201_4car_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/class_201_4car_purchase.png")
+{ template_purchase_2x() }
+
+spriteset (spriteset_br_class_201, "1x/br_class_201_8bpp.png" )
+{ template_auto_11_1x() }
+
+alternative_sprites(spriteset_br_class_201, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_8bpp.png")
+{ template_auto_11_2x() }
+
+
+
+
+spriteset (spriteset_br_class_201_turn_1, "1x/br_class_201_8bpp.png" )
+{ template_auto_turn_1_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_8bpp.png")
+{ template_auto_turn_1_11_2x() }
+
+
+
+
+spriteset (spriteset_br_class_201_turn_2, "1x/br_class_201_8bpp.png" )
+{ template_auto_turn_2_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_8bpp.png")
+{ template_auto_turn_2_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_up, "1x/br_class_201_up_8bpp.png" )
+{ template_auto_up_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_up_8bpp.png")
+{ template_auto_up_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_down, "1x/br_class_201_down_8bpp.png" )
+{ template_auto_down_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_down_8bpp.png")
+{ template_auto_down_11_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_201_sections_front, "1x/br_class_201_sections_8bpp.png" )
+{ template_auto_front_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_sections_8bpp.png")
+{ template_auto_front_11_2x() }
+
+
+
+spriteset (spriteset_br_class_201_sections_mid, "1x/br_class_201_sections_8bpp.png" )
+{ template_auto_mid_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_sections_8bpp.png")
+{ template_auto_mid_11_2x() }
+
+
+
+spriteset (spriteset_br_class_201_sections_rear, "1x/br_class_201_sections_8bpp.png" )
+{ template_auto_rear_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_sections_8bpp.png")
+{ template_auto_rear_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_mid1, "1x/br_class_201_mid1_8bpp.png" )
+{ template_auto_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_8bpp.png")
+{ template_auto_11_2x() }
+
+
+
+
+spriteset (spriteset_br_class_201_mid1_turn_1, "1x/br_class_201_mid1_8bpp.png" )
+{ template_auto_turn_1_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_8bpp.png")
+{ template_auto_turn_1_11_2x() }
+
+
+
+
+spriteset (spriteset_br_class_201_mid1_turn_2, "1x/br_class_201_mid1_8bpp.png" )
+{ template_auto_turn_2_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_8bpp.png")
+{ template_auto_turn_2_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_mid1_up, "1x/br_class_201_mid1_up_8bpp.png" )
+{ template_auto_up_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_up_8bpp.png")
+{ template_auto_up_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_mid1_down, "1x/br_class_201_mid1_down_8bpp.png" )
+{ template_auto_down_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_down_8bpp.png")
+{ template_auto_down_11_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_201_mid1_sections_front, "1x/br_class_201_mid1_sections_8bpp.png" )
+{ template_auto_front_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_sections_8bpp.png")
+{ template_auto_front_11_2x() }
+
+
+
+spriteset (spriteset_br_class_201_mid1_sections_mid, "1x/br_class_201_mid1_sections_8bpp.png" )
+{ template_auto_mid_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_sections_8bpp.png")
+{ template_auto_mid_11_2x() }
+
+
+
+spriteset (spriteset_br_class_201_mid1_sections_rear, "1x/br_class_201_mid1_sections_8bpp.png" )
+{ template_auto_rear_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_mid1_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_mid1_sections_8bpp.png")
+{ template_auto_rear_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_rear, "1x/br_class_201_rear_8bpp.png" )
+{ template_auto_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_8bpp.png")
+{ template_auto_11_2x() }
+
+
+
+
+spriteset (spriteset_br_class_201_rear_turn_1, "1x/br_class_201_rear_8bpp.png" )
+{ template_auto_turn_1_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_8bpp.png")
+{ template_auto_turn_1_11_2x() }
+
+
+
+
+spriteset (spriteset_br_class_201_rear_turn_2, "1x/br_class_201_rear_8bpp.png" )
+{ template_auto_turn_2_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_8bpp.png")
+{ template_auto_turn_2_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_rear_up, "1x/br_class_201_rear_up_8bpp.png" )
+{ template_auto_up_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_up_8bpp.png")
+{ template_auto_up_11_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_201_rear_down, "1x/br_class_201_rear_down_8bpp.png" )
+{ template_auto_down_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_down_8bpp.png")
+{ template_auto_down_11_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_201_rear_sections_front, "1x/br_class_201_rear_sections_8bpp.png" )
+{ template_auto_front_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_sections_8bpp.png")
+{ template_auto_front_11_2x() }
+
+
+
+spriteset (spriteset_br_class_201_rear_sections_mid, "1x/br_class_201_rear_sections_8bpp.png" )
+{ template_auto_mid_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_sections_8bpp.png")
+{ template_auto_mid_11_2x() }
+
+
+
+spriteset (spriteset_br_class_201_rear_sections_rear, "1x/br_class_201_rear_sections_8bpp.png" )
+{ template_auto_rear_11_1x() }
+
+alternative_sprites(spriteset_br_class_201_rear_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_201_rear_sections_8bpp.png")
+{ template_auto_rear_11_2x() }
+
+
+
+
+
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_class_201_4car_articulation, extra_callback_info1) {
+    0 .. (4 * 3) - 1: class_201_4car;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+// All parts of this MU are the same length
+switch (FEAT_TRAINS, SELF, switch_class_201_4car_length, position_in_articulated_veh % 3 ) 
+{
+    0: return 4;
+    1: return 3;
+    2: return 4;
+        
+}
+
+
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_201_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_201_sections_mid;
+    return spriteset_br_class_201;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_201_down;
+    1..127: return spriteset_br_class_201_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_201_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_201_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_201_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_201_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_201_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_201_height;
+    return spriteset_br_class_201;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_201_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_201_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_201_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_201_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_201_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_201_height_rear;
+    return spriteset_invisible;
+}
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_201_mid1_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_201_mid1_sections_mid;
+    return spriteset_br_class_201_mid1;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_mid1_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_201_mid1_down;
+    1..127: return spriteset_br_class_201_mid1_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_201_mid1_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_mid1_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_201_mid1_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_201_mid1_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_201_mid1_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_201_mid1_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_201_mid1_height;
+    return spriteset_br_class_201_mid1;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_201_mid1_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_201_mid1_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_mid1_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_201_mid1_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_201_mid1_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_201_mid1_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_mid1_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_201_mid1_height_rear;
+    return spriteset_invisible;
+}
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_201_rear_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_201_rear_sections_mid;
+    return spriteset_br_class_201_rear;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_rear_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_201_rear_down;
+    1..127: return spriteset_br_class_201_rear_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_201_rear_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_rear_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_201_rear_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_201_rear_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_201_rear_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_201_rear_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_201_rear_height;
+    return spriteset_br_class_201_rear;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_201_rear_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_201_rear_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_rear_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_201_rear_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_201_rear_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_201_rear_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_201_rear_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_201_rear_height_rear;
+    return spriteset_invisible;
+}
+
+
+
+
+ switch(FEAT_TRAINS, PARENT, switch_class_201_4car_running_cost, current_speed) {
+     0: return min(
+         (75 + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         (75 * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min(75 + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        75 * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+
+
+switch (FEAT_TRAINS, SELF, switch_class_201_4car_graphics, position_in_articulated_veh % (4 * 3)) 
+{
+    (0 * 3) + 1: switch_br_class_201_curve;
+    (0 * 3) + 0: switch_br_class_201_curve_front;
+    (0 * 3) + 2: switch_br_class_201_curve_rear;
+    
+    (1 * 3) + 1: switch_br_class_201_mid1_curve;
+    (1 * 3) + 0: switch_br_class_201_mid1_curve_front;
+    (1 * 3) + 2: switch_br_class_201_mid1_curve_rear;
+    
+    (2 * 3) + 1: switch_br_class_201_mid1_curve;
+    (2 * 3) + 0: switch_br_class_201_mid1_curve_front;
+    (2 * 3) + 2: switch_br_class_201_mid1_curve_rear;
+    
+    (3 * 3) + 1: switch_br_class_201_rear_curve;
+    (3 * 3) + 0: switch_br_class_201_rear_curve_front;
+    (3 * 3) + 2: switch_br_class_201_rear_curve_rear;
+    
+    return spriteset_invisible;
+}
+
+
+
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_class_201_4car_visual_effect, position_in_articulated_veh ) 
+{ 
+    1: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    return VISUAL_EFFECT_DISABLE;
+}
+switch(FEAT_TRAINS, SELF, switch_class_201_4car_attach_wagons, vehicle_type_id) {
+    class_201_4car:  return CB_RESULT_ATTACH_ALLOW;
+    
+    class_201_6car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_205_3car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_205_2car: return CB_RESULT_ATTACH_ALLOW;
+    
+    return string(STR_MU_CANNOT_ATTACH);
+ }
+
+
+
+item(FEAT_TRAINS, class_201_4car, 201) {
+    property {
+        name:                         string(STR_NAME_CLASS_201_4CAR);
+        climates_available:            ALL_CLIMATES ;
+        introduction_date:            date(1956, 2, 5);
+        model_life:                   56;
+        retire_early:                 -4;
+        vehicle_life:                 45;
+
+        
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        
+
+        engine_class:                 ENGINE_CLASS_DIESEL;
+
+        
+        running_cost_base:            RUNNING_COST_DIESEL;
+        tractive_effort_coefficient:  0.05;
+
+        power:                        1000 hp;
+        speed:                        75 mph;
+        reliability_decay:            20;
+        loading_speed:                5;
+        cost_factor:                  42;
+        running_cost_factor:          75;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU , TRAIN_FLAG_SPRITE_STACK );
+
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        dual_headed:                0;
+
+        air_drag_coefficient:         7 / (75 * 1.6);
+
+        
+        cargo_capacity:               37 / 3;
+        
+        default_cargo_type:           PASS;
+        
+        weight:                       180 ton;
+        
+    }
+
+    graphics {
+        default:  switch_class_201_4car_graphics;
+        purchase:  spriteset_class_201_4car_purchase;
+        additional_text: return string(STR_NAME_ADDITIONAL_TEXT_CLASS_201_4CAR);
+        articulated_part: switch_class_201_4car_articulation;
+        length: switch_class_201_4car_length;
+        running_cost_factor: switch_class_201_4car_running_cost;
+        purchase_running_cost_factor: return 75;
+        visual_effect_and_powered: switch_class_201_4car_visual_effect;
+        purchase_cargo_capacity:  spriteset_br_class_201;
+        can_attach_wagon: switch_class_201_4car_attach_wagons;
+        
+    }
+}
+spriteset(spriteset_class_201_6car_purchase, "1x/class_201_6car_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_class_201_6car_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/class_201_6car_purchase.png")
+{ template_purchase_2x() }
+
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_class_201_6car_articulation, extra_callback_info1) {
+    0 .. (6 * 3) - 1: class_201_6car;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+// All parts of this MU are the same length
+switch (FEAT_TRAINS, SELF, switch_class_201_6car_length, position_in_articulated_veh % 3 ) 
+{
+    0: return 4;
+    1: return 3;
+    2: return 4;
+        
+}
+
+
+
+
+
+
+ switch(FEAT_TRAINS, PARENT, switch_class_201_6car_running_cost, current_speed) {
+     0: return min(
+         (84 + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         (84 * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min(84 + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        84 * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+
+
+switch (FEAT_TRAINS, SELF, switch_class_201_6car_graphics, position_in_articulated_veh % (6 * 3)) 
+{
+    (0 * 3) + 1: switch_br_class_201_curve;
+    (0 * 3) + 0: switch_br_class_201_curve_front;
+    (0 * 3) + 2: switch_br_class_201_curve_rear;
+    
+    (1 * 3) + 1: switch_br_class_201_mid1_curve;
+    (1 * 3) + 0: switch_br_class_201_mid1_curve_front;
+    (1 * 3) + 2: switch_br_class_201_mid1_curve_rear;
+    
+    (2 * 3) + 1: switch_br_class_201_mid1_curve;
+    (2 * 3) + 0: switch_br_class_201_mid1_curve_front;
+    (2 * 3) + 2: switch_br_class_201_mid1_curve_rear;
+    
+    (3 * 3) + 1: switch_br_class_201_mid1_curve;
+    (3 * 3) + 0: switch_br_class_201_mid1_curve_front;
+    (3 * 3) + 2: switch_br_class_201_mid1_curve_rear;
+    
+    (4 * 3) + 1: switch_br_class_201_mid1_curve;
+    (4 * 3) + 0: switch_br_class_201_mid1_curve_front;
+    (4 * 3) + 2: switch_br_class_201_mid1_curve_rear;
+    
+    (5 * 3) + 1: switch_br_class_201_rear_curve;
+    (5 * 3) + 0: switch_br_class_201_rear_curve_front;
+    (5 * 3) + 2: switch_br_class_201_rear_curve_rear;
+    
+    return spriteset_invisible;
+}
+
+
+
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_class_201_6car_visual_effect, position_in_articulated_veh ) 
+{ 
+    1: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    return VISUAL_EFFECT_DISABLE;
+}
+switch(FEAT_TRAINS, SELF, switch_class_201_6car_attach_wagons, vehicle_type_id) {
+    class_201_6car:  return CB_RESULT_ATTACH_ALLOW;
+    
+    class_201_4car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_205_3car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_205_2car: return CB_RESULT_ATTACH_ALLOW;
+    
+    return string(STR_MU_CANNOT_ATTACH);
+ }
+
+
+
+item(FEAT_TRAINS, class_201_6car, 202) {
+    property {
+        name:                         string(STR_NAME_CLASS_201_6CAR);
+        climates_available:            ALL_CLIMATES ;
+        introduction_date:            date(1956, 2, 5);
+        model_life:                   56;
+        retire_early:                 -4;
+        vehicle_life:                 45;
+
+        
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        
+
+        engine_class:                 ENGINE_CLASS_DIESEL;
+
+        
+        running_cost_base:            RUNNING_COST_DIESEL;
+        tractive_effort_coefficient:  0.04;
+
+        power:                        1000 hp;
+        speed:                        75 mph;
+        reliability_decay:            20;
+        loading_speed:                5;
+        cost_factor:                  48;
+        running_cost_factor:          84;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU , TRAIN_FLAG_SPRITE_STACK );
+        variant_group:                  201;
+        extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        dual_headed:                0;
+
+        air_drag_coefficient:         7 / (75 * 1.6);
+
+        
+        cargo_capacity:               42 / 3;
+        
+        default_cargo_type:           PASS;
+        
+        weight:                       238 ton;
+        
+    }
+
+    graphics {
+        default:  switch_class_201_6car_graphics;
+        purchase:  spriteset_class_201_6car_purchase;
+        additional_text: return string(STR_NAME_ADDITIONAL_TEXT_CLASS_201_6CAR);
+        articulated_part: switch_class_201_6car_articulation;
+        length: switch_class_201_6car_length;
+        running_cost_factor: switch_class_201_6car_running_cost;
+        purchase_running_cost_factor: return 84;
+        visual_effect_and_powered: switch_class_201_6car_visual_effect;
+        purchase_cargo_capacity:  spriteset_br_class_201;
+        can_attach_wagon: switch_class_201_6car_attach_wagons;
+        
+    }
+}
+spriteset(spriteset_class_205_3car_purchase, "1x/class_205_3car_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_class_205_3car_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/class_205_3car_purchase.png")
+{ template_purchase_2x() }
+
+spriteset (spriteset_br_class_205, "1x/br_class_205_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_class_205, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_205_turn_1, "1x/br_class_205_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_205_turn_2, "1x/br_class_205_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_up, "1x/br_class_205_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_down, "1x/br_class_205_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_205_sections_front, "1x/br_class_205_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_class_205_sections_mid, "1x/br_class_205_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_class_205_sections_rear, "1x/br_class_205_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_mid, "1x/br_class_205_mid_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_205_mid_turn_1, "1x/br_class_205_mid_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_205_mid_turn_2, "1x/br_class_205_mid_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_mid_up, "1x/br_class_205_mid_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_mid_down, "1x/br_class_205_mid_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_205_mid_sections_front, "1x/br_class_205_mid_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_class_205_mid_sections_mid, "1x/br_class_205_mid_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_class_205_mid_sections_rear, "1x/br_class_205_mid_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_mid_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_mid_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_rear, "1x/br_class_205_rear_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_205_rear_turn_1, "1x/br_class_205_rear_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_205_rear_turn_2, "1x/br_class_205_rear_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_rear_up, "1x/br_class_205_rear_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_205_rear_down, "1x/br_class_205_rear_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_205_rear_sections_front, "1x/br_class_205_rear_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_class_205_rear_sections_mid, "1x/br_class_205_rear_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_class_205_rear_sections_rear, "1x/br_class_205_rear_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_class_205_rear_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_205_rear_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_class_205_3car_articulation, extra_callback_info1) {
+    0 .. (3 * 3) - 1: class_205_3car;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+// All parts of this MU are the same length
+switch (FEAT_TRAINS, SELF, switch_class_205_3car_length, position_in_articulated_veh % 3 ) 
+{
+    0: return 4;
+    1: return 4;
+    2: return 4;
+        
+}
+
+
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_205_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_205_sections_mid;
+    return spriteset_br_class_205;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_205_down;
+    1..127: return spriteset_br_class_205_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_205_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_205_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_205_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_205_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_205_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_205_height;
+    return spriteset_br_class_205;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_205_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_205_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_205_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_205_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_205_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_205_height_rear;
+    return spriteset_invisible;
+}
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_205_mid_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_205_mid_sections_mid;
+    return spriteset_br_class_205_mid;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_mid_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_205_mid_down;
+    1..127: return spriteset_br_class_205_mid_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_205_mid_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_mid_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_205_mid_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_205_mid_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_205_mid_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_205_mid_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_205_mid_height;
+    return spriteset_br_class_205_mid;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_205_mid_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_205_mid_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_mid_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_205_mid_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_205_mid_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_205_mid_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_mid_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_205_mid_height_rear;
+    return spriteset_invisible;
+}
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_205_rear_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_205_rear_sections_mid;
+    return spriteset_br_class_205_rear;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_rear_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_205_rear_down;
+    1..127: return spriteset_br_class_205_rear_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_205_rear_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_rear_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_205_rear_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_205_rear_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_205_rear_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_205_rear_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_205_rear_height;
+    return spriteset_br_class_205_rear;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_205_rear_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_205_rear_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_rear_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_205_rear_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_205_rear_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_205_rear_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_205_rear_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_205_rear_height_rear;
+    return spriteset_invisible;
+}
+
+
+
+
+ switch(FEAT_TRAINS, PARENT, switch_class_205_3car_running_cost, current_speed) {
+     0: return min(
+         (71 + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         (71 * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min(71 + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        71 * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+
+
+switch (FEAT_TRAINS, SELF, switch_class_205_3car_graphics, position_in_articulated_veh % (3 * 3)) 
+{
+    (0 * 3) + 1: switch_br_class_205_curve;
+    (0 * 3) + 0: switch_br_class_205_curve_front;
+    (0 * 3) + 2: switch_br_class_205_curve_rear;
+    
+    (1 * 3) + 1: switch_br_class_205_mid_curve;
+    (1 * 3) + 0: switch_br_class_205_mid_curve_front;
+    (1 * 3) + 2: switch_br_class_205_mid_curve_rear;
+    
+    (2 * 3) + 1: switch_br_class_205_rear_curve;
+    (2 * 3) + 0: switch_br_class_205_rear_curve_front;
+    (2 * 3) + 2: switch_br_class_205_rear_curve_rear;
+    
+    return spriteset_invisible;
+}
+
+
+
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_class_205_3car_visual_effect, position_in_articulated_veh ) 
+{ 
+    1: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    return VISUAL_EFFECT_DISABLE;
+}
+switch(FEAT_TRAINS, SELF, switch_class_205_3car_attach_wagons, vehicle_type_id) {
+    class_205_3car:  return CB_RESULT_ATTACH_ALLOW;
+    
+    class_205_2car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_201_6car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_201_4car: return CB_RESULT_ATTACH_ALLOW;
+    
+    return string(STR_MU_CANNOT_ATTACH);
+ }
+
+
+
+item(FEAT_TRAINS, class_205_3car, 205) {
+    property {
+        name:                         string(STR_NAME_CLASS_205_3CAR);
+        climates_available:            ALL_CLIMATES ;
+        introduction_date:            date(1957, 2, 5);
+        model_life:                   55;
+        retire_early:                 -4;
+        vehicle_life:                 45;
+
+        
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        
+
+        engine_class:                 ENGINE_CLASS_DIESEL;
+
+        
+        running_cost_base:            RUNNING_COST_DIESEL;
+        tractive_effort_coefficient:  0.15;
+
+        power:                        600 hp;
+        speed:                        75 mph;
+        reliability_decay:            20;
+        loading_speed:                5;
+        cost_factor:                  39;
+        running_cost_factor:          71;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU , TRAIN_FLAG_SPRITE_STACK );
+
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        dual_headed:                0;
+
+        air_drag_coefficient:         7 / (75 * 1.6);
+
+        
+        cargo_capacity:               51 / 3;
+        
+        default_cargo_type:           PASS;
+        
+        weight:                       57.5 ton;
+        
+    }
+
+    graphics {
+        default:  switch_class_205_3car_graphics;
+        purchase:  spriteset_class_205_3car_purchase;
+        additional_text: return string(STR_NAME_ADDITIONAL_TEXT_CLASS_205_3CAR);
+        articulated_part: switch_class_205_3car_articulation;
+        length: switch_class_205_3car_length;
+        running_cost_factor: switch_class_205_3car_running_cost;
+        purchase_running_cost_factor: return 71;
+        visual_effect_and_powered: switch_class_205_3car_visual_effect;
+        purchase_cargo_capacity:  spriteset_br_class_205;
+        can_attach_wagon: switch_class_205_3car_attach_wagons;
+        
+    }
+}
+spriteset(spriteset_class_205_2car_purchase, "1x/class_205_2car_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_class_205_2car_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/class_205_2car_purchase.png")
+{ template_purchase_2x() }
+
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_class_205_2car_articulation, extra_callback_info1) {
+    0 .. (2 * 3) - 1: class_205_2car;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+// All parts of this MU are the same length
+switch (FEAT_TRAINS, SELF, switch_class_205_2car_length, position_in_articulated_veh % 3 ) 
+{
+    0: return 4;
+    1: return 4;
+    2: return 4;
+        
+}
+
+
+
+
+
+
+ switch(FEAT_TRAINS, PARENT, switch_class_205_2car_running_cost, current_speed) {
+     0: return min(
+         (67 + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         (67 * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min(67 + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        67 * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+
+
+switch (FEAT_TRAINS, SELF, switch_class_205_2car_graphics, position_in_articulated_veh % (2 * 3)) 
+{
+    (0 * 3) + 1: switch_br_class_205_curve;
+    (0 * 3) + 0: switch_br_class_205_curve_front;
+    (0 * 3) + 2: switch_br_class_205_curve_rear;
+    
+    (1 * 3) + 1: switch_br_class_205_rear_curve;
+    (1 * 3) + 0: switch_br_class_205_rear_curve_front;
+    (1 * 3) + 2: switch_br_class_205_rear_curve_rear;
+    
+    return spriteset_invisible;
+}
+
+
+
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_class_205_2car_visual_effect, position_in_articulated_veh ) 
+{ 
+    1: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    return VISUAL_EFFECT_DISABLE;
+}
+switch(FEAT_TRAINS, SELF, switch_class_205_2car_attach_wagons, vehicle_type_id) {
+    class_205_2car:  return CB_RESULT_ATTACH_ALLOW;
+    
+    class_205_3car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_201_6car: return CB_RESULT_ATTACH_ALLOW;
+    
+    class_201_4car: return CB_RESULT_ATTACH_ALLOW;
+    
+    return string(STR_MU_CANNOT_ATTACH);
+ }
+
+
+
+item(FEAT_TRAINS, class_205_2car, 206) {
+    property {
+        name:                         string(STR_NAME_CLASS_205_2CAR);
+        climates_available:            ALL_CLIMATES ;
+        introduction_date:            date(1957, 2, 5);
+        model_life:                   55;
+        retire_early:                 -4;
+        vehicle_life:                 45;
+
+        
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        
+
+        engine_class:                 ENGINE_CLASS_DIESEL;
+
+        
+        running_cost_base:            RUNNING_COST_DIESEL;
+        tractive_effort_coefficient:  0.15;
+
+        power:                        600 hp;
+        speed:                        75 mph;
+        reliability_decay:            20;
+        loading_speed:                5;
+        cost_factor:                  36;
+        running_cost_factor:          67;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU , TRAIN_FLAG_SPRITE_STACK );
+        variant_group:                  205;
+        extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        dual_headed:                0;
+
+        air_drag_coefficient:         7 / (75 * 1.6);
+
+        
+        cargo_capacity:               51 / 3;
+        
+        default_cargo_type:           PASS;
+        
+        weight:                       57.5 ton;
+        
+    }
+
+    graphics {
+        default:  switch_class_205_2car_graphics;
+        purchase:  spriteset_class_205_2car_purchase;
+        additional_text: return string(STR_NAME_ADDITIONAL_TEXT_CLASS_205_2CAR);
+        articulated_part: switch_class_205_2car_articulation;
+        length: switch_class_205_2car_length;
+        running_cost_factor: switch_class_205_2car_running_cost;
+        purchase_running_cost_factor: return 67;
+        visual_effect_and_powered: switch_class_205_2car_visual_effect;
+        purchase_cargo_capacity:  spriteset_br_class_205;
+        can_attach_wagon: switch_class_205_2car_attach_wagons;
+        
+    }
+}
+spriteset(spriteset_br_class_411_purchase, "1x/br_class_411_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_br_class_411_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_411_purchase.png")
+{ template_purchase_2x() }
+
+spriteset (spriteset_br_4cep, "1x/br_4cep_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_4cep, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_turn_1, "1x/br_4cep_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_turn_2, "1x/br_4cep_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_up, "1x/br_4cep_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_down, "1x/br_4cep_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_4cep_sections_front, "1x/br_4cep_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_sections_mid, "1x/br_4cep_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_sections_rear, "1x/br_4cep_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid1, "1x/br_4cep_mid1_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_mid1_turn_1, "1x/br_4cep_mid1_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_mid1_turn_2, "1x/br_4cep_mid1_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid1_up, "1x/br_4cep_mid1_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid1_down, "1x/br_4cep_mid1_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid1_sections_front, "1x/br_4cep_mid1_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_mid1_sections_mid, "1x/br_4cep_mid1_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_mid1_sections_rear, "1x/br_4cep_mid1_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid1_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid1_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid2, "1x/br_4cep_mid2_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_mid2_turn_1, "1x/br_4cep_mid2_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_mid2_turn_2, "1x/br_4cep_mid2_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid2_up, "1x/br_4cep_mid2_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid2_down, "1x/br_4cep_mid2_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_4cep_mid2_sections_front, "1x/br_4cep_mid2_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_mid2_sections_mid, "1x/br_4cep_mid2_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_mid2_sections_rear, "1x/br_4cep_mid2_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_mid2_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_mid2_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_rear, "1x/br_4cep_rear_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_rear_turn_1, "1x/br_4cep_rear_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_4cep_rear_turn_2, "1x/br_4cep_rear_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_rear_up, "1x/br_4cep_rear_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_4cep_rear_down, "1x/br_4cep_rear_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_4cep_rear_sections_front, "1x/br_4cep_rear_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_rear_sections_mid, "1x/br_4cep_rear_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_4cep_rear_sections_rear, "1x/br_4cep_rear_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_4cep_rear_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_4cep_rear_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_br_class_411_articulation, extra_callback_info1) {
+    0 .. (4 * 3) - 1: br_class_411;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+
+// All parts of this MU are the same length
+switch (FEAT_TRAINS, SELF, switch_br_class_411_length, position_in_articulated_veh % 3 ) 
+{
+    0: return 4;
+    1: return 4;
+    2: return 4;
+        
+}
+
+
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_4cep_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_4cep_sections_mid;
+    return spriteset_br_4cep;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_4cep_down;
+    1..127: return spriteset_br_4cep_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_4cep_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_4cep_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_4cep_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_4cep_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_4cep_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_4cep_height;
+    return spriteset_br_4cep;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_4cep_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_4cep_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_4cep_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_4cep_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_4cep_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_4cep_height_rear;
+    return spriteset_invisible;
+}
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid1_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_4cep_mid1_sections_mid;
+    return spriteset_br_4cep_mid1;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid1_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_4cep_mid1_down;
+    1..127: return spriteset_br_4cep_mid1_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_4cep_mid1_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid1_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_4cep_mid1_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_4cep_mid1_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_4cep_mid1_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_4cep_mid1_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_4cep_mid1_height;
+    return spriteset_br_4cep_mid1;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid1_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_4cep_mid1_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid1_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_4cep_mid1_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid1_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_4cep_mid1_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid1_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_4cep_mid1_height_rear;
+    return spriteset_invisible;
+}
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid2_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_4cep_mid2_sections_mid;
+    return spriteset_br_4cep_mid2;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid2_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_4cep_mid2_down;
+    1..127: return spriteset_br_4cep_mid2_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_4cep_mid2_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid2_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_4cep_mid2_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_4cep_mid2_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_4cep_mid2_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_4cep_mid2_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_4cep_mid2_height;
+    return spriteset_br_4cep_mid2;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid2_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_4cep_mid2_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid2_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_4cep_mid2_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid2_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_4cep_mid2_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_mid2_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_4cep_mid2_height_rear;
+    return spriteset_invisible;
+}
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_4cep_rear_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_4cep_rear_sections_mid;
+    return spriteset_br_4cep_rear;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_rear_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_4cep_rear_down;
+    1..127: return spriteset_br_4cep_rear_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_4cep_rear_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_rear_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_4cep_rear_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_4cep_rear_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_4cep_rear_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_4cep_rear_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_4cep_rear_height;
+    return spriteset_br_4cep_rear;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_4cep_rear_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_4cep_rear_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_rear_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_4cep_rear_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_4cep_rear_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_4cep_rear_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_4cep_rear_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_4cep_rear_height_rear;
+    return spriteset_invisible;
+}
+
+
+
+
+ switch(FEAT_TRAINS, PARENT, switch_br_class_411_running_cost, current_speed) {
+     0: return min(
+         (77 + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         (77 * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min(77 + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        77 * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+
+
+switch (FEAT_TRAINS, SELF, switch_br_class_411_graphics, position_in_articulated_veh % (4 * 3)) 
+{
+    (0 * 3) + 1: switch_br_4cep_curve;
+    (0 * 3) + 0: switch_br_4cep_curve_front;
+    (0 * 3) + 2: switch_br_4cep_curve_rear;
+    
+    (1 * 3) + 1: switch_br_4cep_mid1_curve;
+    (1 * 3) + 0: switch_br_4cep_mid1_curve_front;
+    (1 * 3) + 2: switch_br_4cep_mid1_curve_rear;
+    
+    (2 * 3) + 1: switch_br_4cep_mid2_curve;
+    (2 * 3) + 0: switch_br_4cep_mid2_curve_front;
+    (2 * 3) + 2: switch_br_4cep_mid2_curve_rear;
+    
+    (3 * 3) + 1: switch_br_4cep_rear_curve;
+    (3 * 3) + 0: switch_br_4cep_rear_curve_front;
+    (3 * 3) + 2: switch_br_4cep_rear_curve_rear;
+    
+    return spriteset_invisible;
+}
+
+
+
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_br_class_411_visual_effect, position_in_articulated_veh ) 
+{ 
+    1: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+    
+    return VISUAL_EFFECT_DISABLE;
+}
+switch(FEAT_TRAINS, SELF, switch_br_class_411_attach_wagons, vehicle_type_id) {
+    br_class_411:  return CB_RESULT_ATTACH_ALLOW;
+    
+    br_class_419: return CB_RESULT_ATTACH_ALLOW;
+    
+    br_class_489: return CB_RESULT_ATTACH_ALLOW;
+    
+    return string(STR_MU_CANNOT_ATTACH);
+ }
+
+
+
+item(FEAT_TRAINS, br_class_411, 411) {
+    property {
+        name:                         string(STR_NAME_BR_CLASS_411);
+        climates_available:            ALL_CLIMATES ;
+        introduction_date:            date(1956, 2, 5);
+        model_life:                   56;
+        retire_early:                 -4;
+        vehicle_life:                 45;
+
+        
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        
+
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        
+
+        
+        running_cost_base:            RUNNING_COST_DIESEL;
+        tractive_effort_coefficient:  0.21;
+
+        power:                        500 hp;
+        speed:                        90 mph;
+        reliability_decay:            20;
+        loading_speed:                5;
+        cost_factor:                  28;
+        running_cost_factor:          77;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU , TRAIN_FLAG_SPRITE_STACK );
+
+        refit_cost:                   0;
+        track_type:                   THIRD_RAIL;
+        dual_headed:                0;
+
+        air_drag_coefficient:         7 / (90 * 1.6);
+
+        
+        cargo_capacity:               56 / 3;
+        
+        default_cargo_type:           PASS;
+        
+        weight:                       46.2 ton;
+        
+    }
+
+    graphics {
+        default:  switch_br_class_411_graphics;
+        purchase:  spriteset_br_class_411_purchase;
+        additional_text: return string(STR_NAME_ADDITIONAL_TEXT_BR_CLASS_411);
+        articulated_part: switch_br_class_411_articulation;
+        length: switch_br_class_411_length;
+        running_cost_factor: switch_br_class_411_running_cost;
+        purchase_running_cost_factor: return 77;
+        visual_effect_and_powered: switch_br_class_411_visual_effect;
+        purchase_cargo_capacity:  spriteset_br_4cep;
+        can_attach_wagon: switch_br_class_411_attach_wagons;
+        
+    }
+}
+
+spriteset(spriteset_br_class_419_purchase, "1x/br_class_419_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_br_class_419_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_purchase.png")
+{ template_purchase_2x() }
+
+spriteset (spriteset_br_class_419, "1x/br_class_419_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_class_419, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_419_turn_1, "1x/br_class_419_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_class_419_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_419_turn_2, "1x/br_class_419_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_class_419_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_419_up, "1x/br_class_419_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_class_419_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_419_down, "1x/br_class_419_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_class_419_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_419_sections_front, "1x/br_class_419_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_class_419_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_class_419_sections_mid, "1x/br_class_419_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_class_419_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_class_419_sections_rear, "1x/br_class_419_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_class_419_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_419_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+
+// Graphics - animated or not
+
+
+
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_419_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_419_sections_mid;
+    return spriteset_br_class_419;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_419_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_419_down;
+    1..127: return spriteset_br_class_419_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_419_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_419_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_419_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_419_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_419_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_419_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_419_height;
+    return spriteset_br_class_419;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_419_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_419_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_419_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_419_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_419_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_419_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_419_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_419_height_rear;
+    return spriteset_invisible;
+}
+
+
+
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_br_class_419_articulation, extra_callback_info1) {
+    0 .. 2: br_class_419;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_419_length, position_in_articulated_veh % 3) 
+{
+    0: return 4;
+    1: return 4;
+    2: return 4;
+        
+}
+
+
+
+switch (FEAT_TRAINS, SELF, switch_br_class_419_graphics, position_in_articulated_veh % 3) 
+{
+    
+    1: switch_br_class_419_curve;
+    
+    0: switch_br_class_419_curve_front;
+    2: switch_br_class_419_curve_rear;
+    
+    
+
+    return spriteset_invisible;
+}
+
+
+
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_br_class_419_visual_effect, position_in_articulated_veh ) 
+{ 
+    1: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+    
+    return VISUAL_EFFECT_DISABLE;
+}
+
+
+ switch(FEAT_TRAINS, PARENT, switch_br_class_419_running_cost, current_speed) {
+     0: return min(
+         (69 + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         (69 * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min(69 + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        69 * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+
+
+
+item(FEAT_TRAINS, br_class_419, 419) {
+    property {
+        name:                         string(STR_NAME_BR_CLASS_419);
+        climates_available:            ALL_CLIMATES ;        
+        introduction_date:            date(1959, 2, 1);
+        model_life:                   53;
+        retire_early:                 4;
+        vehicle_life:                 45;
+
+        
+
+        engine_class:                 ENGINE_CLASS_DIESEL;
+
+        
+        running_cost_base:            RUNNING_COST_DIESEL;
+        tractive_effort_coefficient:  0.21;
+        power:                        500 hp;
+        speed:                        90 mph;
+        reliability_decay:            20;
+        loading_speed:                5;
+        cost_factor:                  44;
+        running_cost_factor:          69;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC );
+
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        dual_headed:                  0;
+
+        air_drag_coefficient:         7 / (90 * 1.6);
+
+        cargo_capacity:               38 / 3;
+        
+        default_cargo_type:           MAIL;
+        
+        weight:                       46.2  ton;
+        
+    }
+
+    graphics {
+        default:  switch_br_class_419_graphics;
+        purchase:  spriteset_br_class_419_purchase;
+        additional_text: return string(STR_NAME_ADDITIONAL_TEXT_BR_CLASS_419);
+        articulated_part: switch_br_class_419_articulation;
+        length: switch_br_class_419_length;
+        running_cost_factor: switch_br_class_419_running_cost;
+        purchase_running_cost_factor: return 69;
+        visual_effect_and_powered: switch_br_class_419_visual_effect;
+        
+        purchase_cargo_capacity:  spriteset_br_class_419;
+        
+    }
+}
+
+
+spriteset(spriteset_br_class_489_purchase, "1x/br_class_489_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_br_class_489_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_purchase.png")
+{ template_purchase_2x() }
+
+spriteset (spriteset_br_class_489, "1x/br_class_489_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_class_489, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_489_turn_1, "1x/br_class_489_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_489_turn_2, "1x/br_class_489_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_489_up, "1x/br_class_489_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_489_down, "1x/br_class_489_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+
+spriteset (spriteset_br_class_489_sections_front, "1x/br_class_489_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_class_489_sections_mid, "1x/br_class_489_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_class_489_sections_rear, "1x/br_class_489_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+
+// Graphics - animated or not
+
+spriteset (spriteset_br_class_489_rev, "1x/br_class_489_rev_8bpp.png" )
+{ template_auto_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_8bpp.png")
+{ template_auto_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_489_rev_turn_1, "1x/br_class_489_rev_8bpp.png" )
+{ template_auto_turn_1_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_8bpp.png")
+{ template_auto_turn_1_12_2x() }
+
+
+
+
+spriteset (spriteset_br_class_489_rev_turn_2, "1x/br_class_489_rev_8bpp.png" )
+{ template_auto_turn_2_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_8bpp.png")
+{ template_auto_turn_2_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_489_rev_up, "1x/br_class_489_rev_up_8bpp.png" )
+{ template_auto_up_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_up_8bpp.png")
+{ template_auto_up_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_489_rev_down, "1x/br_class_489_rev_down_8bpp.png" )
+{ template_auto_down_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_down_8bpp.png")
+{ template_auto_down_12_2x() }
+
+
+
+
+
+spriteset (spriteset_br_class_489_rev_sections_front, "1x/br_class_489_rev_sections_8bpp.png" )
+{ template_auto_front_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_sections_8bpp.png")
+{ template_auto_front_12_2x() }
+
+
+
+spriteset (spriteset_br_class_489_rev_sections_mid, "1x/br_class_489_rev_sections_8bpp.png" )
+{ template_auto_mid_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_sections_8bpp.png")
+{ template_auto_mid_12_2x() }
+
+
+
+spriteset (spriteset_br_class_489_rev_sections_rear, "1x/br_class_489_rev_sections_8bpp.png" )
+{ template_auto_rear_12_1x() }
+
+alternative_sprites(spriteset_br_class_489_rev_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/br_class_489_rev_sections_8bpp.png")
+{ template_auto_rear_12_2x() }
+
+
+
+
+
+
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_489_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_489_sections_mid;
+    return spriteset_br_class_489;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_489_down;
+    1..127: return spriteset_br_class_489_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_489_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_489_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_489_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_489_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_489_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_489_height;
+    return spriteset_br_class_489;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_489_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_489_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_489_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_489_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_489_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_489_height_rear;
+    return spriteset_invisible;
+}
+
+
+
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_br_class_489_rev_sections_mid;
+    return spriteset_br_class_489_rev;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_br_class_489_rev_down;
+    1..127: return spriteset_br_class_489_rev_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_br_class_489_rev_crest_check;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_br_class_489_rev_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_br_class_489_rev_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_br_class_489_rev_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_br_class_489_rev_turn_1;
+
+    vehicle_curv_info(0, 0): switch_br_class_489_rev_height;
+    return spriteset_br_class_489_rev;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_br_class_489_rev_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_br_class_489_rev_height_front;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_br_class_489_rev_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_br_class_489_rev_height_rear;
+    return spriteset_invisible;
+}
+
+
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_br_class_489_articulation, extra_callback_info1) {
+    0 .. 2: br_class_489;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_length, position_in_articulated_veh % 3) 
+{
+    0: return 4;
+    1: return 4;
+    2: return 4;
+        
+}
+
+
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_fwd_graphics, position_in_articulated_veh % 3) 
+{
+    1: switch_br_class_489_curve;
+    
+    0: switch_br_class_489_curve_front;
+    2: switch_br_class_489_curve_rear;
+    
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_rev_graphics, position_in_articulated_veh % 3) 
+{
+    1: switch_br_class_489_rev_curve;
+    
+    0: switch_br_class_489_rev_curve_front;
+    2: switch_br_class_489_rev_curve_rear;
+    
+    return spriteset_invisible;
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_br_class_489_graphics,  num_vehs_in_consist > 3 ? position_in_consist_from_end : -1) {
+    0..2: switch_br_class_489_rev_graphics;
+    switch_br_class_489_fwd_graphics;
+}
+
+
+
+
+
+
+
+
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_br_class_489_visual_effect, position_in_articulated_veh ) 
+{ 
+    1: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+    
+    return VISUAL_EFFECT_DISABLE;
+}
+
+
+ switch(FEAT_TRAINS, PARENT, switch_br_class_489_running_cost, current_speed) {
+     0: return min(
+         (65 + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         (65 * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min(65 + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        65 * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+
+
+
+item(FEAT_TRAINS, br_class_489, 489) {
+    property {
+        name:                         string(STR_NAME_BR_CLASS_489);
+        climates_available:            ALL_CLIMATES ;        
+        introduction_date:            date(1959, 2, 1);
+        model_life:                   54;
+        retire_early:                 4;
+        vehicle_life:                 45;
+
+        
+        refittable_cargo_classes: bitmask(CC_MAIL);
+        
+
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        
+
+        
+        running_cost_base:            RUNNING_COST_DIESEL;
+        tractive_effort_coefficient:  0.23;
+        power:                        500 hp;
+        speed:                        90 mph;
+        reliability_decay:            20;
+        loading_speed:                5;
+        cost_factor:                  37;
+        running_cost_factor:          65;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC );
+
+        refit_cost:                   0;
+        track_type:                   THIRD_RAIL;
+        dual_headed:                  0;
+
+        air_drag_coefficient:         7 / (90 * 1.6);
+
+        cargo_capacity:               38 / 3;
+        
+        default_cargo_type:           MAIL;
+        
+        weight:                       40.5  ton;
+        
+    }
+
+    graphics {
+        default:  switch_br_class_489_graphics;
+        purchase:  spriteset_br_class_489_purchase;
+        additional_text: return string(STR_NAME_ADDITIONAL_TEXT_BR_CLASS_489);
+        articulated_part: switch_br_class_489_articulation;
+        length: switch_br_class_489_length;
+        running_cost_factor: switch_br_class_489_running_cost;
+        purchase_running_cost_factor: return 65;
+        visual_effect_and_powered: switch_br_class_489_visual_effect;
+        
+        purchase_cargo_capacity:  spriteset_br_class_489;
+        
+    }
+}
+
 spriteset(spriteset_class_153_purchase, "1x/class_153_purchase.png")
 { template_purchase_1x() }
 
@@ -5510,7 +8177,7 @@ switch(FEAT_TRAINS, SELF, switch_class_153_attach_wagons, vehicle_type_id) {
 
 
 
-item(FEAT_TRAINS, class_153, 8) {
+item(FEAT_TRAINS, class_153, 153) {
     property {
         name:                         string(STR_NAME_CLASS_153);
         climates_available:            ALL_CLIMATES ;
@@ -8822,3 +11489,826 @@ item(FEAT_TRAINS, apt_s_6, 386) {
          start_stop: switch_apt_s_6_inhibit_lead;
     }
 }
+
+
+
+spriteset(spriteset_presflo_purchase, "1x/presflo_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_presflo_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_purchase.png")
+{ template_purchase_2x() }
+
+
+spriteset (spriteset_presflo, "1x/presflo_8bpp.png" )
+{ template_auto_5_1x() }
+
+alternative_sprites(spriteset_presflo, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_8bpp.png")
+{ template_auto_5_2x() }
+
+
+
+spriteset (spriteset_presflo_turn_1, "1x/presflo_8bpp.png" )
+{ template_auto_turn_1_5_1x() }
+
+alternative_sprites(spriteset_presflo_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_8bpp.png")
+{ template_auto_turn_1_5_2x() }
+
+
+
+spriteset (spriteset_presflo_turn_2, "1x/presflo_8bpp.png" )
+{ template_auto_turn_2_5_1x() }
+
+alternative_sprites(spriteset_presflo_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_8bpp.png")
+{ template_auto_turn_2_5_2x() }
+
+
+
+
+spriteset (spriteset_presflo_up, "1x/presflo_up_8bpp.png" )
+{ template_auto_up_5_1x() }
+
+alternative_sprites(spriteset_presflo_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_up_8bpp.png")
+{ template_auto_up_5_2x() }
+
+
+
+spriteset (spriteset_presflo_down, "1x/presflo_down_8bpp.png" )
+{ template_auto_down_5_1x() }
+
+alternative_sprites(spriteset_presflo_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_down_8bpp.png")
+{ template_auto_down_5_2x() }
+
+
+
+
+
+    
+    spriteset (spriteset_presflo_light, "1x/presflo_light_8bpp.png" )
+{ template_auto_5_1x() }
+
+alternative_sprites(spriteset_presflo_light, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_light_8bpp.png")
+{ template_auto_5_2x() }
+
+
+
+    spriteset (spriteset_presflo_light_turn_1, "1x/presflo_light_8bpp.png" )
+{ template_auto_turn_1_5_1x() }
+
+alternative_sprites(spriteset_presflo_light_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_light_8bpp.png")
+{ template_auto_turn_1_5_2x() }
+
+
+
+    spriteset (spriteset_presflo_light_turn_2, "1x/presflo_light_8bpp.png" )
+{ template_auto_turn_2_5_1x() }
+
+alternative_sprites(spriteset_presflo_light_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_light_8bpp.png")
+{ template_auto_turn_2_5_2x() }
+
+
+
+
+    spriteset (spriteset_presflo_light_up, "1x/presflo_light_up_8bpp.png" )
+{ template_auto_up_5_1x() }
+
+alternative_sprites(spriteset_presflo_light_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_light_up_8bpp.png")
+{ template_auto_up_5_2x() }
+
+
+
+    spriteset (spriteset_presflo_light_down, "1x/presflo_light_down_8bpp.png" )
+{ template_auto_down_5_1x() }
+
+alternative_sprites(spriteset_presflo_light_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_light_down_8bpp.png")
+{ template_auto_down_5_2x() }
+
+
+
+
+    
+    spriteset (spriteset_presflo_dark, "1x/presflo_dark_8bpp.png" )
+{ template_auto_5_1x() }
+
+alternative_sprites(spriteset_presflo_dark, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_dark_8bpp.png")
+{ template_auto_5_2x() }
+
+
+
+    spriteset (spriteset_presflo_dark_turn_1, "1x/presflo_dark_8bpp.png" )
+{ template_auto_turn_1_5_1x() }
+
+alternative_sprites(spriteset_presflo_dark_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_dark_8bpp.png")
+{ template_auto_turn_1_5_2x() }
+
+
+
+    spriteset (spriteset_presflo_dark_turn_2, "1x/presflo_dark_8bpp.png" )
+{ template_auto_turn_2_5_1x() }
+
+alternative_sprites(spriteset_presflo_dark_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_dark_8bpp.png")
+{ template_auto_turn_2_5_2x() }
+
+
+
+
+    spriteset (spriteset_presflo_dark_up, "1x/presflo_dark_up_8bpp.png" )
+{ template_auto_up_5_1x() }
+
+alternative_sprites(spriteset_presflo_dark_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_dark_up_8bpp.png")
+{ template_auto_up_5_2x() }
+
+
+
+    spriteset (spriteset_presflo_dark_down, "1x/presflo_dark_down_8bpp.png" )
+{ template_auto_down_5_1x() }
+
+alternative_sprites(spriteset_presflo_dark_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_dark_down_8bpp.png")
+{ template_auto_down_5_2x() }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+switch (FEAT_TRAINS, SELF, switch_presflo_height_regular, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_presflo_down;
+    1..127: return spriteset_presflo_up;
+    return spriteset_presflo;
+}
+
+switch (FEAT_TRAINS, SELF, switch_presflo_curve_regular, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_presflo_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_presflo_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_presflo_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_presflo_turn_1;
+
+    switch_presflo_height_regular;
+}
+
+switch (FEAT_TRAINS, SELF, switch_presflo_height_light, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_presflo_light_down;
+    1..127: return spriteset_presflo_light_up;
+    return spriteset_presflo_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_presflo_curve_light, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_presflo_light_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_presflo_light_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_presflo_light_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_presflo_light_turn_1;
+
+    switch_presflo_height_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_presflo_height_dark, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_presflo_dark_down;
+    1..127: return spriteset_presflo_dark_up;
+    return spriteset_presflo_dark;
+}
+
+switch (FEAT_TRAINS, SELF, switch_presflo_curve_dark, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_presflo_dark_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_presflo_dark_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_presflo_dark_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_presflo_dark_turn_1;
+
+    switch_presflo_height_dark;
+}
+
+random_switch (FEAT_TRAINS, SELF, switch_presflo_curve)
+{
+    3: switch_presflo_curve_regular;
+    2: switch_presflo_curve_light;
+    2: switch_presflo_curve_dark;
+}
+
+    
+
+
+
+
+// Cargo sprites
+
+
+
+
+
+// End cargo sprites
+
+
+
+
+
+
+
+
+switch(FEAT_TRAINS, SELF, switch_presflo_articulation, extra_callback_info1) {
+0 .. 2: return presflo;
+return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_presflo_length, position_in_articulated_veh % 3)
+{
+0: return 2;
+1: return 1;
+2: return 2;
+
+}
+
+
+    
+            switch (FEAT_TRAINS, SELF, switch_presflo_graphics, position_in_articulated_veh % 3)
+            {
+            1: switch_presflo_curve;
+            
+            return spriteset_invisible;
+            }
+        
+
+
+switch (FEAT_TRAINS, PARENT, switch_presflo_speed_brakevan, hasbit(bitmask_consist_info, HAS_BRAKE_VAN)) {
+
+    1: return ((50+5) * 8) / 5;
+    return (50 * 8) / 5;
+}
+
+
+
+
+item(FEAT_TRAINS, presflo, 25) {
+property {
+name:                         string(STR_NAME_PRESFLO);
+climates_available:            ALL_CLIMATES ;
+introduction_date:            date(1955, 1, 5);
+model_life:                   40;
+retire_early:                 -4;
+vehicle_life:                 30;
+
+
+    default_cargo_type:           BDMT;
+engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
+
+    refittable_cargo_classes: bitmask(CC_POWDER_BULK);
+    cargo_allow_refit: [ACID,CHLO,CBLK,CMNT,POTA,NITR,QLME,SALT,SASH];
+
+
+cargo_age_period:             185;
+
+power:                        0 hp;
+speed:                        50 mph;
+reliability_decay:            20;
+loading_speed:                7;
+cost_factor:                  8;
+running_cost_factor:          31;
+sprite_id:                    SPRITE_ID_NEW_TRAIN;
+misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_AUTOREFIT );
+refit_cost:                   0;
+track_type:                   RAIL;
+running_cost_base:            RUNNING_COST_STEAM;
+cargo_capacity:               20 / 3;
+weight:                       12.4 ton;
+}
+
+graphics {
+
+
+    default:  switch_presflo_graphics;
+
+
+
+
+
+speed: switch_presflo_speed_brakevan;
+additional_text: return string(STR_NAME_ADDITIONAL_TEXT_PRESFLO);
+articulated_part: switch_presflo_articulation;
+length: switch_presflo_length;
+purchase:  spriteset_presflo_purchase;
+purchase_cargo_capacity: spriteset_presflo;
+purchase_speed: return (50 * 8) / 5;
+
+
+}
+}
+// Not implemented: pca_tank
+// Not implemented: jpa_tank
+// Not implemented: grain_hopper
+// Not implemented: grainflow
+
+
+
+spriteset(spriteset_polybulk_purchase, "1x/polybulk_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_polybulk_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_purchase.png")
+{ template_purchase_2x() }
+
+
+spriteset (spriteset_polybulk, "1x/polybulk_8bpp.png" )
+{ template_auto_9_1x() }
+
+alternative_sprites(spriteset_polybulk, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_8bpp.png")
+{ template_auto_9_2x() }
+
+
+
+spriteset (spriteset_polybulk_turn_1, "1x/polybulk_8bpp.png" )
+{ template_auto_turn_1_9_1x() }
+
+alternative_sprites(spriteset_polybulk_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_8bpp.png")
+{ template_auto_turn_1_9_2x() }
+
+
+
+spriteset (spriteset_polybulk_turn_2, "1x/polybulk_8bpp.png" )
+{ template_auto_turn_2_9_1x() }
+
+alternative_sprites(spriteset_polybulk_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_8bpp.png")
+{ template_auto_turn_2_9_2x() }
+
+
+
+
+spriteset (spriteset_polybulk_up, "1x/polybulk_up_8bpp.png" )
+{ template_auto_up_9_1x() }
+
+alternative_sprites(spriteset_polybulk_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_up_8bpp.png")
+{ template_auto_up_9_2x() }
+
+
+
+spriteset (spriteset_polybulk_down, "1x/polybulk_down_8bpp.png" )
+{ template_auto_down_9_1x() }
+
+alternative_sprites(spriteset_polybulk_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_down_8bpp.png")
+{ template_auto_down_9_2x() }
+
+
+
+
+
+    
+    spriteset (spriteset_polybulk_light, "1x/polybulk_light_8bpp.png" )
+{ template_auto_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_8bpp.png")
+{ template_auto_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_light_turn_1, "1x/polybulk_light_8bpp.png" )
+{ template_auto_turn_1_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_8bpp.png")
+{ template_auto_turn_1_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_light_turn_2, "1x/polybulk_light_8bpp.png" )
+{ template_auto_turn_2_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_8bpp.png")
+{ template_auto_turn_2_9_2x() }
+
+
+
+
+    spriteset (spriteset_polybulk_light_up, "1x/polybulk_light_up_8bpp.png" )
+{ template_auto_up_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_up_8bpp.png")
+{ template_auto_up_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_light_down, "1x/polybulk_light_down_8bpp.png" )
+{ template_auto_down_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_down_8bpp.png")
+{ template_auto_down_9_2x() }
+
+
+
+
+    
+    spriteset (spriteset_polybulk_dark, "1x/polybulk_dark_8bpp.png" )
+{ template_auto_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_8bpp.png")
+{ template_auto_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_dark_turn_1, "1x/polybulk_dark_8bpp.png" )
+{ template_auto_turn_1_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark_turn_1, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_8bpp.png")
+{ template_auto_turn_1_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_dark_turn_2, "1x/polybulk_dark_8bpp.png" )
+{ template_auto_turn_2_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark_turn_2, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_8bpp.png")
+{ template_auto_turn_2_9_2x() }
+
+
+
+
+    spriteset (spriteset_polybulk_dark_up, "1x/polybulk_dark_up_8bpp.png" )
+{ template_auto_up_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark_up, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_up_8bpp.png")
+{ template_auto_up_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_dark_down, "1x/polybulk_dark_down_8bpp.png" )
+{ template_auto_down_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark_down, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_down_8bpp.png")
+{ template_auto_down_9_2x() }
+
+
+
+
+
+
+
+
+    spriteset (spriteset_polybulk_sections_front, "1x/polybulk_sections_8bpp.png" )
+{ template_auto_front_9_1x() }
+
+alternative_sprites(spriteset_polybulk_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_sections_8bpp.png")
+{ template_auto_front_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_sections_mid, "1x/polybulk_sections_8bpp.png" )
+{ template_auto_mid_9_1x() }
+
+alternative_sprites(spriteset_polybulk_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_sections_8bpp.png")
+{ template_auto_mid_9_2x() }
+
+
+
+    spriteset (spriteset_polybulk_sections_rear, "1x/polybulk_sections_8bpp.png" )
+{ template_auto_rear_9_1x() }
+
+alternative_sprites(spriteset_polybulk_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_sections_8bpp.png")
+{ template_auto_rear_9_2x() }
+
+
+
+
+    
+        spriteset (spriteset_polybulk_light_sections_front, "1x/polybulk_light_sections_8bpp.png" )
+{ template_auto_front_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_sections_8bpp.png")
+{ template_auto_front_9_2x() }
+
+
+
+        spriteset (spriteset_polybulk_light_sections_mid, "1x/polybulk_light_sections_8bpp.png" )
+{ template_auto_mid_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_sections_8bpp.png")
+{ template_auto_mid_9_2x() }
+
+
+
+        spriteset (spriteset_polybulk_light_sections_rear, "1x/polybulk_light_sections_8bpp.png" )
+{ template_auto_rear_9_1x() }
+
+alternative_sprites(spriteset_polybulk_light_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_light_sections_8bpp.png")
+{ template_auto_rear_9_2x() }
+
+
+
+
+        spriteset (spriteset_polybulk_dark_sections_front, "1x/polybulk_dark_sections_8bpp.png" )
+{ template_auto_front_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark_sections_front, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_sections_8bpp.png")
+{ template_auto_front_9_2x() }
+
+
+
+        spriteset (spriteset_polybulk_dark_sections_mid, "1x/polybulk_dark_sections_8bpp.png" )
+{ template_auto_mid_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark_sections_mid, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_sections_8bpp.png")
+{ template_auto_mid_9_2x() }
+
+
+
+        spriteset (spriteset_polybulk_dark_sections_rear, "1x/polybulk_dark_sections_8bpp.png" )
+{ template_auto_rear_9_1x() }
+
+alternative_sprites(spriteset_polybulk_dark_sections_rear, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_dark_sections_8bpp.png")
+{ template_auto_rear_9_2x() }
+
+
+
+
+        
+
+    
+
+
+
+
+
+
+
+    
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_polybulk_crest_check_regular, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_polybulk_sections_mid;
+    return spriteset_polybulk;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_regular, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_polybulk_down;
+    1..127: return spriteset_polybulk_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_polybulk_crest_check_regular;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_regular, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_polybulk_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_polybulk_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_polybulk_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_polybulk_turn_1;
+
+    vehicle_curv_info(0, 0): switch_polybulk_height_regular;
+    return spriteset_polybulk;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_front_regular, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_polybulk_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_front_regular, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_polybulk_height_front_regular;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_rear_regular, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_polybulk_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_rear_regular, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_polybulk_height_rear_regular;
+    return spriteset_invisible;
+}
+
+// Light variant
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_polybulk_crest_check_light, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_polybulk_light_sections_mid;
+    return spriteset_polybulk_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_light, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_polybulk_light_down;
+    1..127: return spriteset_polybulk_light_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_polybulk_crest_check_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_light, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_polybulk_light_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_polybulk_light_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_polybulk_light_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_polybulk_light_turn_1;
+
+    vehicle_curv_info(0, 0): switch_polybulk_height_light;
+    return spriteset_polybulk_light;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_front_light, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_polybulk_light_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_front_light, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_polybulk_height_front_light;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_rear_light, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_polybulk_light_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_rear_light, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_polybulk_height_rear_light;
+    return spriteset_invisible;
+}
+
+// Dark variant
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_polybulk_crest_check_dark, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_polybulk_dark_sections_mid;
+    return spriteset_polybulk_dark;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_dark, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_polybulk_dark_down;
+    1..127: return spriteset_polybulk_dark_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_polybulk_crest_check_dark;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_dark, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_polybulk_dark_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_polybulk_dark_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_polybulk_dark_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_polybulk_dark_turn_1;
+
+    vehicle_curv_info(0, 0): switch_polybulk_height_dark;
+    return spriteset_polybulk_dark;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_front_dark, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_polybulk_dark_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_front_dark, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_polybulk_height_front_dark;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_polybulk_height_rear_dark, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_polybulk_dark_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_curve_rear_dark, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_polybulk_height_rear_dark;
+    return spriteset_invisible;
+}
+
+// Random choice of wagon type
+random_switch (FEAT_TRAINS, FORWARD_SELF(1), switch_polybulk_curve)
+{
+    3: switch_polybulk_curve_regular;
+    2: switch_polybulk_curve_light;
+    2: switch_polybulk_curve_dark;
+}
+
+random_switch (FEAT_TRAINS, SELF, switch_polybulk_curve_front)
+{
+    3: switch_polybulk_curve_front_regular;
+    2: switch_polybulk_curve_front_light;
+    2: switch_polybulk_curve_front_dark;
+}
+
+random_switch (FEAT_TRAINS, FORWARD_SELF(2), switch_polybulk_curve_rear)
+{
+    3: switch_polybulk_curve_rear_regular;
+    2: switch_polybulk_curve_rear_light;
+    2: switch_polybulk_curve_rear_dark;
+}
+
+    
+
+
+
+
+// Cargo sprites
+
+
+
+
+
+// End cargo sprites
+
+
+
+
+
+
+
+
+switch(FEAT_TRAINS, SELF, switch_polybulk_articulation, extra_callback_info1) {
+0 .. 2: return polybulk;
+return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_polybulk_length, position_in_articulated_veh % 3)
+{
+0: return 2;
+1: return 5;
+2: return 2;
+
+}
+
+
+    
+            switch (FEAT_TRAINS, SELF, switch_polybulk_graphics, position_in_articulated_veh % 3)
+            {
+            1: switch_polybulk_curve;
+            
+                0: switch_polybulk_curve_front;
+                2: switch_polybulk_curve_rear;
+            
+            return spriteset_invisible;
+            }
+        
+
+
+
+
+
+item(FEAT_TRAINS, polybulk, 32) {
+property {
+name:                         string(STR_NAME_POLYBULK);
+climates_available:            ALL_CLIMATES ;
+introduction_date:            date(1973, 1, 5);
+model_life:                   VEHICLE_NEVER_EXPIRES;
+retire_early:                 -4;
+vehicle_life:                 30;
+
+
+    default_cargo_type:           GRAI;
+engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
+
+    refittable_cargo_classes: bitmask(CC_COVERED_BULK);
+    cargo_allow_refit: [ GRAI, CMNT, NITR, POTA ];
+    cargo_disallow_refit: [WOOL];
+
+
+cargo_age_period:             185;
+
+power:                        0 hp;
+speed:                        75 mph;
+reliability_decay:            20;
+loading_speed:                5;
+cost_factor:                  15;
+running_cost_factor:          38;
+sprite_id:                    SPRITE_ID_NEW_TRAIN;
+misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_AUTOREFIT );
+refit_cost:                   0;
+track_type:                   RAIL;
+running_cost_base:            RUNNING_COST_STEAM;
+cargo_capacity:               78 / 3;
+weight:                       22.7 ton;
+}
+
+graphics {
+
+
+    default:  switch_polybulk_graphics;
+
+
+
+
+
+
+additional_text: return string(STR_NAME_ADDITIONAL_TEXT_POLYBULK);
+articulated_part: switch_polybulk_articulation;
+length: switch_polybulk_length;
+purchase:  spriteset_polybulk_purchase;
+purchase_cargo_capacity: spriteset_polybulk;
+purchase_speed: return (75 * 8) / 5;
+
+
+}
+}
+// Not implemented: lnwr_sleeper
+// Not implemented: mk1_sleeper
+// Not implemented: mk3_sleeper
+
+sort(FEAT_TRAINS, [class_201_4car, class_201_6car, class_205_3car, class_205_2car, class_153, apt_half_6, apt_half_6_rev, apt_half_2, apt_half_2_rev, apt_powercar, apt_powercar2, apt_s_dm, apt_q_dvt, apt_s_10, apt_s_6, br_class_411, br_class_419, br_class_489, presflo, polybulk]);
