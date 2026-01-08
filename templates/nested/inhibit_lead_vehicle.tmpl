@@ -1,0 +1,8 @@
+{{define "inhibit_lead_vehicle" -}}
+
+ switch(FEAT_TRAINS, SELF, switch_{{.id}}_inhibit_lead, position_in_consist) {
+    0:  return string(STR_CANNOT_LEAD);
+    return CB_RESULT_NO_TEXT;
+ }
+
+{{- end}}
