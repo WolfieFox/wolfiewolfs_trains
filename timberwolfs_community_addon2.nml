@@ -2,7 +2,7 @@ grf {
   grfid:                  "WFY\18";
   name:                   string(STR_GRF_NAME);
   desc:                   string(STR_GRF_DESCRIPTION);
-  version:                3734;
+  version:                3738;
   min_compatible_version: 1;
   param 0 {
     param_concept_trains {
@@ -29,6 +29,8 @@ param_max_mu_length = param["TWF\07",2];
 param_run_cost_penalty = param["TWF\07",3];
 param_graffiti = param["TWF\07",4];
 
+param_slower_cargo_aging = param["TWF\07", 6];
+//param_no_gameplay_units = param["TWF\07", 7];
 template template_invisible() {
     [ 0, 0, 1, 1, 0, 0 ]
 }
@@ -64,6 +66,7 @@ traininfo_y_offset=4;
 
 HAS_BRAKE_VAN = 1;
 HAS_DANDY_WAGON = 2;
+HAS_BUFFET_CAR = 3;
 
 //const CC_PASSENGERS = 0;
 //const CC_MAIL = 1;
@@ -2625,6 +2628,9 @@ random_switch (FEAT_TRAINS, BACKWARD_SELF(1), random_16_backward) {
     1: return 63;
     1: return 127;
 }
+
+cargo_age_multiplier = param_slower_cargo_aging == 0 ? 2 :
+    (param_slower_cargo_aging == 1 ? 1 : param_slower_cargo_aging * 2);
 template template_auto_up_3_1x() {
   [ 0, 0, 1, 1, 0, 0 ]
   [ 0, 0, 36, 31, -14, -21 ]
@@ -5792,7 +5798,7 @@ item(FEAT_TRAINS, class_201_4car, 201) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.05;
 
@@ -5817,7 +5823,6 @@ item(FEAT_TRAINS, class_201_4car, 201) {
         default_cargo_type:           PASS;
         
         weight:                       180 ton;
-        
     }
 
     graphics {
@@ -5953,7 +5958,7 @@ item(FEAT_TRAINS, class_201_6car, 202) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.04;
 
@@ -5980,7 +5985,8 @@ item(FEAT_TRAINS, class_201_6car, 202) {
         default_cargo_type:           PASS;
         
         weight:                       238 ton;
-        
+        variant_group:                201;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -6476,7 +6482,7 @@ item(FEAT_TRAINS, class_205_3car, 205) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.15;
 
@@ -6501,7 +6507,6 @@ item(FEAT_TRAINS, class_205_3car, 205) {
         default_cargo_type:           PASS;
         
         weight:                       57.5 ton;
-        
     }
 
     graphics {
@@ -6621,7 +6626,7 @@ item(FEAT_TRAINS, class_205_2car, 206) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.15;
 
@@ -6648,7 +6653,8 @@ item(FEAT_TRAINS, class_205_2car, 206) {
         default_cargo_type:           PASS;
         
         weight:                       57.5 ton;
-        
+        variant_group:                205;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -7272,7 +7278,7 @@ item(FEAT_TRAINS, br_class_411, 411) {
         engine_class:                 ENGINE_CLASS_ELECTRIC;
         
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.21;
 
@@ -7297,7 +7303,6 @@ item(FEAT_TRAINS, br_class_411, 411) {
         default_cargo_type:           PASS;
         
         weight:                       46.2 ton;
-        
     }
 
     graphics {
@@ -7532,7 +7537,7 @@ item(FEAT_TRAINS, br_class_419, 419) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.21;
         power:                        500 hp;
@@ -7558,8 +7563,8 @@ item(FEAT_TRAINS, br_class_419, 419) {
         
     }
 
-    graphics {
-        default:  switch_br_class_419_graphics;
+        graphics {    
+        default:  switch_br_class_419_graphics;   
         purchase:  spriteset_br_class_419_purchase;
         additional_text: return string(STR_NAME_ADDITIONAL_TEXT_BR_CLASS_419);
         articulated_part: switch_br_class_419_articulation;
@@ -7935,7 +7940,7 @@ item(FEAT_TRAINS, br_class_489, 489) {
         engine_class:                 ENGINE_CLASS_ELECTRIC;
         
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.23;
         power:                        500 hp;
@@ -7961,8 +7966,8 @@ item(FEAT_TRAINS, br_class_489, 489) {
         
     }
 
-    graphics {
-        default:  switch_br_class_489_graphics;
+        graphics {    
+        default:  switch_br_class_489_graphics;   
         purchase:  spriteset_br_class_489_purchase;
         additional_text: return string(STR_NAME_ADDITIONAL_TEXT_BR_CLASS_489);
         articulated_part: switch_br_class_489_articulation;
@@ -8193,7 +8198,7 @@ item(FEAT_TRAINS, class_153, 153) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             185;
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.15;
 
@@ -8218,7 +8223,6 @@ item(FEAT_TRAINS, class_153, 153) {
         default_cargo_type:           PASS;
         
         weight:                       41.2 ton;
-        
     }
 
     graphics {
@@ -8735,7 +8739,7 @@ item(FEAT_TRAINS, apt_half_6, 370) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             222;
+        cargo_age_period:             (222 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.00;
 
@@ -8760,7 +8764,6 @@ item(FEAT_TRAINS, apt_half_6, 370) {
         default_cargo_type:           PASS;
         
         weight:                       164.8 ton;
-        
     }
 
     graphics {
@@ -9156,7 +9159,7 @@ item(FEAT_TRAINS, apt_half_6_rev, 371) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             222;
+        cargo_age_period:             (222 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.00;
 
@@ -9183,7 +9186,8 @@ item(FEAT_TRAINS, apt_half_6_rev, 371) {
         default_cargo_type:           PASS;
         
         weight:                       164.8 ton;
-        
+        variant_group:                370;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -9312,7 +9316,7 @@ item(FEAT_TRAINS, apt_half_2, 372) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             185;
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.01;
 
@@ -9339,7 +9343,8 @@ item(FEAT_TRAINS, apt_half_2, 372) {
         default_cargo_type:           PASS;
         
         weight:                       65.6 ton;
-        
+        variant_group:                370;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -9472,7 +9477,7 @@ item(FEAT_TRAINS, apt_half_2_rev, 373) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             185;
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.01;
 
@@ -9499,7 +9504,8 @@ item(FEAT_TRAINS, apt_half_2_rev, 373) {
         default_cargo_type:           PASS;
         
         weight:                       65.6 ton;
-        
+        variant_group:                370;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -9749,7 +9755,7 @@ item(FEAT_TRAINS, apt_powercar, 374) {
         engine_class:                 ENGINE_CLASS_ELECTRIC;
         
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.31;
 
@@ -9774,7 +9780,8 @@ item(FEAT_TRAINS, apt_powercar, 374) {
         cargo_capacity:               0 / 3;
         
         weight:                       67.5 ton;
-        
+        variant_group:                370;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -10024,7 +10031,7 @@ item(FEAT_TRAINS, apt_powercar2, 375) {
         engine_class:                 ENGINE_CLASS_ELECTRIC;
         
 
-        
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.31;
 
@@ -10049,7 +10056,8 @@ item(FEAT_TRAINS, apt_powercar2, 375) {
         cargo_capacity:               0 / 3;
         
         weight:                       67.5 ton;
-        
+        variant_group:                370;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -10452,8 +10460,8 @@ item(FEAT_TRAINS, apt_s_dm, 380) {
         
     }
 
-    graphics {
-        default:  switch_apt_s_dm_graphics;
+        graphics {    
+        default:  switch_apt_s_dm_graphics;   
         purchase:  spriteset_apt_s_dm_purchase;
         additional_text: return string(STR_NAME_ADDITIONAL_TEXT_APT_S_DM);
         articulated_part: switch_apt_s_dm_articulation;
@@ -10828,7 +10836,7 @@ item(FEAT_TRAINS, apt_q_dvt, 382) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             185;
+        cargo_age_period:             (185 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.01;
         power:                        100 hp;
@@ -10856,8 +10864,8 @@ item(FEAT_TRAINS, apt_q_dvt, 382) {
         
     }
 
-    graphics {
-        default:  switch_apt_q_dvt_graphics;
+        graphics {    
+        default:  switch_apt_q_dvt_graphics;   
         purchase:  spriteset_apt_q_dvt_purchase;
         additional_text: return string(STR_NAME_ADDITIONAL_TEXT_APT_Q_DVT);
         articulated_part: switch_apt_q_dvt_articulation;
@@ -11268,7 +11276,7 @@ item(FEAT_TRAINS, apt_s_10, 384) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             222;
+        cargo_age_period:             (222 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.00;
 
@@ -11295,7 +11303,8 @@ item(FEAT_TRAINS, apt_s_10, 384) {
         default_cargo_type:           PASS;
         
         weight:                       258.2 ton;
-        
+        variant_group:                380;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -11445,7 +11454,7 @@ item(FEAT_TRAINS, apt_s_6, 386) {
 
         engine_class:                 ENGINE_CLASS_DIESEL;
 
-        cargo_age_period:             222;
+        cargo_age_period:             (222 * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  0.00;
 
@@ -11472,7 +11481,8 @@ item(FEAT_TRAINS, apt_s_6, 386) {
         default_cargo_type:           PASS;
         
         weight:                       209.6 ton;
-        
+        variant_group:                380;
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
     }
 
     graphics {
@@ -11492,11 +11502,14 @@ item(FEAT_TRAINS, apt_s_6, 386) {
 
 
 
+
+
 spriteset(spriteset_presflo_purchase, "1x/presflo_purchase.png")
 { template_purchase_1x() }
 
 alternative_sprites(spriteset_presflo_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/presflo_purchase.png")
 { template_purchase_2x() }
+
 
 
 spriteset (spriteset_presflo, "1x/presflo_8bpp.png" )
@@ -11698,14 +11711,16 @@ random_switch (FEAT_TRAINS, SELF, switch_presflo_curve)
 
 
 
+
+
 // Cargo sprites
 
 
 
 
 
-// End cargo sprites
 
+// End cargo sprites
 
 
 
@@ -11725,6 +11740,7 @@ switch (FEAT_TRAINS, SELF, switch_presflo_length, position_in_articulated_veh % 
 2: return 2;
 
 }
+
 
 
     
@@ -11757,13 +11773,14 @@ vehicle_life:                 30;
 
 
     default_cargo_type:           BDMT;
-engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
+    engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
 
     refittable_cargo_classes: bitmask(CC_POWDER_BULK);
     cargo_allow_refit: [ACID,CHLO,CBLK,CMNT,POTA,NITR,QLME,SALT,SASH];
 
 
-cargo_age_period:             185;
+cargo_age_period:             (185 * cargo_age_multiplier) / 2;
+
 
 power:                        0 hp;
 speed:                        50 mph;
@@ -11783,6 +11800,7 @@ weight:                       12.4 ton;
 graphics {
 
 
+
     default:  switch_presflo_graphics;
 
 
@@ -11798,6 +11816,8 @@ purchase_cargo_capacity: spriteset_presflo;
 purchase_speed: return (50 * 8) / 5;
 
 
+
+
 }
 }
 // Not implemented: pca_tank
@@ -11807,11 +11827,14 @@ purchase_speed: return (50 * 8) / 5;
 
 
 
+
+
 spriteset(spriteset_polybulk_purchase, "1x/polybulk_purchase.png")
 { template_purchase_1x() }
 
 alternative_sprites(spriteset_polybulk_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/polybulk_purchase.png")
 { template_purchase_2x() }
+
 
 
 spriteset (spriteset_polybulk, "1x/polybulk_8bpp.png" )
@@ -12207,14 +12230,16 @@ random_switch (FEAT_TRAINS, FORWARD_SELF(2), switch_polybulk_curve_rear)
 
 
 
+
+
 // Cargo sprites
 
 
 
 
 
-// End cargo sprites
 
+// End cargo sprites
 
 
 
@@ -12234,6 +12259,7 @@ switch (FEAT_TRAINS, SELF, switch_polybulk_length, position_in_articulated_veh %
 2: return 2;
 
 }
+
 
 
     
@@ -12263,14 +12289,15 @@ vehicle_life:                 30;
 
 
     default_cargo_type:           GRAI;
-engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
+    engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
 
     refittable_cargo_classes: bitmask(CC_COVERED_BULK);
     cargo_allow_refit: [ GRAI, CMNT, NITR, POTA ];
     cargo_disallow_refit: [WOOL];
 
 
-cargo_age_period:             185;
+cargo_age_period:             (185 * cargo_age_multiplier) / 2;
+
 
 power:                        0 hp;
 speed:                        75 mph;
@@ -12290,6 +12317,7 @@ weight:                       22.7 ton;
 graphics {
 
 
+
     default:  switch_polybulk_graphics;
 
 
@@ -12303,6 +12331,8 @@ length: switch_polybulk_length;
 purchase:  spriteset_polybulk_purchase;
 purchase_cargo_capacity: spriteset_polybulk;
 purchase_speed: return (75 * 8) / 5;
+
+
 
 
 }

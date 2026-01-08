@@ -44,7 +44,8 @@
             "nested/inhibit_lead_vehicle",
             "nested/tare_speed_switch",
             "nested/visual_effect_power",
-            "nested/preserved_cargo_age_switch"
+            "nested/preserved_cargo_age_switch",
+            "nested/passenger_cargo_age_switch"
         ]
     },
     "static_templates": [
