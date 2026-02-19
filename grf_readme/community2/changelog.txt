@@ -2,3 +2,11 @@ v0.1.0
 ------
 
 A random collection of wagons and vehicles because why not.
+
+v0.2.0
+------
+Rationalized the APT situation, removed the extra power car, made my own sprite for the Power Car
+Added Class 151 Sprinter DMU
+Added Class 210 DEMU (in 2 flavors!)
+Added Class 309 EMU in 3 flavors
+Added Sleeper cars
