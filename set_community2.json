@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "WFY",
         "grf_id": 24,
-        "name": "Wolfie's UK Trains 0.2.0",
+        "name": "Wolfie's UK Trains 0.3.0",
         "description": "Oddballs and Infill, heavily based on Timberwolf's UK Train set and designed exclusively to run with that set. Optionally includes some 'paper' concept trains if you feel like being different",
         "min_compat_version": 1,
         "filename": "Wolfies_Train_Extension.nml",

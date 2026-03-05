@@ -10,3 +10,7 @@ Added Class 151 Sprinter DMU
 Added Class 210 DEMU (in 2 flavors!)
 Added Class 309 EMU in 3 flavors
 Added Sleeper cars
+
+v0.3.0
+------
+Added the last of the Covered Hoppers
