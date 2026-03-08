@@ -14,3 +14,10 @@ Added Sleeper cars
 v0.3.0
 ------
 Added the last of the Covered Hoppers
+Added the Class 38 and (BREL) 88
+HST with Buffers
+HST cabbage
+Mark 3 DTS Silliness
+E-HST Silliness
+Hitachi Class 810
+Mk1 BGs of the correct length!
