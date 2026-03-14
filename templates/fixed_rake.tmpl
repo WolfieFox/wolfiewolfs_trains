@@ -2,6 +2,7 @@
 
 
 {{- $layout := slice .layout -}}
+{{$running_cost := parseint .running_cost -}}{{$cost := parseint .cost -}}
 {{- $newsprites := slice .new_sprites -}}
 {{- $animated := slice .animated -}}
 {{- $manual_ttd_len := .manual_ttd_len -}}
@@ -240,7 +241,15 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{if .inhibit_lead}}{{template "inhibit_lead_vehicle" .}}{{end}}
 
 {{ if eq .cargo_handling "Passengers" -}}
-    {{template "passenger_cargo_age_switch" . }}
+    {{ if eq .pax_special "nightstar" }}
+        //var f4 is the power available on the train - formation_current_power after nmlc PR #419 is accepted
+        switch (FEAT_TRAINS, PARENT, switch_{{.id}}_passenger_cargo_age, hasbit(bitmask_consist_info, HAS_GENERATOR_CAR) | (var[0xF4] > 5000) ? 1 : 0) {
+            1: return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier * 5) / 8;
+            return 185 * cargo_age_multiplier;
+        }
+    {{ else }}
+        {{template "passenger_cargo_age_switch" . }}
+    {{ end }}
 {{- end }}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
@@ -259,28 +268,19 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         refittable_cargo_classes: bitmask(CC_MAIL);
         {{end}}
 
-        {{ if eq .type "steam" -}}
-        engine_class:                 ENGINE_CLASS_STEAM;
-        {{ else if eq .type "electric" -}}
-        engine_class:                 ENGINE_CLASS_ELECTRIC;
-        {{ else if eq .type "tube" -}}
-        engine_class:                 ENGINE_CLASS_ELECTRIC;
-        {{else -}}
-        engine_class:                 ENGINE_CLASS_DIESEL;
-        {{- end}}
+        engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
 
         cargo_age_period:             ({{if .cargo_age_period -}}
             {{.cargo_age_period}}{{else}}185
         {{- end}} * cargo_age_multiplier) / 2;
         running_cost_base:            RUNNING_COST_DIESEL;
-        tractive_effort_coefficient:  {{.te_coeff}};
 
-        power:                        {{.power}} hp;
+        power:                        0 hp;
         speed:                        {{.speed}} mph;
         reliability_decay:            20;
         {{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
         cost_factor:                  {{.cost}};
-        running_cost_factor:          {{.running_cost}};
+        {{if le $running_cost 255}}running_cost_factor:          {{.running_cost}};{{end}}
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{if or (.pantograph_unit) (ge (len $animated) 1)}}, TRAIN_FLAG_SPRITE_STACK{{end}} {{ if .tilting }}, TRAIN_FLAG_TILT {{end}});
         {{- if .variant_group}}
@@ -326,6 +326,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
         {{if not .use_mu_engine_logic}}can_attach_wagon: switch_{{.id}}_attach_wagons;{{end}}
         {{if .inhibit_lead}} start_stop: switch_{{.id}}_inhibit_lead;{{end}}
+
         {{ if eq .cargo_handling "Passengers" -}}
             cargo_age_period: switch_{{.id}}_passenger_cargo_age;
         {{- end }}

@@ -1,7 +1,9 @@
 {
     "files": [
       "dual_power/brel_ehst.vox",
-      "dual_power/brel_ehst_rev.vox"
+      "dual_power/brel_ehst_rev.vox",
+      "dual_power/eurostar_nol_rear.vox",
+      "dual_power/eurostar_3cap_rear.vox"
     ],
     "operations": [
       {

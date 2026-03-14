@@ -26,6 +26,8 @@ const HAS_BRAKE_VAN = 1;
 const HAS_DANDY_WAGON = 2;
 const HAS_BUFFET_CAR = 3;
 
+const HAS_GENERATOR_CAR = 7;
+
 //const CC_PASSENGERS = 0;
 //const CC_MAIL = 1;
 //const CC_EXPRESS = 2;
