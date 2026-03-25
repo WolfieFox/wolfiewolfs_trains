@@ -369,7 +369,9 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         {{- if .variant_group}}
             variant_group:                  {{.variant_group}};
-            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY {{if .dvt}}, VEHICLE_FLAG_HAS_CAB {{end}});
+        {{else if .dvt}}
+            extra_flags:                    bitmask(VEHICLE_FLAG_HAS_CAB);
         {{- end}}
 
         refit_cost:                   0;

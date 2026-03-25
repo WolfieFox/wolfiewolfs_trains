@@ -1,0 +1,32 @@
+{
+    "files": [
+        "cargo/mu/windhoff_mpv_single.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
+            "name": "_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/none/iso_container_1x20.vox"
+        },
+        {
+            "name": "_container_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/iso_container_1x20.vox"
+        },
+        {
+            "name": "_container_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_container_1x20.vox"
+        }
+    ]
+}

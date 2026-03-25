@@ -856,6 +856,7 @@ vehicle_life:                 {{.vehicle_life}};
 {{if eq .default_cargo "BRAKE"}}
     bitmask_vehicle_info:         bitmask(HAS_BRAKE_VAN);
     default_cargo_type:           PASS;
+    extra_flags:                  bitmask(VEHICLE_FLAG_HAS_CAB);
 {{- else if eq .default_cargo "DANDY"}}
     default_cargo_type:           PASS;
 {{- else }}

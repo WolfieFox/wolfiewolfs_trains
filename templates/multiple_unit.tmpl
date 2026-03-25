@@ -283,10 +283,6 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{if or (.pantograph_unit) (ge (len $animated) 1)}}, TRAIN_FLAG_SPRITE_STACK{{end}} {{ if .tilting }}, TRAIN_FLAG_TILT {{end}});
-        {{- if .variant_group}}
-        variant_group:                  {{.variant_group}};
-        extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
-        {{- end}}
 
         refit_cost:                   0;
         track_type:                   {{ if eq .type "dual_power" -}}RAIL{{else}}{{.railtype}}{{end}};
