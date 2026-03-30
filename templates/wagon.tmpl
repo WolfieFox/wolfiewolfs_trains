@@ -856,6 +856,7 @@ vehicle_life:                 {{.vehicle_life}};
 {{if eq .default_cargo "BRAKE"}}
     bitmask_vehicle_info:         bitmask(HAS_BRAKE_VAN);
     default_cargo_type:           PASS;
+    extra_flags:                  bitmask(VEHICLE_FLAG_HAS_CAB);
 {{- else if eq .default_cargo "DANDY"}}
     default_cargo_type:           PASS;
 {{- else }}
@@ -863,6 +864,8 @@ vehicle_life:                 {{.vehicle_life}};
 {{- end}}
 {{- if eq .pax_special "buffet" }}
     bitmask_vehicle_info:         bitmask(HAS_BUFFET_CAR);
+{{- else if eq .pax_special "generator_car" }}
+    bitmask_vehicle_info:         bitmask(HAS_GENERATOR_CAR);
 {{- end}}
     engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
 {{if eq .cargo_handling "Passengers" }}

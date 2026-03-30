@@ -1,0 +1,32 @@
+{
+    "files": [
+        "cargo/mu/windhoff_mpv_mid.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
+            "name": "_none",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/none/hicube_container.vox"
+        },
+        {
+            "name": "_container_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/hicube_container.vox"
+        },
+        {
+            "name": "_container_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/hicube_container.vox"
+        }
+    ]
+}

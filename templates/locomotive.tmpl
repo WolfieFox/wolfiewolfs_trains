@@ -112,6 +112,10 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{- $type := .type }}{{ $id := .id}}
 {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}{{template "pantograph_graphics" . }}{{end}}
 
+{{ if .double_headed }}{{$rev := concat .id "_rev"}}
+{{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}{{template "pantograph_graphics_rev" . }}{{end}}
+{{end}}
+
 {{ if not .reuse_sprites }}
 {{if gt $plen 8}}{{template "curve_switch_long" .id }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
 {{end}}
@@ -134,6 +138,9 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 
 {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
 {{template "pantograph_switch" . }}
+{{ if .double_headed }}{{$rev := concat .id "_rev"}}
+{{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}{{template "pantograph_switch_rev" . }}{{end}}
+{{end}}
 {{end}}
 
 {{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
@@ -227,22 +234,39 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{else if .double_headed -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_fwd_graphics, position_in_articulated_veh % 3) 
 {
-    1: switch_{{.id}}_curve;
-    {{ if gt $plen 8}}
-    0: switch_{{.id}}_curve_front;
-    2: switch_{{.id}}_curve_rear;
-    {{ end }}
-    return spriteset_invisible;
+    {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
+                1: switch_{{.id}}_pantograph;
+                {{ if gt $plen 8}}
+                0: switch_{{.id}}_pantograph_front;
+                2: switch_{{.id}}_pantograph_rear;
+                {{ end }}
+    {{else}}
+        1: switch_{{.id}}_curve;
+        {{ if gt $plen 8}}
+        0: switch_{{.id}}_curve_front;
+        2: switch_{{.id}}_curve_rear;
+        {{ end }}
+        return spriteset_invisible;
+    {{end}}
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_rev_graphics, position_in_articulated_veh % 3) 
 {
-    1: switch_{{.id}}_rev_curve;
-    {{ if gt $plen 8}}
-    0: switch_{{.id}}_rev_curve_front;
-    2: switch_{{.id}}_rev_curve_rear;
-    {{ end }}
-    return spriteset_invisible;
+    {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
+        1: switch_{{.id}}_rev_pantograph;
+        {{ if gt $plen 8}}
+        0: switch_{{.id}}_rev_pantograph_front;
+        2: switch_{{.id}}_rev_pantograph_rear;
+        {{ end }}
+        return spriteset_invisible;
+    {{else}}
+        1: switch_{{.id}}_rev_curve;
+        {{ if gt $plen 8}}
+        0: switch_{{.id}}_rev_curve_front;
+        2: switch_{{.id}}_rev_curve_rear;
+        {{ end }}
+        return spriteset_invisible;
+    {{end}}
 }
 
 {{if eq .double_headed "2"}}
@@ -345,7 +369,9 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         {{- if .variant_group}}
             variant_group:                  {{.variant_group}};
-            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+            extra_flags:                    bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY {{if .dvt}}, VEHICLE_FLAG_HAS_CAB {{end}});
+        {{else if .dvt}}
+            extra_flags:                    bitmask(VEHICLE_FLAG_HAS_CAB);
         {{- end}}
 
         refit_cost:                   0;
