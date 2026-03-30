@@ -21,3 +21,16 @@ Mark 3 DTS Silliness
 E-HST Silliness
 Hitachi Class 810
 Mk1 BGs of the correct length!
+
+v0.4.0
+------
+Brake Vans (MR, LMS and SR QM)
+Very Early EMUs
+E320 EMU
+Class 222
+Tyne and Wear Metrocar
+Class 717
+Class 745
+Nightstar Coaches
+Windhoff MPV
+8-car Blue Pullman

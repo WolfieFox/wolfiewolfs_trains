@@ -4,6 +4,7 @@
         "grf_id": 24,
         "name": "Wolfie's UK Trains 0.4.0",
         "description": "Oddballs and Infill, heavily based on Timberwolf's UK Train set and designed exclusively to run with that set. Optionally includes some 'paper' concept trains if you feel like being different",
+        "url": "https://github.com/WolfieFox/wolfiewolfs_trains",
         "min_compat_version": 1,
         "filename": "Wolfies_Train_Extension.nml",
         "language": "english", 
