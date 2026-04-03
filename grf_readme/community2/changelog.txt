@@ -34,3 +34,9 @@ Class 745
 Nightstar Coaches
 Windhoff MPV
 8-car Blue Pullman
+
+v0.5.0
+------
+Fixed cargo sprites for the Windhoff MPV
+Added the Carflat and Cartic-4 (with cargo sprites for the '60s, 70s and 2010s)
+Fixed a few bugs (may break backwards compatibility)
