@@ -225,6 +225,8 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
     {{else}}
         {{ $cargo_list = concat $cargo_list ",vehicle,vehicle_body" }}
     {{end}}
+{{else if eq .cargo_handling "Motorail" -}}
+    {{ $cargo_list = "vehicle_pax_1960,vehicle_pax_1970,vehicle_pax_2010" }}
 {{else if eq .cargo_handling "Container" -}}
     {{ $cargo_list = "container" -}}
 {{else if eq .cargo_handling "DandyWagon" -}}
@@ -678,6 +680,82 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
         return spriteset_invisible;
         }
     {{ end }}
+{{ else if eq .cargo_handling "Motorail" }}
+    {{ $has_cargo_switch = "1" }}
+    {{ $palette := "PALETTE_USE_DEFAULT" }}
+
+    {{if gt $plen 4 }}
+        switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_vehicle_pax, current_year) {
+        0..1970: switch_{{$id}}_vehicle_pax_1960_curve;
+        1971..2010: switch_{{$id}}_vehicle_pax_1970_curve;
+        switch_{{$id}}_vehicle_pax_2010_curve;
+        }
+
+        {{ if gt $plen 8}}
+            switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_vehicle_pax_front, current_year) {
+            0..1970: switch_{{$id}}_vehicle_pax_1960_curve_front;
+            1971..2010: switch_{{$id}}_vehicle_pax_1970_curve_front;
+            switch_{{$id}}_vehicle_pax_2010_curve_front;
+            }
+
+            switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_vehicle_pax_rear, current_year) {
+            0..1970: switch_{{$id}}_vehicle_pax_1960_curve_rear;
+            1971..2010: switch_{{$id}}_vehicle_pax_1970_curve_rear;
+            switch_{{$id}}_vehicle_pax_2010_curve_rear;
+            }
+        {{ end }}
+    {{end}}
+
+    switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_pass, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve;
+    1: switch_{{$id}}_age_dependent_cargo_vehicle_pax;
+
+    // This should never be executed
+    return spriteset_invisible;
+    }
+
+    {{ if gt $plen 8}}
+        switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_pass_front, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
+        0: switch_{{$id}}_curve_front;
+        1: switch_{{$id}}_age_dependent_cargo_vehicle_pax_front;
+        {{end}}
+
+        // This should never be executed
+        return spriteset_invisible;
+        }
+
+        switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_pass_rear, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
+        0: switch_{{$id}}_curve_rear;
+        1: switch_{{$id}}_age_dependent_cargo_vehicle_pax_rear;
+
+        // This should never be executed
+        return spriteset_invisible;
+        }
+
+    switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_pass, position_in_articulated_veh % 3)
+    {
+    1: switch_{{$id}}_cargo_pass;
+    {{ if gt $plen 8}}
+        0: switch_{{$id}}_cargo_pass_front;
+        2: switch_{{$id}}_cargo_pass_rear;
+    {{ end }}
+    return spriteset_invisible;
+    }
+
+    switch (FEAT_TRAINS, PARENT, switch_{{.id}}_passenger_cargo_age, hasbit(bitmask_consist_info, HAS_BUFFET_CAR) && cargo_type_in_veh == PASS) {
+        1: return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier * 5) / 8;
+        return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier) / 2;
+    }
+
 {{ else if eq .cargo_handling "Container" }}
     {{ $has_cargo_switch = "1" }}
     switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_container, [
@@ -903,6 +981,9 @@ vehicle_life:                 {{.vehicle_life}};
 {{else if eq .cargo_handling "Bolster" }}
     refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
     cargo_disallow_refit: [ACID,CHLO,LVST,ACID,CBLK,CMNT,POTA,QLME,SALT,SASH];
+{{else if eq .cargo_handling "Motorail" }}
+    refittable_cargo_classes: bitmask(CC_PASSENGERS);
+    cargo_allow_refit: [VEHI, PASS];
 {{else if eq .cargo_handling "Tanker" }}
     refittable_cargo_classes: bitmask(CC_LIQUID);
     cargo_allow_refit: [ACID, CHLO];
@@ -943,6 +1024,12 @@ graphics {
 {{ if eq .cargo_handling "Container" }}
     cargo_capacity: return {{.capacity}} / 3;
     default:  switch_{{$id}}_graphics_container;
+{{ else if eq .cargo_handling "Motorail" }}
+    cargo_capacity: return {{.capacity}} / 3;
+    default:  switch_{{$sprite}}_graphics;
+    PASS:  switch_{{$sprite}}_graphics_pass;
+    VEHI:  switch_{{$sprite}}_graphics_pass;
+    cargo_age_period: switch_{{.id}}_passenger_cargo_age;
 {{ else if eq .cargo_handling "Van" }}
     cargo_capacity: return {{.capacity}} / 3;
     default:  switch_{{$sprite}}_graphics;

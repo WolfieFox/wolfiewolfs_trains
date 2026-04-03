@@ -1,0 +1,72 @@
+{
+    "files": [
+        "cargo/wagon/cartic_4_mid.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
+            "name": "_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_vehicle_pax_1960_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "90-97,180-186", "82-89,200-207"],            
+            "file": "cargo/wagon/cartic/cartic_4_mid_1960_half.vox"
+        },
+        {
+            "name": "_vehicle_pax_1960_full",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "90-97,180-186", "82-89,200-207"],
+            "file": "cargo/wagon/cartic/cartic_4_mid_1960.vox"
+        },
+        {
+            "name": "_vehicle_pax_1970_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "input_ramps": ["200-207", "200-207", "200-207"],
+            "output_ramps": ["200-207", "7-14", "82-89"],
+            "file": "cargo/wagon/cartic/cartic_4_mid_1970_half.vox"
+        },
+        {
+            "name": "_vehicle_pax_1970_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "input_ramps": ["200-207", "200-207", "200-207"],
+            "output_ramps": ["200-207", "7-14", "82-89"],
+            "file": "cargo/wagon/cartic/cartic_4_mid_1970.vox"
+        },
+        {
+            "name": "_vehicle_pax_2010_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "input_ramps": ["200-207", "200-207", "200-207"],
+            "output_ramps": ["200-207", "146-153", "82-89"],
+            "file": "cargo/wagon/cartic/cartic_4_mid_2010_half.vox"
+        },
+        {
+            "name": "_vehicle_pax_2010_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "input_ramps": ["200-207", "200-207", "200-207"],
+            "output_ramps": ["200-207", "146-153", "82-89"],
+            "file": "cargo/wagon/cartic/cartic_4_mid_2010.vox"
+        }
+    ]
+}
