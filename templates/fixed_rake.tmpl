@@ -395,13 +395,15 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
 
         {{if eq .cargo_handling "Motorail" }}
-            refittable_cargo_classes: bitmask(CC_PASSENGERS);
-            cargo_allow_refit: [VEHI, PASS];
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [VEHI, PASS];
         {{else if eq .default_cargo "PASS" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        cargo_allow_refit: [ YETI, YETY ]; 
+        cargo_allow_refit: [ YETI, YETY ];
         {{ else if eq .default_cargo "MAIL" }}
         refittable_cargo_classes: bitmask(CC_MAIL);
+        {{else if eq .cargo_handling "Van" }}
+        refittable_cargo_classes: bitmask(CC_COVERED, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
         {{end}}
 
         engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
