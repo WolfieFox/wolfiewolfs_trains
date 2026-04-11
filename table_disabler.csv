@@ -1,5 +1,19 @@
-name,id,template,numeric_id
-"BREL Class 442 ""Wessex Electric""",wessex_electric,disable,464
-"BREL Class 370 ""APT-P""",apt,disable,448
-"BREL Class 370 ""APT-P""",apt_6_tile,disable,449
-"BREL Class 370 ""APT-P""",apt_4_tile,disable,450
+name,id,template,numeric_id,new_speed
+"BREL Class 442 ""Wessex Electric""",wessex_electric,disable,464,
+"BREL Class 442 ""Wessex Electric""",wessex_electric_4_tile,disable,465,
+"BREL Class 370 ""APT-P""",apt,disable,448,
+"BREL Class 370 ""APT-P""",apt_6_tile,disable,449,
+"BREL Class 370 ""APT-P""",apt_4_tile,disable,450,
+"MC Class 251 ""Blue Pullman""",blue_pullman,disable,438,
+"MC Class 251 ""Blue Pullman""",blue_pullman_4_tile,disable,439,
+"GEC-Alsthom Class 373 ""Eurostar""",eurostar,disable,474,
+"GEC-Alsthom Class 373 ""Eurostar""",eurostar_6_tile,disable,475,
+"GEC-Alsthom Class 373 ""Eurostar""",eurostar_4_tile,disable,476,
+"BREL Class 465 ""Networker""",brel_networker,disable,472,
+"Leyland Class 141 ""Pacer""",pacer,disable,458,
+"BREL Class 150 ""Sprinter""",sprinter,disable,456,
+"BREL Class 158 ""Express Sprinter""",express_sprinter,disable,466,
+"Metro-Cammell Class 156 ""Super Sprinter""",super_sprinter,disable,462,
+"Bombardier Class 170 ""Turbostar""",turbostar,disable,482,
+Clerestory brake carriage,clerestory_carriage_mail,increase_speed,140,90
+Brake carriage,mail_coach_lnwr,increase_speed,141,100
