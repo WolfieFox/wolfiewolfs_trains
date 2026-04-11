@@ -1,0 +1,10 @@
+if (grf_future_status("TWF\07") == 0) {
+    error(FATAL, MUST_LOAD_AFTER, "Timberwolf's UK Trains");
+}
+
+// if (param["TWF\07", 254] != 3726) {
+//     error(NOTE, "Timberwolf's UK Trains is present but not the expected version. Disabler may not work correctly.");
+//}
+
+engine_override("TWF\07");
+

@@ -1,0 +1,24 @@
+{
+    "grf": {
+        "author_id": "WFY",
+        "grf_id": 25,
+        "name": "Timberwolf/Wolfie's Trains De-Duplication",
+        "description": "A GRF to disable trains in Timberwolf's Trains which are duplicated in Wolfie's Trains.",
+        "url": "https://github.com/WolfieFox/wolfiewolfs_trains",
+        "min_compat_version": 1,
+        "filename": "Wolfies_Deconflicting_Disabler.nml",
+        "language": "english"
+    },
+    "sprites": {
+        "table": "table_disabler.csv",
+        "template_directory": "templates",
+        "globals": {
+            "tgt_grf_id": "TWF\\07"
+        }
+    },
+    "static_templates": [
+        {
+            "template":  "templates/static/disabler_header.nml"
+        }
+    ]
+}

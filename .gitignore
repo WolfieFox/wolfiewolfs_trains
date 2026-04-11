@@ -13,3 +13,8 @@ timberwolfs_community_addon
 .idea
 Wolfies_Train_Extension.nml
 Wolfies_Train_Extension
+
+Wolfies_Deconflicting_Disabler.nml
+Wolfies_Deconflicting_Disabler
+
+deploy*.bat

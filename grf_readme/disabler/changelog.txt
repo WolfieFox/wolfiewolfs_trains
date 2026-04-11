@@ -1,0 +1,5 @@
+v1.0.0
+------
+First release, designed to work with:
+    Timberwolf's UK Trains 1.7.7
+    Wolfie's UK Trains Addon 0.5.0

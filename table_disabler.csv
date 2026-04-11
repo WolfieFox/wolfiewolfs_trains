@@ -1,0 +1,5 @@
+name,id,template,numeric_id
+"BREL Class 442 ""Wessex Electric""",wessex_electric,disable,464
+"BREL Class 370 ""APT-P""",apt,disable,448
+"BREL Class 370 ""APT-P""",apt_6_tile,disable,449
+"BREL Class 370 ""APT-P""",apt_4_tile,disable,450
