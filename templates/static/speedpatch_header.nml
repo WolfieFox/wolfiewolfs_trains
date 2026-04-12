@@ -1,0 +1,32 @@
+train_width_32_px=1;
+traininfo_y_offset=4;
+
+ railtypetable {
+    //3RDR is generic 3rd rail, from old-school pb_trax.grf and friends
+    //3RDC is 3rd rail with catenary, from same
+    RAIL, ELRL, SAAE, SAAZ, SAA3, TDRL, "3RDR", "3RDC",
+    PLATEWAY: [PTWY,RAIL], 
+    THIRD_RAIL: [TDRL,SAA3,"3RDR","3RDC",ELRL],
+    DUAL_POWER: [SAAZ,DUAL,SAA3,SAAE,TDRL,"3RDR","3RDC",ELRL],
+    FOURTH_RAIL: [SAA4,MTRO,"3RDR",ELRL],
+    NARROW_GAUGE: [NGRL,NAAN],
+}
+
+if (grf_future_status("TWF\07") == 0) {
+    error(FATAL, MUST_LOAD_AFTER, "Timberwolf's UK Trains");
+}
+
+const HAS_BRAKE_VAN = 1;
+const HAS_DANDY_WAGON = 2;
+const HAS_BUFFET_CAR = 3;
+
+param_slower_cargo_aging = param["TWF\07", 6];
+
+cargo_age_multiplier = param_slower_cargo_aging == 0 ? 2 :
+    (param_slower_cargo_aging == 1 ? 1 : param_slower_cargo_aging * 2);
+
+ if (param["TWF\07", 254] != 3726) {
+     error(NOTICE, string(STR_NOTE_TWF_VERSION_MISMATCH));
+}
+
+engine_override("TWF\07");
