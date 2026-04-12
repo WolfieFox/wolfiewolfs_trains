@@ -38,5 +38,13 @@ Windhoff MPV
 v0.5.0
 ------
 Fixed cargo sprites for the Windhoff MPV
-Added the Carflat and Cartic-4 (with cargo sprites for the '60s, 70s and 2010s)
 Fixed a few bugs (may break backwards compatibility)
+Added the Carflat and Cartic-4 (with cargo sprites for the '60s, 70s and 2010s)
+Added VIX, Cargowaggon IWB, IZA and IGA wagons
+Ported Timberwolf's Class 465 for MU compatibility...
+Added Class 800 family as a port from Timberwolf's set
+Added the 2nd generation DMUs for MU compatibility and more variants.
+Added Class 365
+Added a dual-voltage Class 442 variant
+Added wagons-lits sleeping cars
+Added LEV1
