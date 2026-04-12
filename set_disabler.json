@@ -7,16 +7,7 @@
         "url": "https://github.com/WolfieFox/wolfiewolfs_trains",
         "min_compat_version": 1,
         "filename": "Wolfies_Deconflicting_Disabler.nml",
-        "language": "english",
-        "parameters": [
-            {
-                "id": "fix_brake_speeds",
-                "name": "Increase Bogie Brake Speeds",
-                "desc": "If turned on, increase the maximum speed of the Clerestory and Standard Passenger brake coaches to match the speeds of the vehicles they are based on.",
-                "type": "bool",
-                "default_value": 0
-            }
-        ]
+        "language": "english"
     },
     "sprites": {
         "table": "table_disabler.csv",
