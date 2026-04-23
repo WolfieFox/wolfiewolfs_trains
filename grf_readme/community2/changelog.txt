@@ -1,39 +1,6 @@
-v0.1.0
+v0.5.1
 ------
-
-A random collection of wagons and vehicles because why not.
-
-v0.2.0
-------
-Rationalized the APT situation, removed the extra power car, made my own sprite for the Power Car
-Added Class 151 Sprinter DMU
-Added Class 210 DEMU (in 2 flavors!)
-Added Class 309 EMU in 3 flavors
-Added Sleeper cars
-
-v0.3.0
-------
-Added the last of the Covered Hoppers
-Added the Class 38 and (BREL) 88
-HST with Buffers
-HST cabbage
-Mark 3 DTS Silliness
-E-HST Silliness
-Hitachi Class 810
-Mk1 BGs of the correct length!
-
-v0.4.0
-------
-Brake Vans (MR, LMS and SR QM)
-Very Early EMUs
-E320 EMU
-Class 222
-Tyne and Wear Metrocar
-Class 717
-Class 745
-Nightstar Coaches
-Windhoff MPV
-8-car Blue Pullman
+Fixed Mk1 Sleeper Length
 
 v0.5.0
 ------
@@ -48,3 +15,39 @@ Added Class 365
 Added a dual-voltage Class 442 variant
 Added wagons-lits sleeping cars
 Added LEV1
+
+v0.4.0
+------
+Brake Vans (MR, LMS and SR QM)
+Very Early EMUs
+E320 EMU
+Class 222
+Tyne and Wear Metrocar
+Class 717
+Class 745
+Nightstar Coaches
+Windhoff MPV
+8-car Blue Pullman
+
+v0.3.0
+------
+Added the last of the Covered Hoppers
+Added the Class 38 and (BREL) 88
+HST with Buffers
+HST cabbage
+Mark 3 DTS Silliness
+E-HST Silliness
+Hitachi Class 810
+Mk1 BGs of the correct length!
+
+v0.2.0
+------
+Rationalized the APT situation, removed the extra power car, made my own sprite for the Power Car
+Added Class 151 Sprinter DMU
+Added Class 210 DEMU (in 2 flavors!)
+Added Class 309 EMU in 3 flavors
+Added Sleeper cars
+
+v0.1.0
+------
+A random collection of wagons and vehicles because why not.
