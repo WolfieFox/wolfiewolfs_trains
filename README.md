@@ -1,12 +1,6 @@
-# Wolfie's Extension Train Set
+# Wolfie's Unified Train Set
 
-I wanted to put some more stuff into Timberwolf's Trains, but I didn't want to be really annoying about it.
-So here's my little addon GRF, with sincere apologies to Timberwolf for how derivative it is.
-
-So originally the goal was to put some small oddball vehicles in. 
-Now I'm just bulking up the set and adding things that I think are neat,
-mostly trains from 80s, some one-off prototypes and some unbuilt neat things
-for your alt-history gameplay needs.
+Maximalism means Maximalism
 
 ## Paper Trains
 

@@ -1,6 +1,7 @@
 .nmlcache
 1x
 2x
+4x
 lang
 ~$*.xlsm
 *.grf
@@ -13,6 +14,10 @@ timberwolfs_community_addon
 .idea
 Wolfies_Train_Extension.nml
 Wolfies_Train_Extension
+
+unified.csv
+unified.nml
+wuut
 
 Wolfies_Deconflicting_Disabler.nml
 Wolfies_Deconflicting_Disabler

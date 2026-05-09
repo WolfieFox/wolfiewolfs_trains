@@ -1,11 +1,12 @@
 {
     "grf": {
-        "author_id": "TWF",
+        "author_id": "WFY",
         "grf_id": 7,
-        "name": "Timberwolf's UK Trains 1.7.7",
-        "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
+        "name": "Wolfie's Unified UK Trainset",
+        "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 4x zoom and extra rotation sprites.",
+        "url": "https://github.com/WolfieFox/wolfiewolfs_trains",
         "min_compat_version": 1,
-        "filename": "timberwolfs_trains.nml",
+        "filename": "unified.nml",
         "language": "english", 
         "parameters": [
             {
@@ -78,16 +79,23 @@
                 "desc": "The 1960s rationalisation of BR resulted in a number of sectors abandoned to road transport. Since players may wish to explore the possibilities had BR continued to provide these types of traffic, a number of plausible fictional vehicles are included in this set. For extra realism, these can be turned off with this flag.",
                 "type": "bool",
                 "default_value": 0
+            },
+            {
+                "id": "concept_trains",
+                "name": "Concept/'Paper' Trains",
+                "desc": "If turned on, introduce some vehicles that never quite left the drawing board.",
+                "type": "bool",
+                "default_value": 1
             }
         ]
     },
     "sprites": {
-        "table": "table.csv",
+        "table": "unified.csv",
         "template_directory": "templates",
         "additional_text_field": "additional_text",
         "additional_text_format": "%s",
         "globals": {
-            "zoom": "2",
+            "zoom": "4",
             "bpp": "8"
         },
         "nestable_templates": [ 
@@ -101,10 +109,13 @@
             "nested/curve_switch_short",
             "nested/curve_switch_short_weathered",
             "nested/pantograph_switch",
+            "nested/pantograph_switch_rev",
             "nested/pantograph_graphics",
+            "nested/pantograph_graphics_rev",
             "nested/running_cost_switch",
             "nested/attach_mu_switch",
             "nested/power_car_check",
+            "nested/inhibit_lead_vehicle",
             "nested/tare_speed_switch",
             "nested/visual_effect_power",
             "nested/preserved_cargo_age_switch",
@@ -131,16 +142,26 @@
             "template": "templates/static/procedures.nml"
         },
         {
+            "template": "templates/static/procedures_addon.nml"
+        },
+        {
             "template": "templates/static/sprite_templates_hills.nml"
         },
         {
             "template": "templates/static/horse_sounds.nml"
+        },
+        {
+            "template":  "templates/static/sprite_templates_anim.nml"
+        },
+        {
+            "template": "templates/static/sprite_templates_hills_anim.nml"
         }
     ],
     "fixed_strings": {
         "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type.",
         "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train.",
-        "str_first_class_cannot_attach": "No more than 50% of a train may be first class carriages."
+        "str_first_class_cannot_attach": "No more than 50% of a train may be first class carriages.",
+        "str_cannot_lead": "This vehicle cannot lead the train."
     },
     "cargo_table": [        
         "ACID",
