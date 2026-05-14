@@ -390,7 +390,12 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         default_cargo_type:           {{.default_cargo}};
         {{end}}{{end}}
         weight:                       {{.weight}} {{if .tender_weight}} + {{.tender_weight}} {{end}} ton;
-        
+
+        {{if .badges}}
+            badges: [
+            {{- range $index, $element := slice .badges -}}
+            {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
+        {{end}}
     }
 
         graphics {    

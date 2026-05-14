@@ -35,8 +35,8 @@
                 "desc": "Some multiple units included in this set have very long consists in prototypical usage (e.g. Eurostar).{}{}Alter this parameter to set the maximum length in tiles for these longer units.",
                 "type": "int",
                 "min_value": 0,
-                "max_value": 2,
-                "default_value": 1,
+                "max_value": 0,
+                "default_value": 0,
                 "value_names": [ "Unlimited (realistic)", "6 tiles (default)", "4 tiles (short)" ]
             },
             {
@@ -128,6 +128,9 @@
         },
         {
             "template":  "templates/static/header.nml"
+        },
+        {
+            "template":  "templates/static/badges.nml"
         },
         {
             "template":  "templates/static/sprite_templates.nml"
