@@ -1,0 +1,21 @@
+badgetable {
+    "flag",
+    "flag/GB",
+    "power",
+    "power/steam",
+    "power/diesel",
+    "power/petrol",
+    "power/electric",
+    "power/battery",
+    "power/turbine",
+    "power/animal",
+    "role",
+    "role/passenger",
+    "role/express_passenger",
+    "role/mixed",
+    "role/freight",
+    "role/heavy_freight",
+    "role/shunting",
+    "role/prototype",
+    "role/mail"
+}
