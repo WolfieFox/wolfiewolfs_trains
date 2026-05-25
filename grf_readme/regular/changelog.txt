@@ -1,3 +1,8 @@
+v0.1.2
+------
+Fix horses having cargo capacity (???)
+Fix D16/2 description
+
 v0.1.1
 ------
 Fix flag/GB (case sensitive, apparently)
@@ -7,4 +12,4 @@ v0.1.0
 ------
 Initial release, full copy of Timberwolf's Trains + Community Addon + Wolfie's Extension Train Set, merged
 Added badges
-Added some random vehicles
+Added some random vehicles (
