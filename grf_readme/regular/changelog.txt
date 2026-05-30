@@ -2,6 +2,7 @@ v0.1.2
 ------
 Fix horses having cargo capacity (???)
 Fix D16/2 description
+Fix Class 50 sprite being a bit skrunkly on one end.
 
 v0.1.1
 ------
