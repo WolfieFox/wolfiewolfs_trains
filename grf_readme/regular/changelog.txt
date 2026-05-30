@@ -1,7 +1,12 @@
 v0.1.2
 ------
+Bananas was down so I had lots of time...
 Fix horses having cargo capacity (???)
 Fix D16/2 description
+Fix description and capacity for Mk3s.
+Add Mk1 GUV, BSK
+Add Redland Self-Discharge Train
+Add Stupid Class 51 "Super Hoover"
 Fix Class 50 sprite being a bit skrunkly on one end.
 
 v0.1.1
@@ -13,4 +18,4 @@ v0.1.0
 ------
 Initial release, full copy of Timberwolf's Trains + Community Addon + Wolfie's Extension Train Set, merged
 Added badges
-Added some random vehicles (
+Added some random vehicles (Mk3 DVT, NER EE1, GWR Railcar Twin, GWR Railcar (Parcels), Mk3b BFO/FO)

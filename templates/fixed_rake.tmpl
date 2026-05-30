@@ -11,10 +11,23 @@
 {{$speed := parseint .speed -}}
 {{ $has_cargo_switch := "" -}}
 
+{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr" }}
 {{ $cargo_list := "" -}}
 {{if eq .cargo_handling "Motorail" -}}
     // Vroom Vroom...
     {{ $cargo_list = "vehicle_pax_1960,vehicle_pax_1970,vehicle_pax_2010" }}
+{{ else if eq .cargo_handling "Bulk" "SelfDischarge" -}}
+    {{ $cargo_list = "bulk" }}
+{{end}}
+
+{{ $static_vehicle := "" }}
+{{ if .wagon_formation_modifier}}
+    // wfm {{.wagon_formation_modifier}}
+    {{ $split := slice .wagon_formation_modifier -}}
+    {{ if eq (index $split 0) "static_veh" }}
+        // $static_vehicle {{index $split 1}}
+        {{ $static_vehicle = index $split 1 -}}
+    {{ end }}
 {{end}}
 
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
@@ -54,6 +67,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_rear" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}{{end}}
 {{end}}
 
+{{if ne $element $static_vehicle}}
 // Cargo Sprites
 {{$template_turn_1 := concat "template_auto_" $len -}}
 {{$template_turn_2 := concat "template_auto_" $len -}}
@@ -81,7 +95,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 
 
 {{ range $index, $cargoelement := slice $cargo_list -}}{{ if $cargoelement -}}
-    // Cargo: {{$cargoelement}}
+    // FR Cargo: {{$cargoelement}}
     // cargo sprites are always 8 bit
     {{$elus := concat "_" $cargoelement}}{{ range $idx2, $el2 := slice "_half,_full" }}
         {{$cargo := concat $elus $el2  }}
@@ -156,10 +170,10 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{end -}}{{ end }}
 // End cargo sprites
 {{end -}}
-
+{{end}}
 {{end}}
 
-{{- $type := .type }}{{- $id := .id}}
+{{- $type := .type }}{{- $id := .id}}{{- $cars := .cars -}}
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
@@ -355,7 +369,106 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
         1: return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier * 5) / 8;
         return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier) / 2;
     }
+{{ else if eq .cargo_handling "Bulk" "SelfDischarge" }}
+    {{ $has_cargo_switch = "1" }}
+    {{- range $index, $veh_id := $layout -}}
+        {{- $newsprite := index $newsprites $index -}}
+        {{- if eq $newsprite "1" -}}
+            {{- if ne $veh_id $static_vehicle -}}
+                {{ range $index, $element := slice $bulk_cargos }}
+                    switch(FEAT_TRAINS, SELF, switch_{{$veh_id}}_cargo_{{$element}}, [
+                    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
+                    getbits(extra_callback_info1, 8, 8)
+                    ]) {
+                    0: switch_{{$veh_id}}_curve;
+                    1: switch_{{$veh_id}}_bulk_curve;
 
+                    // This should never be executed
+                    return spriteset_invisible;
+                    }
+
+                    {{ if gt $plen 8}}
+                        switch(FEAT_TRAINS, SELF, switch_{{$veh_id}}_cargo_{{$element}}_front, [
+                        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
+                        getbits(extra_callback_info1, 8, 8)
+                        ]) {
+                        0: switch_{{$veh_id}}_curve_front;
+                        1: switch_{{$veh_id}}_bulk_curve_front;
+
+                        // This should never be executed
+                        return spriteset_invisible;
+                        }
+
+                        switch(FEAT_TRAINS, SELF, switch_{{$veh_id}}_cargo_{{$element}}_rear, [
+                        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
+                        getbits(extra_callback_info1, 8, 8)
+                        ]) {
+                        0: switch_{{$veh_id}}_curve_rear;
+                        1: switch_{{$veh_id}}_bulk_curve_rear;
+
+                        // This should never be executed
+                        return spriteset_invisible;
+                        }
+
+                    {{ end }}
+
+                    switch (FEAT_TRAINS, SELF, switch_{{$veh_id}}_graphics_{{$element}}, position_in_articulated_veh % 3)
+                    {
+                    1: switch_{{$veh_id}}_cargo_{{$element}};
+                    {{ if gt $plen 8}}
+                        0: switch_{{$veh_id}}_cargo_{{$element}}_front;
+                        2: switch_{{$veh_id}}_cargo_{{$element}}_rear;
+                    {{ end }}
+                    return spriteset_invisible;
+                    }
+                {{end}}
+            {{end}}
+        {{end}}
+    {{end}}
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3))
+    {
+    {{- range $index, $element := $layout -}}
+        {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
+
+            {{if eq $element $static_vehicle}}
+                ({{$index}} * 3) + 1: switch_{{$element}}_curve;
+                {{- if gt $plen 8}}
+                    ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
+                    ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
+                {{ end -}}
+            {{else}}
+                ({{$index}} * 3) + 1: switch_{{$element}}_bulk_curve;
+                {{- if gt $plen 8}}
+                    ({{$index}} * 3) + 0: switch_{{$element}}_bulk_curve_front;
+                    ({{$index}} * 3) + 2: switch_{{$element}}_bulk_curve_rear;
+                {{ end -}}
+            {{end}}
+    {{- end}}
+    return spriteset_invisible;
+    }
+    {{ range $cindex, $celement := slice $bulk_cargos }}
+        switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$celement}}, position_in_articulated_veh % ({{$cars}} * 3))
+        {
+        {{- range $index, $element := $layout -}}
+            {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
+
+            {{if eq $element $static_vehicle}}
+                ({{$index}} * 3) + 1: switch_{{$element}}_curve;
+                {{- if gt $plen 8}}
+                    ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
+                    ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
+                {{ end -}}
+            {{else}}
+                ({{$index}} * 3) + 1: switch_{{$element}}_graphics_{{$celement}};
+                {{- if gt $plen 8}}
+                    ({{$index}} * 3) + 0: switch_{{$element}}_graphics_{{$celement}}_front;
+                    ({{$index}} * 3) + 2: switch_{{$element}}_graphics_{{$celement}}_rear;
+                {{ end -}}
+            {{end}}
+        {{- end}}
+        return spriteset_invisible;
+        }
+    {{end}}
 {{else}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3))
 {
@@ -404,6 +517,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         refittable_cargo_classes: bitmask(CC_MAIL);
         {{else if eq .cargo_handling "Van" }}
         refittable_cargo_classes: bitmask(CC_COVERED, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+        {{else if eq .cargo_handling "SelfDischarge" }}
+        refittable_cargo_classes: bitmask(CC_BULK);
         {{end}}
 
         engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
@@ -465,6 +580,9 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{else if eq .cargo_handling "Motorail" -}}
             cargo_capacity: return {{.capacity}} / 3;
             cargo_age_period: switch_{{.id}}_passenger_cargo_age;
+        {{ else if eq .cargo_handling "Bulk" "SelfDischarge"  }}
+            {{ range $index, $element := slice $bulk_cargos }}
+                {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
         {{- end }}
     }
 }
