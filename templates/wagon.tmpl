@@ -14,12 +14,8 @@
 {{ $replace_last_wagon := "" }}
 {{ $random_flip_vehicle := "" }}
 
-// wfm {{.wagon_formation_modifier}}
-{{if .replace_last_wagon}}
-    {{ $replace_last_wagon = .replace_last_wagon -}}
-{{else if .random_flip_vehicle}}
-    {{ $random_flip_vehicle = .random_flip_vehicle -}}
-{{else if .wagon_formation_modifier}}
+{{ if .wagon_formation_modifier}}
+    // wfm {{.wagon_formation_modifier}}
     {{ $split := slice .wagon_formation_modifier -}}
     {{ if eq (index $split 0) "replace_last" }}
         // Replace_last {{index $split 1}}
