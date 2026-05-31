@@ -391,7 +391,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         weight:                       {{.weight}} {{if .tender_weight}} + {{.tender_weight}} {{end}} ton;
 
         {{if .badges}}
-            badges: [
+            badges: ["_ww_type/locomotive",
             {{- range $index, $element := slice .badges -}}
             {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
         {{end}}

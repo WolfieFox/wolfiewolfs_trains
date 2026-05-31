@@ -306,7 +306,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{- end}}
 
         {{if .badges}}
-            badges: [
+            badges: ["_ww_type/multiple_unit",
             {{- range $index, $element := slice .badges -}}
             {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
         {{end}}

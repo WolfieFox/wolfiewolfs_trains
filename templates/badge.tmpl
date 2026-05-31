@@ -2,5 +2,6 @@ item(FEAT_BADGES, {{.id}}) {
     property {
         label: "{{.type}}";
         name: {{.name_string}};
+        {{if eq .railtype "private"}}flags: bitmask(BADGE_FLAG_NAME_SKIP);{{end}}
     }
 }
