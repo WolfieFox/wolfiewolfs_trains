@@ -12,10 +12,10 @@ echo "Compositing sprites"
 # Copy static files
 echo "Copying static files"
 
-cp -p voxels/static/mu/* intermediate
-cp -p voxels/static/carriage/* intermediate
-cp -p voxels/static/loco/* intermediate
-cp -p voxels/static/tender/* intermediate
+#cp -p voxels/static/mu/* intermediate
+#cp -p voxels/static/carriage/* intermediate
+#cp -p voxels/static/loco/* intermediate
+#cp -p voxels/static/tender/* intermediate
 cp -p voxels/static/wagon/*.vox intermediate
 cp -p voxels/static/wagon/aged/*.vox intermediate
 cp -p voxels/static/tube/* intermediate
@@ -49,7 +49,7 @@ echo "Rendering purchase sprites"
 echo "Compiling set"
 ../roadie/roadie.exe set.json
 echo "Compiling NML"
-../nml/nmlc.exe --no-palette-validation -p DEFAULT -c unified.nml
+time ../jgr-nml/nmlc.exe --no-palette-validation -p DEFAULT -c unified.nml
 
 echo "Building TAR"
 mkdir -p wuut

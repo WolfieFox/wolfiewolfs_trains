@@ -20,10 +20,6 @@
         "mask_original": true,
         "n": 0,        
         "file": "dual_power/pantograph/small_pan_down.vox"
-      },      
-      {
-        "name": "",
-        "type": "produce_empty"
       }
     ]
 }

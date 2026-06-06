@@ -1,0 +1,45 @@
+{
+  "files": [
+    "static/loco/*.vox",
+    "static/mu/*.vox",
+    "static/carriage/*.vox",
+    "static/tube/*.vox",
+    "static/tender/*.vox",
+    "ng/*.vox",
+    "garratt/*.vox",
+    "dual_power/*.vox",
+    "*.vox"
+  ],
+  "operations": [
+    {
+      "name": "_hlt_on_front",
+      "type": "recolour",
+      "input_ramps": ["217-217,219-219,1-255"],
+      "output_ramps": ["15-15,15-15,255-255"]
+    },
+    {
+      "name": "_tlt_on_front",
+      "type": "recolour",
+      "input_ramps":  ["218-218,219-219,223-223,225-225,227-227,1-255"],
+      "output_ramps": ["185-185,185-185,12-12,185-185,242-242,255-255"]
+    },
+    {
+      "name": "_hlt_on_rear",
+      "type": "recolour",
+      "input_ramps":  ["220-220,221-221,1-255"],
+      "output_ramps": ["15-15,15-15,255-255"]
+    },
+    {
+      "name": "_tlt_on_rear",
+      "type": "recolour",
+      "input_ramps":  ["221-221,222-222,224-224,226-226,228-228,1-255"],
+      "output_ramps": ["185-185,185-185,12-12,185-185,242-242,255-255"]
+    },
+    {
+      "name": "",
+      "type": "recolour",
+      "input_ramps": ["217-222,223-228"],
+      "output_ramps": ["6-6,0-0"]
+    }
+  ]
+}

@@ -26,10 +26,6 @@
         "mask_original": true,
         "n": 0,        
         "file": "dual_power/pantograph/pan_down.vox"
-      },      
-      {
-        "name": "",
-        "type": "produce_empty"
       }
     ]
 }

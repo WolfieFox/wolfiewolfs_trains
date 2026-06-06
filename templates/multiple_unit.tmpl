@@ -88,6 +88,53 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{$template_turn = concat "template_auto_rear_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
 {{end}}
 {{end -}}
+
+{{ $template := concat "template_auto_" $len -}}
+{{ $hlt_on_f := concat $element "_hlt_on_front" }}{{ altsprites8 $hlt_on_f $template $zoom }}
+{{ $tlt_on_f := concat $element "_tlt_on_front" }}{{ altsprites8 $tlt_on_f $template $zoom }}
+{{ $hlt_on_r := concat $element "_hlt_on_rear" }}{{ altsprites8 $hlt_on_r $template $zoom }}
+{{ $tlt_on_r := concat $element "_tlt_on_rear" }}{{ altsprites8 $tlt_on_r $template $zoom }}
+
+{{$template_turn = concat "template_auto_turn_1_" $len -}}
+{{ altsprites8n $hlt_on_f $template_turn $zoom "_turn_1" }}{{ altsprites8n $tlt_on_f $template_turn $zoom "_turn_1" }}
+{{ altsprites8n $hlt_on_r $template_turn $zoom "_turn_1" }}{{ altsprites8n $tlt_on_r $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" $len -}}
+{{ altsprites8n $hlt_on_f $template_turn $zoom "_turn_2" }}{{ altsprites8n $tlt_on_f $template_turn $zoom "_turn_2" }}
+{{ altsprites8n $hlt_on_r $template_turn $zoom "_turn_2" }}{{ altsprites8n $tlt_on_r $template_turn $zoom "_turn_2" }}
+
+{{$template_turn = concat "template_auto_up_" $len -}}
+{{$hill = concat $hlt_on_f "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $tlt_on_f "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $hlt_on_r "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $tlt_on_r "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+
+{{$template_turn = concat "template_auto_down_" $len -}}
+{{$hill = concat $hlt_on_f "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $tlt_on_f "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $hlt_on_r "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $tlt_on_r "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+
+{{ if gt $plen 8}}
+    {{$sections := concat $hlt_on_f "_sections" -}}
+    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
+
+    {{$sections = concat $tlt_on_f "_sections" -}}
+    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
+
+    {{$sections = concat $hlt_on_r "_sections" -}}
+    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
+
+    {{$sections = concat $tlt_on_r "_sections" -}}
+    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
+{{end}}
 {{end -}}
 
 {{end}}
@@ -128,81 +175,194 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 
 
 {{- if and (gt (len $animated) $index) (eq (index $animated $index) "1") -}}
-{{$anim := concat $element "_anim_1" }}
-{{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
-{{$anim = concat $element "_anim_2" }}
-{{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
-{{$anim = concat $element "_anim_3" }}
-{{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
-{{$anim = concat $element "_anim_4" }}
-{{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
+    {{$anim := concat $element "_anim_1" }}
+    {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
+    {{$anim = concat $element "_anim_2" }}
+    {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
+    {{$anim = concat $element "_anim_3" }}
+    {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
+    {{$anim = concat $element "_anim_4" }}
+    {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, motion_counter % 4) 
-{
-    0: switch_{{$element}}_anim_1_curve;
-    1: switch_{{$element}}_anim_2_curve;
-    2: switch_{{$element}}_anim_3_curve;
-    3: switch_{{$element}}_anim_4_curve;
-}
+    switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, motion_counter % 4)
+    {
+        0: switch_{{$element}}_anim_1_curve;
+        1: switch_{{$element}}_anim_2_curve;
+        2: switch_{{$element}}_anim_3_curve;
+        3: switch_{{$element}}_anim_4_curve;
+    }
 
-{{ if gt $plen 8}}
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, motion_counter % 4) 
-{
-    0: switch_{{$element}}_anim_1_curve_front;
-    1: switch_{{$element}}_anim_2_curve_front;
-    2: switch_{{$element}}_anim_3_curve_front;
-    3: switch_{{$element}}_anim_4_curve_front;
-}
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, motion_counter % 4) 
-{
-    0: switch_{{$element}}_anim_1_curve_rear;
-    1: switch_{{$element}}_anim_2_curve_rear;
-    2: switch_{{$element}}_anim_3_curve_rear;
-    3: switch_{{$element}}_anim_4_curve_rear;
-}
+    {{ if gt $plen 8}}
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, motion_counter % 4)
+        {
+            0: switch_{{$element}}_anim_1_curve_front;
+            1: switch_{{$element}}_anim_2_curve_front;
+            2: switch_{{$element}}_anim_3_curve_front;
+            3: switch_{{$element}}_anim_4_curve_front;
+        }
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, motion_counter % 4)
+        {
+            0: switch_{{$element}}_anim_1_curve_rear;
+            1: switch_{{$element}}_anim_2_curve_rear;
+            2: switch_{{$element}}_anim_3_curve_rear;
+            3: switch_{{$element}}_anim_4_curve_rear;
+        }
+    {{end}}
+
+    switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
+        0: switch_{{$element}}_curve;
+        1: switch_{{$element}}_animation;
+
+        // This should never be executed
+        return spriteset_invisible;
+    }
+
+    {{ if gt $plen 8}}
+        switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_front, [
+            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+            getbits(extra_callback_info1, 8, 8)
+            ]) {
+            0: switch_{{$element}}_curve_front;
+            1: switch_{{$element}}_animation_front;
+
+            // This should never be executed
+            return spriteset_invisible;
+        }
+
+        switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
+            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+            getbits(extra_callback_info1, 8, 8)
+            ]) {
+            0: switch_{{$element}}_curve_rear;
+            1: switch_{{$element}}_animation_rear;
+
+            // This should never be executed
+            return spriteset_invisible;
+        }
+        {{end -}}
+    {{end -}}
+{{end}}
 {{end}}
 
-switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: switch_{{$element}}_curve;
-    1: switch_{{$element}}_animation;
-
-    // This should never be executed
-    return spriteset_invisible;
-}
-
-{{ if gt $plen 8}}
-switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_front, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: switch_{{$element}}_curve_front;
-    1: switch_{{$element}}_animation_front;
-
-    // This should never be executed
-    return spriteset_invisible;
-}
-
-switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: switch_{{$element}}_curve_rear;
-    1: switch_{{$element}}_animation_rear;
-
-    // This should never be executed
-    return spriteset_invisible;
-}
-{{end -}}
-{{end -}}
-{{end -}}
-{{end -}}
-
-{{- if .pantograph_unit -}}
-{{template "pantograph_switch" . }}
+{{- if $pantograph_unit -}}
+    {{template "pantograph_switch" . }}
 {{end}}
+
+{{range $index, $element := $layout -}}
+    {{- $newsprite := index $newsprites $index -}}
+    {{- if eq $newsprite "1" -}}
+    {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
+    {{ $sprite := $element}}
+    {{ $basegraphics := concat $sprite "_curve" }}
+    {{if eq $sprite $pantograph_unit}}
+        {{ $basegraphics = concat $sprite "_pantograph" }}
+    {{else if and (gt (len $animated) $index) (eq (index $animated $index) "1") }}
+        {{ $basegraphics = concat $sprite "_animation_overlay" }}
+    {{end}}
+        {{ $name := concat $element "_hlt_on_front" }}
+        {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+        {{ $name = concat $element "_tlt_on_front" }}
+        {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+        {{ $name = concat $element "_hlt_on_rear" }}
+        {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+        {{ $name = concat $element "_tlt_on_rear" }}
+        {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+        {{$condition := "(position_in_consist == 0) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
+
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state, {{$condition}})
+        {
+        1: switch_{{$element}}_hlt_on_front_curve;
+        2: switch_{{$element}}_tlt_on_front_curve;
+        spriteset_invisible;
+        }
+
+        {{if gt $plen 8}}
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_front, {{$condition}})
+            {
+            1: switch_{{$element}}_hlt_on_front_curve_front;
+            2: switch_{{$element}}_tlt_on_front_curve_front;
+            spriteset_invisible;
+            }
+
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_rear, {{$condition}})
+            {
+            1: switch_{{$element}}_hlt_on_front_curve_rear;
+            2: switch_{{$element}}_tlt_on_front_curve_rear;
+            spriteset_invisible;
+            }
+        {{end}}
+
+        {{$condition = "(position_in_consist_from_end < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
+
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state, {{$condition}})
+        {
+        1: switch_{{$element}}_hlt_on_rear_curve;
+        2: switch_{{$element}}_tlt_on_rear_curve;
+        spriteset_invisible;
+        }
+
+        {{if gt $plen 8}}
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_front, {{$condition}})
+            {
+            1: switch_{{$element}}_hlt_on_rear_curve_front;
+            2: switch_{{$element}}_tlt_on_rear_curve_front;
+            spriteset_invisible;
+            }
+
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_rear, {{$condition}})
+            {
+            1: switch_{{$element}}_hlt_on_rear_curve_rear;
+            2: switch_{{$element}}_tlt_on_rear_curve_rear;
+            spriteset_invisible;
+            }
+        {{end}}
+
+    switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+        0: switch_{{$basegraphics}};
+        1: switch_{{$element}}_front_light_state;
+        2: switch_{{$element}}_rear_light_state;
+
+        // This should never be executed
+        return spriteset_invisible;
+    }
+
+    {{if gt $plen 8}}
+        switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights_front, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
+            0: switch_{{$basegraphics}}_front;
+            1: switch_{{$sprite}}_front_light_state_front;
+            2: switch_{{$sprite}}_rear_light_state_front;
+
+            // This should never be executed
+            return spriteset_invisible;
+        }
+
+        switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights_rear, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
+            0: switch_{{$basegraphics}}_rear;
+            1: switch_{{$sprite}}_front_light_state_rear;
+            2: switch_{{$sprite}}_rear_light_state_rear;
+
+            // This should never be executed
+            return spriteset_invisible;
+        }
+    {{end}}
+{{end}}
+{{end -}}
 
 {{template "running_cost_switch" . }}
 
@@ -210,26 +370,11 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {
     {{- range $index, $element := $layout -}}
     {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
-
-    {{- if eq $element $pantograph_unit }}
-    ({{$index}} * 3) + 1: switch_{{$id}}_pantograph;
-    {{ if gt $plen 8 -}}
-    ({{$index}} * 3) + 0: switch_{{$id}}_pantograph_front;
-    ({{$index}} * 3) + 2: switch_{{$id}}_pantograph_rear;
-    {{- end }}
-    {{- else if and (gt (len $animated) $index) (eq (index $animated $index) "1") }}
-    ({{$index}} * 3) + 1: switch_{{$element}}_animation_overlay;
-    {{- if gt $plen 8 }}
-    ({{$index}} * 3) + 0: switch_{{$element}}_animation_overlay_front;
-    ({{$index}} * 3) + 2: switch_{{$element}}_animation_overlay_rear;
-    {{- end -}}
-    {{- else }}
-    ({{$index}} * 3) + 1: switch_{{$element}}_curve;
+    ({{$index}} * 3) + 1: switch_{{$element}}_lights;
     {{- if gt $plen 8}}
-    ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
-    ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
-    {{ end -}}
-    {{- end}}
+        ({{$index}} * 3) + 0: switch_{{$element}}_lights_front;
+        ({{$index}} * 3) + 2: switch_{{$element}}_lights_rear;
+        {{- end}}
     {{- end}}
     return spriteset_invisible;
 }
