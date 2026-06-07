@@ -26,7 +26,7 @@
     {
       "name": "_hlt_on_rear",
       "type": "recolour",
-      "input_ramps":  ["220-220,221-221,1-255"],
+      "input_ramps":  ["220-220,222-222,1-255"],
       "output_ramps": ["15-15,15-15,255-255"]
     },
     {

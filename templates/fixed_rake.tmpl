@@ -13,6 +13,7 @@
 
 {{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,salt,sand,sash,slag,sulp,toff,uran,whea" }}
 {{ $cargo_list := "" -}}
+{{$cargo_handling := .cargo_handling -}}
 {{if eq .cargo_handling "Motorail" -}}
     // Vroom Vroom...
     {{ $cargo_list = "vehicle_pax_1960,vehicle_pax_1970,vehicle_pax_2010" }}
@@ -36,141 +37,197 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
 { template_purchase_2x() }
 
+{{$lastindex := 0}}
+{{range $index, $element := $layout -}}
+    {{$lastindex = $index}}
+{{end}}
+
 {{- range $index, $element := $layout -}}
-{{- $newsprite := index $newsprites $index -}}
-{{- if eq $newsprite "1" -}}
-{{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}
+    {{- $newsprite := index $newsprites $index -}}
+    {{- if eq $newsprite "1" -}}
+        {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}
 
-{{$template := concat "template_auto_" $len -}}
-{{if eq $bpp "32"}}{{ altsprites $element $template $zoom }}{{else}}{{ altsprites8 $element $template $zoom }}{{end}}
+        {{$template := concat "template_auto_" $len -}}
+        {{if eq $bpp "32"}}{{ altsprites $element $template $zoom }}{{else}}{{ altsprites8 $element $template $zoom }}{{end}}
 
-{{$template_turn := concat "template_auto_turn_1_" $len -}}
-{{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_1" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_1" }}{{end}}
+        {{$template_turn := concat "template_auto_turn_1_" $len -}}
+        {{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_1" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_1" }}{{end}}
 
-{{$template_turn = concat "template_auto_turn_2_" $len -}}
-{{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_2" }}{{end}}
+        {{$template_turn = concat "template_auto_turn_2_" $len -}}
+        {{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_2" }}{{end}}
 
-{{$template_turn = concat "template_auto_up_" $len -}}{{$hill := concat $element "_up" }}
-{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
+        {{$template_turn = concat "template_auto_up_" $len -}}{{$hill := concat $element "_up" }}
+        {{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
-{{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $element "_down" }}
-{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
+        {{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $element "_down" }}
+        {{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
-{{$plen = parseint $len}}
-{{ if gt $plen 8}}
-{{$sections := concat $element "_sections" -}}
-{{$template_turn = concat "template_auto_front_" $len -}}
-{{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_front" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_front" }}{{end}}
-{{$template_turn = concat "template_auto_mid_" $len -}}
-{{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_mid" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}{{end}}
-{{$template_turn = concat "template_auto_rear_" $len -}}
-{{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_rear" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}{{end}}
-{{end}}
-
-{{if ne $element $static_vehicle}}
-// Cargo Sprites
-{{$template_turn_1 := concat "template_auto_" $len -}}
-{{$template_turn_2 := concat "template_auto_" $len -}}
-{{$template_up := concat "template_auto_up_" $len -}}
-{{$template_down := concat "template_auto_down_" $len -}}
-
-{{ if $cargo_list}}
-    {{$fullid := concat $element "_none"}}{{ altsprites8 $fullid $template $zoom }}
-    {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
-
-    {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
-    {{$hill := concat $fullid "_up"}}{{ altsprites8 $hill $template_up $zoom }}
-    {{$hill = concat $fullid "_down"}}{{ altsprites8 $hill $template_down $zoom }}
-
-    {{if gt $plen 8}}
-        {{$sections := concat $fullid "_sections" -}}
-        {{$template_turn := concat "template_auto_front_" $len -}}
-        {{ altsprites8n $sections $template_turn $zoom "_front" }}
-        {{$template_turn = concat "template_auto_mid_" $len -}}
-        {{ altsprites8n $sections $template_turn $zoom "_mid" }}
-        {{$template_turn = concat "template_auto_rear_" $len -}}
-        {{ altsprites8n $sections $template_turn $zoom "_rear" }}
-    {{end}}
-{{end}}
-
-
-{{ range $index, $cargoelement := slice $cargo_list -}}{{ if $cargoelement -}}
-    // FR Cargo: {{$cargoelement}}
-    // cargo sprites are always 8 bit
-    {{$elus := concat "_" $cargoelement}}{{ range $idx2, $el2 := slice "_half,_full" }}
-        {{$cargo := concat $elus $el2  }}
-        {{$fullid := concat $element $cargo}}{{ altsprites8 $fullid $template $zoom }}
-        {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
-        {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
-        {{$hill := concat $fullid "_up"}}{{ altsprites8 $hill $template_up $zoom }}
-        {{$hill = concat $fullid "_down"}}{{ altsprites8 $hill $template_down $zoom }}
-
-
-        {{if gt $plen 8}}
-            {{$sections := concat $fullid "_sections" -}}
-            {{$template_turn := concat "template_auto_front_" $len -}}
-            {{ altsprites8n $sections $template_turn $zoom "_front" }}
+        {{$plen = parseint $len}}
+        {{ if gt $plen 8}}
+            {{$sections := concat $element "_sections" -}}
+            {{$template_turn = concat "template_auto_front_" $len -}}
+            {{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_front" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_front" }}{{end}}
             {{$template_turn = concat "template_auto_mid_" $len -}}
-            {{ altsprites8n $sections $template_turn $zoom "_mid" }}
+            {{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_mid" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}{{end}}
             {{$template_turn = concat "template_auto_rear_" $len -}}
-            {{ altsprites8n $sections $template_turn $zoom "_rear" }}
+            {{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_rear" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}{{end}}
         {{end}}
 
-    {{end -}}
-    {{$cargoid := concat $element $elus }}
+        {{if or (eq $index 0) (eq $index $lastindex)}}
+            {{ if eq $cargo_handling "Passengers" -}}
+                {{ $template := concat "template_auto_" $len -}}
+                {{ $hlt_on_f := concat $element "_hlt_on_front" }}{{ altsprites8 $hlt_on_f $template $zoom }}
+                {{ $tlt_on_f := concat $element "_tlt_on_front" }}{{ altsprites8 $tlt_on_f $template $zoom }}
+                {{ $hlt_on_r := concat $element "_hlt_on_rear" }}{{ altsprites8 $hlt_on_r $template $zoom }}
+                {{ $tlt_on_r := concat $element "_tlt_on_rear" }}{{ altsprites8 $tlt_on_r $template $zoom }}
 
-    spritegroup spritegroup_{{$cargoid}} {
-    loading: [spriteset_{{$element}}_none, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_full ];
-    loaded: [spriteset_{{$element}}_none, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_full ];
-    }
+                {{$template_turn = concat "template_auto_turn_1_" $len -}}
+                {{ altsprites8n $hlt_on_f $template_turn $zoom "_turn_1" }}{{ altsprites8n $tlt_on_f $template_turn $zoom "_turn_1" }}
+                {{ altsprites8n $hlt_on_r $template_turn $zoom "_turn_1" }}{{ altsprites8n $tlt_on_r $template_turn $zoom "_turn_1" }}
+                {{$template_turn = concat "template_auto_turn_2_" $len -}}
+                {{ altsprites8n $hlt_on_f $template_turn $zoom "_turn_2" }}{{ altsprites8n $tlt_on_f $template_turn $zoom "_turn_2" }}
+                {{ altsprites8n $hlt_on_r $template_turn $zoom "_turn_2" }}{{ altsprites8n $tlt_on_r $template_turn $zoom "_turn_2" }}
 
-    spritegroup spritegroup_{{$cargoid}}_turn_1 {
-    loading: [spriteset_{{$element}}_none_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_full_turn_1 ];
-    loaded: [spriteset_{{$element}}_none_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_full_turn_1 ];
-    }
+                {{$template_turn = concat "template_auto_up_" $len -}}
+                {{$hill = concat $hlt_on_f "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+                {{$hill = concat $tlt_on_f "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+                {{$hill = concat $hlt_on_r "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+                {{$hill = concat $tlt_on_r "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-    spritegroup spritegroup_{{$cargoid}}_turn_2 {
-    loading: [spriteset_{{$element}}_none_turn_2,spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_full_turn_2 ];
-    loaded: [spriteset_{{$element}}_none_turn_2,spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_full_turn_2 ];
-    }
+                {{$template_turn = concat "template_auto_down_" $len -}}
+                {{$hill = concat $hlt_on_f "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+                {{$hill = concat $tlt_on_f "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+                {{$hill = concat $hlt_on_r "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+                {{$hill = concat $tlt_on_r "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-    spritegroup spritegroup_{{$cargoid}}_up {
-    loading: [spriteset_{{$element}}_none_up,spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_full_up ];
-    loaded: [spriteset_{{$element}}_none_up,spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_full_up ];
-    }
+                {{ if gt $plen 8}}
+                    {{$sections := concat $hlt_on_f "_sections" -}}
+                    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+                    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+                    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
 
-    spritegroup spritegroup_{{$cargoid}}_down {
-    loading: [spriteset_{{$element}}_none_down,spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_full_down ];
-    loaded: [spriteset_{{$element}}_none_down,spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_full_down ];
-    }
-    {{if gt $plen 8}}
-        // We don't have the same spritegroups for front/mid/rear as they are emulated using switches, to avoid different sections
-        // of the vehicle having different loading states
-        //
-        // The only spritegroup for front/rear is the "empty" one, so we can reuse the "none" spriteset easily without having
-        // to pass multiple variables to the cargo curve switch
+                    {{$sections = concat $tlt_on_f "_sections" -}}
+                    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+                    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+                    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
 
-        spritegroup spritegroup_{{$cargoid}}_none_sections_front {
-        loading: [spriteset_{{$element}}_none_sections_front ];
-        loaded: [spriteset_{{$element}}_none_sections_front ];
-        }
+                    {{$sections = concat $hlt_on_r "_sections" -}}
+                    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+                    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+                    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
 
-        spritegroup spritegroup_{{$cargoid}}_sections_mid {
-        loading: [spriteset_{{$element}}_none_sections_mid,spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_full_sections_mid ];
-        loaded: [spriteset_{{$element}}_none_sections_mid,spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_full_sections_mid ];
-        }
+                    {{$sections = concat $tlt_on_r "_sections" -}}
+                    {{$template_turn = concat "template_auto_front_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
+                    {{$template_turn = concat "template_auto_mid_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+                    {{$template_turn = concat "template_auto_rear_" $len -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
+                {{end}}
+            {{end}}
+        {{end}}
 
-        spritegroup spritegroup_{{$cargoid}}_none_sections_rear {
-        loading: [spriteset_{{$element}}_none_sections_rear ];
-        loaded: [spriteset_{{$element}}_none_sections_rear ];
-        }
+        {{if ne $element $static_vehicle}}
+            // Cargo Sprites
+            {{$template_turn_1 := concat "template_auto_" $len -}}
+            {{$template_turn_2 := concat "template_auto_" $len -}}
+            {{$template_up := concat "template_auto_up_" $len -}}
+            {{$template_down := concat "template_auto_down_" $len -}}
+
+            {{ if $cargo_list}}
+                {{$fullid := concat $element "_none"}}{{ altsprites8 $fullid $template $zoom }}
+                {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
+
+                {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
+                {{$hill := concat $fullid "_up"}}{{ altsprites8 $hill $template_up $zoom }}
+                {{$hill = concat $fullid "_down"}}{{ altsprites8 $hill $template_down $zoom }}
+
+                {{if gt $plen 8}}
+                    {{$sections := concat $fullid "_sections" -}}
+                    {{$template_turn := concat "template_auto_front_" $len -}}
+                    {{ altsprites8n $sections $template_turn $zoom "_front" }}
+                    {{$template_turn = concat "template_auto_mid_" $len -}}
+                    {{ altsprites8n $sections $template_turn $zoom "_mid" }}
+                    {{$template_turn = concat "template_auto_rear_" $len -}}
+                    {{ altsprites8n $sections $template_turn $zoom "_rear" }}
+                {{end}}
+            {{end}}
+
+
+            {{ range $index, $cargoelement := slice $cargo_list -}}{{ if $cargoelement -}}
+                // FR Cargo: {{$cargoelement}}
+                // cargo sprites are always 8 bit
+                {{$elus := concat "_" $cargoelement}}{{ range $idx2, $el2 := slice "_half,_full" }}
+                    {{$cargo := concat $elus $el2  }}
+                    {{$fullid := concat $element $cargo}}{{ altsprites8 $fullid $template $zoom }}
+                    {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
+                    {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
+                    {{$hill := concat $fullid "_up"}}{{ altsprites8 $hill $template_up $zoom }}
+                    {{$hill = concat $fullid "_down"}}{{ altsprites8 $hill $template_down $zoom }}
+
+
+                    {{if gt $plen 8}}
+                        {{$sections := concat $fullid "_sections" -}}
+                        {{$template_turn := concat "template_auto_front_" $len -}}
+                        {{ altsprites8n $sections $template_turn $zoom "_front" }}
+                        {{$template_turn = concat "template_auto_mid_" $len -}}
+                        {{ altsprites8n $sections $template_turn $zoom "_mid" }}
+                        {{$template_turn = concat "template_auto_rear_" $len -}}
+                        {{ altsprites8n $sections $template_turn $zoom "_rear" }}
+                    {{end}}
+
+                {{end -}}
+                {{$cargoid := concat $element $elus }}
+
+                spritegroup spritegroup_{{$cargoid}} {
+                loading: [spriteset_{{$element}}_none, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_full ];
+                loaded: [spriteset_{{$element}}_none, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_half, spriteset_{{$element}}_{{$cargoelement}}_full ];
+                }
+
+                spritegroup spritegroup_{{$cargoid}}_turn_1 {
+                loading: [spriteset_{{$element}}_none_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_full_turn_1 ];
+                loaded: [spriteset_{{$element}}_none_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_half_turn_1, spriteset_{{$element}}_{{$cargoelement}}_full_turn_1 ];
+                }
+
+                spritegroup spritegroup_{{$cargoid}}_turn_2 {
+                loading: [spriteset_{{$element}}_none_turn_2,spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_full_turn_2 ];
+                loaded: [spriteset_{{$element}}_none_turn_2,spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_half_turn_2, spriteset_{{$element}}_{{$cargoelement}}_full_turn_2 ];
+                }
+
+                spritegroup spritegroup_{{$cargoid}}_up {
+                loading: [spriteset_{{$element}}_none_up,spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_full_up ];
+                loaded: [spriteset_{{$element}}_none_up,spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_half_up, spriteset_{{$element}}_{{$cargoelement}}_full_up ];
+                }
+
+                spritegroup spritegroup_{{$cargoid}}_down {
+                loading: [spriteset_{{$element}}_none_down,spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_full_down ];
+                loaded: [spriteset_{{$element}}_none_down,spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_half_down, spriteset_{{$element}}_{{$cargoelement}}_full_down ];
+                }
+                {{if gt $plen 8}}
+                    // We don't have the same spritegroups for front/mid/rear as they are emulated using switches, to avoid different sections
+                    // of the vehicle having different loading states
+                    //
+                    // The only spritegroup for front/rear is the "empty" one, so we can reuse the "none" spriteset easily without having
+                    // to pass multiple variables to the cargo curve switch
+
+                    spritegroup spritegroup_{{$cargoid}}_none_sections_front {
+                    loading: [spriteset_{{$element}}_none_sections_front ];
+                    loaded: [spriteset_{{$element}}_none_sections_front ];
+                    }
+
+                    spritegroup spritegroup_{{$cargoid}}_sections_mid {
+                    loading: [spriteset_{{$element}}_none_sections_mid,spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_full_sections_mid ];
+                    loaded: [spriteset_{{$element}}_none_sections_mid,spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_half_sections_mid, spriteset_{{$element}}_{{$cargoelement}}_full_sections_mid ];
+                    }
+
+                    spritegroup spritegroup_{{$cargoid}}_none_sections_rear {
+                    loading: [spriteset_{{$element}}_none_sections_rear ];
+                    loaded: [spriteset_{{$element}}_none_sections_rear ];
+                    }
+                {{end}}
+
+                {{if gt $plen 8}}{{template "cargo_curve_switch_long" $cargoid }}{{else if gt $plen 4 }}{{template "cargo_curve_switch_medium" $cargoid }}{{else}}{{template "cargo_curve_switch_short" $cargoid }}{{end}}
+            {{end -}}{{ end }}
+            // End cargo sprites
+        {{end -}}
     {{end}}
-
-    {{if gt $plen 8}}{{template "cargo_curve_switch_long" $cargoid }}{{else if gt $plen 4 }}{{template "cargo_curve_switch_medium" $cargoid }}{{else}}{{template "cargo_curve_switch_short" $cargoid }}{{end}}
-{{end -}}{{ end }}
-// End cargo sprites
-{{end -}}
-{{end}}
 {{end}}
 
 {{- $type := .type }}{{- $id := .id}}{{- $cars := .cars -}}
@@ -280,8 +337,123 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 {{end -}}
 {{end -}}
 
-{{template "running_cost_switch" . }}
+{{range $index, $element := $layout -}}
+    {{- $newsprite := index $newsprites $index -}}
+    {{- if eq $newsprite "1" -}}
+        {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
+        {{ $sprite := $element}}
+        {{ $basegraphics := concat $sprite "_curve" }}
+        {{if and (gt (len $animated) $index) (eq (index $animated $index) "1") }}
+            {{ $basegraphics = concat $sprite "_animation_overlay" }}
+        {{end}}
 
+        {{ if eq $cargo_handling "Passengers" -}}
+        {{if or (eq $index 0) (eq $index $lastindex)}}
+            {{ $name := concat $element "_hlt_on_front" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+            {{ $name = concat $element "_tlt_on_front" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+            {{ $name = concat $element "_hlt_on_rear" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+            {{ $name = concat $element "_tlt_on_rear" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+
+            {{$condition := "(position_in_consist == 0) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
+
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state, {{$condition}})
+            {
+            1: switch_{{$element}}_hlt_on_front_curve;
+            2: switch_{{$element}}_tlt_on_front_curve;
+            spriteset_invisible;
+            }
+
+            {{if gt $plen 8}}
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_front, {{$condition}})
+                {
+                1: switch_{{$element}}_hlt_on_front_curve_front;
+                2: switch_{{$element}}_tlt_on_front_curve_front;
+                spriteset_invisible;
+                }
+
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_rear, {{$condition}})
+                {
+                1: switch_{{$element}}_hlt_on_front_curve_rear;
+                2: switch_{{$element}}_tlt_on_front_curve_rear;
+                spriteset_invisible;
+                }
+            {{end}}
+
+            {{$condition = "(position_in_consist_from_end < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
+
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state, {{$condition}})
+            {
+            1: switch_{{$element}}_hlt_on_rear_curve;
+            2: switch_{{$element}}_tlt_on_rear_curve;
+            spriteset_invisible;
+            }
+
+            {{if gt $plen 8}}
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_front, {{$condition}})
+                {
+                1: switch_{{$element}}_hlt_on_rear_curve_front;
+                2: switch_{{$element}}_tlt_on_rear_curve_front;
+                spriteset_invisible;
+                }
+
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_rear, {{$condition}})
+                {
+                1: switch_{{$element}}_hlt_on_rear_curve_rear;
+                2: switch_{{$element}}_tlt_on_rear_curve_rear;
+                spriteset_invisible;
+                }
+            {{end}}
+
+            switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights, [
+            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+            getbits(extra_callback_info1, 8, 8)
+            ]) {
+            0: switch_{{$basegraphics}};
+            1: switch_{{$element}}_front_light_state;
+            2: switch_{{$element}}_rear_light_state;
+
+            // This should never be executed
+            return spriteset_invisible;
+            }
+
+            {{if gt $plen 8}}
+                switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights_front, [
+                STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+                getbits(extra_callback_info1, 8, 8)
+                ]) {
+                0: switch_{{$basegraphics}}_front;
+                1: switch_{{$sprite}}_front_light_state_front;
+                2: switch_{{$sprite}}_rear_light_state_front;
+
+                // This should never be executed
+                return spriteset_invisible;
+                }
+
+                switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights_rear, [
+                STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+                getbits(extra_callback_info1, 8, 8)
+                ]) {
+                0: switch_{{$basegraphics}}_rear;
+                1: switch_{{$sprite}}_front_light_state_rear;
+                2: switch_{{$sprite}}_rear_light_state_rear;
+
+                // This should never be executed
+                return spriteset_invisible;
+                }
+            {{end}}
+        {{end}}
+    {{end}}
+    {{end}}
+{{end -}}
+
+{{template "running_cost_switch" . }}
 
 {{ if eq .cargo_handling "Motorail" }}
     {{ $has_cargo_switch = "1" }}
@@ -430,19 +602,19 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
     {{- range $index, $element := $layout -}}
         {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
 
-            {{if eq $element $static_vehicle}}
-                ({{$index}} * 3) + 1: switch_{{$element}}_curve;
-                {{- if gt $plen 8}}
-                    ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
-                    ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
-                {{ end -}}
-            {{else}}
-                ({{$index}} * 3) + 1: switch_{{$element}}_bulk_curve;
-                {{- if gt $plen 8}}
-                    ({{$index}} * 3) + 0: switch_{{$element}}_bulk_curve_front;
-                    ({{$index}} * 3) + 2: switch_{{$element}}_bulk_curve_rear;
-                {{ end -}}
-            {{end}}
+        {{if eq $element $static_vehicle}}
+            ({{$index}} * 3) + 1: switch_{{$element}}_curve;
+            {{- if gt $plen 8}}
+                ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
+                ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
+            {{ end -}}
+        {{else}}
+            ({{$index}} * 3) + 1: switch_{{$element}}_bulk_curve;
+            {{- if gt $plen 8}}
+                ({{$index}} * 3) + 0: switch_{{$element}}_bulk_curve_front;
+                ({{$index}} * 3) + 2: switch_{{$element}}_bulk_curve_rear;
+            {{ end -}}
+        {{end}}
     {{- end}}
     return spriteset_invisible;
     }
@@ -469,20 +641,47 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
         return spriteset_invisible;
         }
     {{end}}
-{{else}}
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3))
-{
+{{ else if eq .cargo_handling "Passengers" }}
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3))
+    {
     {{- range $index, $element := $layout -}}
-    {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
-
-    ({{$index}} * 3) + 1: switch_{{$element}}_curve;
-    {{- if gt $plen 8}}
-    ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
-    ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
-    {{ end -}}
+        {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
+        {{if or (eq $index 0) (eq $index $lastindex)}}
+            ({{$index}} * 3) + 1: switch_{{$element}}_lights;
+            {{- if gt $plen 8}}
+                ({{$index}} * 3) + 0: switch_{{$element}}_lights_front;
+                ({{$index}} * 3) + 2: switch_{{$element}}_lights_rear;
+            {{- end}}
+        {{else}}
+            {{ $basegraphics := concat $element "_curve" }}
+            {{ if and (gt (len $animated) $index) (eq (index $animated $index) "1") }}
+                {{ $basegraphics = concat $element "_animation_overlay" }}
+            {{- end}}
+            ({{$index}} * 3) + 1: switch_{{$basegraphics}};
+            {{- if gt $plen 8}}
+                ({{$index}} * 3) + 0: switch_{{$basegraphics}}_front;
+                ({{$index}} * 3) + 2: switch_{{$basegraphics}}_rear;
+            {{- end}}
+        {{- end}}
     {{- end}}
     return spriteset_invisible;
-}
+    }
+{{ else }}
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3))
+    {
+    {{- range $index, $element := $layout -}}
+        {{ $basegraphics := concat $element "_curve" }}
+        {{ if and (gt (len $animated) $index) (eq (index $animated $index) "1") }}
+            {{ $basegraphics = concat $element "_animation_overlay" }}
+        {{- end}}
+        ({{$index}} * 3) + 1: switch_{{$basegraphics}};
+        {{- if gt $plen 8}}
+            ({{$index}} * 3) + 0: switch_{{$basegraphics}}_front;
+            ({{$index}} * 3) + 2: switch_{{$basegraphics}}_rear;
+        {{- end}}
+    {{- end}}
+    return spriteset_invisible;
+    }
 {{end}}
 
 {{ if eq .cargo_handling "Passengers" -}}
@@ -535,7 +734,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         cost_factor:                  {{.cost}};
         {{if le $running_cost 255}}running_cost_factor:          {{.running_cost}};{{end}}
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{ if .tilting }}, TRAIN_FLAG_TILT {{end}}{{if $has_cargo_switch}}, TRAIN_FLAG_SPRITE_STACK{{end}});
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{ if .tilting }}, TRAIN_FLAG_TILT {{end}}, TRAIN_FLAG_SPRITE_STACK);
 
         refit_cost:                   0;
         track_type:                   {{ if eq .type "dual_power" -}}RAIL{{else}}{{.railtype}}{{end}};
