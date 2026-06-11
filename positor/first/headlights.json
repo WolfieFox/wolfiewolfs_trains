@@ -38,8 +38,8 @@
     {
       "name": "",
       "type": "recolour",
-      "input_ramps": ["217-222,223-228"],
-      "output_ramps": ["6-6,0-0"]
+      "input_ramps": ["217-222,223-228,255-255"],
+      "output_ramps": ["6-6,0-0,0-0"]
     }
   ]
 }
