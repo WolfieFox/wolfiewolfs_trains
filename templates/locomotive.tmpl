@@ -185,10 +185,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_rear, motion_counter % 4)
 }
 {{end}}
 
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, getbits(extra_callback_info1, 8, 8)) {
     0: switch_{{$sprite}}_curve;
     1: switch_{{$sprite}}_animation;
 
@@ -198,10 +195,7 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [
 {{end}}
 
 {{ if gt $plen 8}}
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay_front, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay_front, getbits(extra_callback_info1, 8, 8)) {
     0: switch_{{$sprite}}_curve_front;
     1: switch_{{$sprite}}_animation_front;
 
@@ -209,10 +203,7 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay_front, [
     return spriteset_invisible;
 }
 
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay_rear, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay_rear, getbits(extra_callback_info1, 8, 8)) {
     0: switch_{{$sprite}}_curve_rear;
     1: switch_{{$sprite}}_animation_rear;
 

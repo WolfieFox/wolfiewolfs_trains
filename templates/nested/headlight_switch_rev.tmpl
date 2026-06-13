@@ -3,8 +3,10 @@
     {{ $id := concat .id "_rev" }}
     {{- $type := .type }}
     {{ $basegraphics := concat $id "_curve" }}
+    {{ $basespritecount:= "0" -}}
     {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
         {{ $basegraphics = concat $id "_pantograph" }}
+        {{ $basespritecount = "1" -}}
     {{end}}
 
     {{$hl := .has_headlights}}
@@ -81,38 +83,29 @@
 
     {{end}}
 
-    switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: switch_{{$basegraphics}};
-    1: switch_{{$id}}_front_light_state;
-    2: switch_{{$id}}_rear_light_state;
+    switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights, getbits(extra_callback_info1, 8, 8)) {
+    {{if ne $basespritecount "0"}}0..{{$basespritecount}}{{else}}0{{end}}: switch_{{$basegraphics}};
+    1 + {{$basespritecount}}: switch_{{$id}}_front_light_state;
+    2 + {{$basespritecount}}: switch_{{$id}}_rear_light_state;
 
     // This should never be executed
     return spriteset_invisible;
     }
 
     {{if gt $plen 8}}
-        switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights_front, [
-        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-        getbits(extra_callback_info1, 8, 8)
-        ]) {
-        0: switch_{{$basegraphics}}_front;
-        1: switch_{{$id}}_front_light_state_front;
-        2: switch_{{$id}}_rear_light_state_front;
+        switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights_front, getbits(extra_callback_info1, 8, 8)) {
+        {{if ne $basespritecount "0"}}0..{{$basespritecount}}{{else}}0{{end}}: switch_{{$basegraphics}}_front;
+        1 + {{$basespritecount}}: switch_{{$id}}_front_light_state_front;
+        2 + {{$basespritecount}}: switch_{{$id}}_rear_light_state_front;
 
         // This should never be executed
         return spriteset_invisible;
         }
 
-        switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights_rear, [
-        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-        getbits(extra_callback_info1, 8, 8)
-        ]) {
-        0: switch_{{$basegraphics}}_rear;
-        1: switch_{{$id}}_front_light_state_rear;
-        2: switch_{{$id}}_rear_light_state_rear;
+        switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights_rear, getbits(extra_callback_info1, 8, 8)) {
+        {{if ne $basespritecount "0"}}0..{{$basespritecount}}{{else}}0{{end}}: switch_{{$basegraphics}}_rear;
+        1 + {{$basespritecount}}: switch_{{$id}}_front_light_state_rear;
+        2 + {{$basespritecount}}: switch_{{$id}}_rear_light_state_rear;
 
         // This should never be executed
         return spriteset_invisible;

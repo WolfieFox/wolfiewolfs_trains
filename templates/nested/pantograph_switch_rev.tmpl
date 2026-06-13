@@ -29,10 +29,7 @@ switch (FEAT_TRAINS, SELF, switch_{{$pantograph_unit}}_pantograph_state_rear, ti
 {{end}}
 
 {{end}}
-switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph, getbits(extra_callback_info1, 8, 8)) {
     0: switch_{{$pantograph_unit}}_curve;
     1: switch_{{$pantograph_unit}}_pantograph_state;
 
@@ -41,10 +38,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph, [
 }
 
 {{if gt $plen 8}}
-switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph_front, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph_front, getbits(extra_callback_info1, 8, 8)) {
     0: switch_{{$pantograph_unit}}_curve_front;
     1: switch_{{$pantograph_unit}}_pantograph_state_front;
 
@@ -52,10 +46,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph_front, [
     return spriteset_invisible;
 }
 
-switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph_rear, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_pantograph_rear, getbits(extra_callback_info1, 8, 8)) {
     0: switch_{{$pantograph_unit}}_curve_rear;
     1: switch_{{$pantograph_unit}}_pantograph_state_rear;
 

@@ -1,3 +1,7 @@
+v0.1.3
+------
+Fix steam locomotive/dual voltage animations and graphics being busted
+
 v0.1.2
 ------
 Bananas was down so I had lots of time...

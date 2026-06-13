@@ -1,5 +1,26 @@
 {{ define "pantograph_switch" }}
     {{ $plen := parseint .ttd_len }}
+
+    {{- $layout := slice .layout -}}
+    {{- $pantograph_unit := .pantograph_unit -}}
+    {{$lastindex := 0}}
+    {{$pu_index := 0}}
+    {{range $index, $element := $layout -}}
+        {{ if eq $element $pantograph_unit }}
+            {{$pu_index = $index}}
+        {{end}}
+        {{$lastindex = $index}}
+    {{end}}
+
+    {{$stack_needed := 0}}
+
+    {{- if or (eq $pu_index 0) (eq $pu_index $lastindex)}}
+        // pantograph is lead/trail: element {{$pu_index}} of {{$lastindex}}
+    {{else}}
+        // pantograph is element {{$pu_index}} of {{$lastindex}} - sprite stack...
+        {{$stack_needed = 1 -}}
+    {{end -}}
+
     {{ if not .reuse_sprites}}
         {{ $name := concat .pantograph_unit "_pan_up" }}
         {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
@@ -26,10 +47,13 @@
             }
         {{end}}
 
-        switch(FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph, [
-        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-        getbits(extra_callback_info1, 8, 8)
-        ]) {
+        switch(FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph,
+        {{- if $stack_needed}} [
+            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+            getbits(extra_callback_info1, 8, 8)
+            ]) {
+        {{- else}}getbits(extra_callback_info1, 8, 8)) {
+        {{end}}
         0: switch_{{.pantograph_unit}}_curve;
         1: switch_{{.pantograph_unit}}_pantograph_state;
 
@@ -38,10 +62,13 @@
         }
 
         {{if gt $plen 8}}
-            switch(FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_front, [
+            switch(FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_front,
+            {{- if $stack_needed}} [
             STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
             getbits(extra_callback_info1, 8, 8)
             ]) {
+            {{- else}}getbits(extra_callback_info1, 8, 8)) {
+            {{end}}
             0: switch_{{.pantograph_unit}}_curve_front;
             1: switch_{{.pantograph_unit}}_pantograph_state_front;
 
@@ -49,10 +76,13 @@
             return spriteset_invisible;
             }
 
-            switch(FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_rear, [
+            switch(FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_rear,
+            {{- if $stack_needed}} [
             STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
             getbits(extra_callback_info1, 8, 8)
             ]) {
+            {{- else}}getbits(extra_callback_info1, 8, 8)) {
+            {{end}}
             0: switch_{{.pantograph_unit}}_curve_rear;
             1: switch_{{.pantograph_unit}}_pantograph_state_rear;
 
