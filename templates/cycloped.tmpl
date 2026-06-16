@@ -104,7 +104,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 
 
 {{template "running_cost_switch" . }}
-{{ if .requires_second_power_car }}{{template "power_car_check" . }}{{end}}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
@@ -133,6 +132,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         dual_headed:                  0;
 
         air_drag_coefficient:         0.1;
+
+        cargo_capacity:               0;
 
         weight:                       {{.weight}} ton;
 

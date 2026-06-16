@@ -1,0 +1,126 @@
+{{ define "headlight_switch" }}{{ if not .reuse_sprites }}
+    {{ $plen := parseint .ttd_len }}
+    {{ $id := .id }}
+    {{- $type := .type }}
+    {{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
+    {{ $basegraphics := concat $sprite "_curve" }}
+    {{ $basespritecount:= "0" -}}
+    {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
+        {{ $basegraphics = concat $id "_pantograph" }}
+        {{ $basespritecount = "1" -}}
+    {{else if .animated }}
+        {{ $basegraphics = concat $id "_animation_overlay" }}
+        {{ $basespritecount = "1" -}}
+    {{end}}
+
+    {{$hl := .has_headlights}}
+    {{$tl := .has_taillights}}
+    {{$tl = "1"}}
+
+    {{ if not .reuse_sprites}}
+        {{if $hl}}
+            {{ $name := concat $id "_hlt_on_front" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+        {{end}}
+        {{if $tl}}
+            {{ $name := concat $id "_tlt_on_front" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+        {{end}}
+        {{if $hl}}
+            {{ $name := concat $id "_hlt_on_rear" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+        {{end}}
+        {{if $tl}}
+            {{ $name := concat $id "_tlt_on_rear" }}
+            {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+        {{end}}
+
+        {{$condition := "(position_in_consist < 3) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
+
+        switch (FEAT_TRAINS, SELF, switch_{{$id}}_front_light_state, {{$condition}})
+        {
+        {{if $hl}}1: switch_{{$id}}_hlt_on_front_curve;{{end}}
+        {{if $tl}}2: switch_{{$id}}_tlt_on_front_curve;{{end}}
+        spriteset_invisible;
+        }
+
+        {{if gt $plen 8}}
+            switch (FEAT_TRAINS, SELF, switch_{{$id}}_front_light_state_front, {{$condition}})
+            {
+            {{if $hl}}1: switch_{{$id}}_hlt_on_front_curve_front;{{end}}
+            {{if $tl}}2: switch_{{$id}}_tlt_on_front_curve_front;{{end}}
+            spriteset_invisible;
+            }
+
+            switch (FEAT_TRAINS, SELF, switch_{{$id}}_front_light_state_rear, {{$condition}})
+            {
+            {{if $hl}}1: switch_{{$id}}_hlt_on_front_curve_rear;{{end}}
+            {{if $tl}}2: switch_{{$id}}_tlt_on_front_curve_rear;{{end}}
+            spriteset_invisible;
+            }
+        {{end}}
+
+        {{$condition = "(position_in_consist_from_end < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
+
+        switch (FEAT_TRAINS, SELF, switch_{{$id}}_rear_light_state, {{$condition}})
+        {
+        {{if $hl}}1: switch_{{$id}}_hlt_on_rear_curve;{{end}}
+        {{if $tl}}2: switch_{{$id}}_tlt_on_rear_curve;{{end}}
+        spriteset_invisible;
+        }
+
+        {{if gt $plen 8}}
+            switch (FEAT_TRAINS, SELF, switch_{{$id}}_rear_light_state_front, {{$condition}})
+            {
+            {{if $hl}}1: switch_{{$id}}_hlt_on_rear_curve_front;{{end}}
+            {{if $tl}}2: switch_{{$id}}_tlt_on_rear_curve_front;{{end}}
+            spriteset_invisible;
+            }
+
+            switch (FEAT_TRAINS, SELF, switch_{{$id}}_rear_light_state_rear, {{$condition}})
+            {
+            {{if $hl}}1: switch_{{$id}}_hlt_on_rear_curve_rear;{{end}}
+            {{if $tl}}2: switch_{{$id}}_tlt_on_rear_curve_rear;{{end}}
+            spriteset_invisible;
+            }
+        {{end}}
+
+    {{end}}
+    switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < ({{$basespritecount}} + 2) ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    {{if ne $basespritecount "0"}}0..{{$basespritecount}}{{else}}0{{end}}: switch_{{$basegraphics}};
+    1 + {{$basespritecount}}: switch_{{$sprite}}_front_light_state;
+    2 + {{$basespritecount}}: switch_{{$sprite}}_rear_light_state;
+
+    // This should never be executed
+    return spriteset_invisible;
+    }
+
+    {{if gt $plen 8}}
+        switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights_front, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < ({{$basespritecount}} + 2) ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
+        {{if ne $basespritecount "0"}}0..{{$basespritecount}}{{else}}0{{end}}: switch_{{$basegraphics}}_front;
+        1 + {{$basespritecount}}: switch_{{$sprite}}_front_light_state_front;
+        2 + {{$basespritecount}}: switch_{{$sprite}}_rear_light_state_front;
+
+        // This should never be executed
+        return spriteset_invisible;
+        }
+
+        switch(FEAT_TRAINS, SELF, switch_{{$id}}_lights_rear, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < ({{$basespritecount}} + 2) ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
+        {{if ne $basespritecount "0"}}0..{{$basespritecount}}{{else}}0{{end}}: switch_{{$basegraphics}}_rear;
+        1 + {{$basespritecount}}: switch_{{$sprite}}_front_light_state_rear;
+        2 + {{$basespritecount}}: switch_{{$sprite}}_rear_light_state_rear;
+
+        // This should never be executed
+        return spriteset_invisible;
+        }
+    {{end}}
+{{end}}{{end}}

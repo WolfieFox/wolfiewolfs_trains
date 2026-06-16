@@ -17,3 +17,7 @@
 {{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 {{if gt $plen 8}}{{template "curve_switch_long" .id }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
+
+{{template "headlight_graphics" . }}
+
+{{template "headlight_switch" . }}

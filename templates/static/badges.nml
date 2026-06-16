@@ -17,5 +17,8 @@ badgetable {
     "role/heavy_freight",
     "role/shunting",
     "role/prototype",
-    "role/mail"
+    "role/mail",
+    "_ww_type",
+    "_ww_type/locomotive",
+    "_ww_type/multiple_unit"
 }

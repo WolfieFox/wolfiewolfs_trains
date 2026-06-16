@@ -2,7 +2,9 @@
     "files": [
       "cargo/wagon/hha_hopper.vox",
       "cargo/wagon/mgr_hopper.vox",
-      "cargo/wagon/lner_hopper.vox"
+      "cargo/wagon/lner_hopper.vox",
+      "cargo/wagon/redland_sdt_hopper_inner.vox",
+      "cargo/wagon/redland_sdt_hopper_outer.vox"
     ],
     "operations": [
         {

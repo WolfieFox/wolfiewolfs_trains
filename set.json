@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "WFY",
         "grf_id": 7,
-        "name": "Wolfie's Unified UK Trainset",
+        "name": "Wolfie's Unified UK Trainset 0.1.3",
         "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 4x zoom and extra rotation sprites.",
         "url": "https://github.com/WolfieFox/wolfiewolfs_trains",
         "min_compat_version": 1,
@@ -112,9 +112,12 @@
             "nested/pantograph_switch_rev",
             "nested/pantograph_graphics",
             "nested/pantograph_graphics_rev",
+            "nested/headlight_switch",
+            "nested/headlight_switch_rev",
+            "nested/headlight_graphics",
+            "nested/headlight_graphics_rev",
             "nested/running_cost_switch",
             "nested/attach_mu_switch",
-            "nested/power_car_check",
             "nested/inhibit_lead_vehicle",
             "nested/tare_speed_switch",
             "nested/visual_effect_power",
@@ -162,7 +165,6 @@
     ],
     "fixed_strings": {
         "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type.",
-        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train.",
         "str_first_class_cannot_attach": "No more than 50% of a train may be first class carriages.",
         "str_cannot_lead": "This vehicle cannot lead the train."
     },
