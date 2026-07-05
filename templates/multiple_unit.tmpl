@@ -190,28 +190,41 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{$anim = concat $element "_anim_4" }}
     {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 
-    switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, motion_counter % 4)
+
+    switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
     {
-        0: switch_{{$element}}_anim_1_curve;
-        1: switch_{{$element}}_anim_2_curve;
-        2: switch_{{$element}}_anim_3_curve;
-        3: switch_{{$element}}_anim_4_curve;
+    0: switch_{{$element}}_anim_1_curve;
+    1: switch_{{$element}}_anim_4_curve;
+    2: switch_{{$element}}_anim_2_curve;
+    3: switch_{{$element}}_anim_3_curve;
+    4: switch_{{$element}}_anim_3_curve;
+    5: switch_{{$element}}_anim_2_curve;
+    6: switch_{{$element}}_anim_4_curve;
+    7: switch_{{$element}}_anim_1_curve;
     }
 
     {{ if gt $plen 8}}
-        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, motion_counter % 4)
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
         {
-            0: switch_{{$element}}_anim_1_curve_front;
-            1: switch_{{$element}}_anim_2_curve_front;
-            2: switch_{{$element}}_anim_3_curve_front;
-            3: switch_{{$element}}_anim_4_curve_front;
+        0: switch_{{$element}}_anim_1_curve_front;
+        1: switch_{{$element}}_anim_4_curve_front;
+        2: switch_{{$element}}_anim_2_curve_front;
+        3: switch_{{$element}}_anim_3_curve_front;
+        4: switch_{{$element}}_anim_3_curve_front;
+        5: switch_{{$element}}_anim_2_curve_front;
+        6: switch_{{$element}}_anim_4_curve_front;
+        7: switch_{{$element}}_anim_1_curve_front;
         }
-        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, motion_counter % 4)
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
         {
-            0: switch_{{$element}}_anim_1_curve_rear;
-            1: switch_{{$element}}_anim_2_curve_rear;
-            2: switch_{{$element}}_anim_3_curve_rear;
-            3: switch_{{$element}}_anim_4_curve_rear;
+        0: switch_{{$element}}_anim_1_curve_rear;
+        1: switch_{{$element}}_anim_4_curve_rear;
+        2: switch_{{$element}}_anim_2_curve_rear;
+        3: switch_{{$element}}_anim_3_curve_rear;
+        4: switch_{{$element}}_anim_3_curve_rear;
+        5: switch_{{$element}}_anim_2_curve_rear;
+        6: switch_{{$element}}_anim_4_curve_rear;
+        7: switch_{{$element}}_anim_1_curve_rear;
         }
     {{end}}
 
