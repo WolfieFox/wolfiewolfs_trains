@@ -35,7 +35,7 @@
             {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
         {{end}}
 
-        {{$condition := "(position_in_consist < 3) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
+        {{$condition := "((vehicle_is_flipped ? position_in_consist_from_end : position_in_consist) < 3) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
 
         switch (FEAT_TRAINS, SELF, switch_{{$id}}_front_light_state, {{$condition}})
         {
@@ -60,7 +60,7 @@
             }
         {{end}}
 
-        {{$condition = "(position_in_consist_from_end < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
+        {{$condition = "((vehicle_is_flipped ? position_in_consist : position_in_consist_from_end) < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
 
         switch (FEAT_TRAINS, SELF, switch_{{$id}}_rear_light_state, {{$condition}})
         {
