@@ -2,6 +2,7 @@
   "files": [
     "static/loco/*.vox",
     "static/mu/*.vox",
+    "cargo/mu/*.vox",
     "static/carriage/*.vox",
     "static/tube/*.vox",
     "static/tender/*.vox",

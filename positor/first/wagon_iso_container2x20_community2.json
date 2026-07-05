@@ -5,10 +5,6 @@
     ],
     "operations": [
         {
-            "name": "",
-            "type": "produce_empty"
-        },
-        {
             "name": "_none",
             "type": "scale",
             "mask_original": true,

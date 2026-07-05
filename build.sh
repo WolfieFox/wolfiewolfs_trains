@@ -18,7 +18,7 @@ echo "Copying static files"
 #cp -p voxels/static/tender/* intermediate
 cp -p voxels/static/wagon/*.vox intermediate
 cp -p voxels/static/wagon/aged/*.vox intermediate
-cp -p voxels/static/tube/* intermediate
+#cp -p voxels/static/tube/* intermediate
 cp -p voxels/horse/* intermediate
 
 # Do sprite creation
