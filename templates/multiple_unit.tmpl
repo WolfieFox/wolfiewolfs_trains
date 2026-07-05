@@ -422,7 +422,10 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         {{if eq .default_cargo "PASS" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        cargo_allow_refit: [ YETI, YETY ]; 
+        cargo_allow_refit: [ YETI, YETY ];
+            {{ if eq .pax_special "buffet" }}
+                bitmask_vehicle_info:         bitmask(HAS_BUFFET_CAR);
+            {{end -}}
         {{ else if eq .default_cargo "MAIL" }}
         refittable_cargo_classes: bitmask(CC_MAIL);
         {{end}}
