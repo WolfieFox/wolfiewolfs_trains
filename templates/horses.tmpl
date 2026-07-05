@@ -94,7 +94,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{template "curve_switch_short" $anim }}
 {{end}}
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) + ((vehicle_is_flipped ^ train_is_driving_backwards) * !param_moonwalking_honsen))
 {
 0: switch_{{$sprite}}_1_curve;
 1: switch_{{$sprite}}_1_r_curve;
