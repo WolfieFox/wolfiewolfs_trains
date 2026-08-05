@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "WFY",
         "grf_id": 7,
-        "name": "Wolfie's Unified UK Trainset 0.2.0",
+        "name": "Wolfie's Unified UK Trainset 0.2.2",
         "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 4x zoom and extra rotation sprites.",
         "url": "https://github.com/WolfieFox/wolfiewolfs_trains",
         "min_compat_version": 1,
@@ -109,6 +109,7 @@
             "nested/cargo_curve_switch_long",
             "nested/curve_switch_long",
             "nested/curve_switch_long_weathered",
+            "nested/curve_switch_long_weathered_inner",
             "nested/cargo_curve_switch_medium",
             "nested/curve_switch_medium",
             "nested/curve_switch_medium_weathered",
