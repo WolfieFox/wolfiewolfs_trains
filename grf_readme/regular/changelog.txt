@@ -1,3 +1,12 @@
+v0.2.3
+------
+Fixed steam loco tenders having invalid lengths... (I HATE EXCEL)
+
+v0.2.2
+------
+Broke everything and apparently forgot to write a changelog
+Added the Class 895 HS2 train (thank you for finding the dox, Albion)
+
 v0.2.1
 ------
 Fix head/tail lights on tube stock
