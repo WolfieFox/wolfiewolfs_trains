@@ -22,6 +22,8 @@ badgetable {
     "_ww_type/locomotive",
     "_ww_type/multiple_unit",
     "_ww_livery",
+    "_ww_livery/brgreen",
+    "_ww_livery/brgreen_yp",
     "_ww_livery/brblack",
     "_ww_livery/brblue",
     "_ww_livery/brbluegrey",
