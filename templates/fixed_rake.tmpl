@@ -588,7 +588,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
         {{end}}
 
         switch(FEAT_TRAINS, SELF, switch_{{$element}}_cargo_pass, [
-        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == {{$lsi}}  ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
         getbits(extra_callback_info1, 8, 8)
         ]) {
         0: switch_{{$element}}_curve;
@@ -603,7 +603,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 
         {{ if gt $plen 8}}
             switch(FEAT_TRAINS, SELF, switch_{{$element}}_cargo_pass_front, [
-            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == {{$lsi}}  ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
             getbits(extra_callback_info1, 8, 8)
             ]) {
             0: switch_{{$element}}_curve_front;
@@ -618,7 +618,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
             }
 
             switch(FEAT_TRAINS, SELF, switch_{{$element}}_cargo_pass_rear, [
-            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+            STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == {{$lsi}} ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
             getbits(extra_callback_info1, 8, 8)
             ]) {
             0: switch_{{$element}}_curve_rear;
@@ -667,7 +667,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
                 {{ range $index, $element := slice $bulk_cargos }}
 
                     switch(FEAT_TRAINS, SELF, switch_{{$veh_id}}_cargo_{{$element}}, [
-                    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
+                    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == {{$lsi}}  ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
                     getbits(extra_callback_info1, 8, 8)
                     ]) {
                     0: switch_{{$veh_id}}_curve;
@@ -682,7 +682,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 
                     {{ if gt $plen 8}}
                         switch(FEAT_TRAINS, SELF, switch_{{$veh_id}}_cargo_{{$element}}_front, [
-                        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
+                        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == {{$lsi}}  ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
                         getbits(extra_callback_info1, 8, 8)
                         ]) {
                         0: switch_{{$veh_id}}_curve_front;
@@ -696,7 +696,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
                         }
 
                         switch(FEAT_TRAINS, SELF, switch_{{$veh_id}}_cargo_{{$element}}_rear, [
-                        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
+                        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < {{$lsi}} ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == {{$lsi}}  ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
                         getbits(extra_callback_info1, 8, 8)
                         ]) {
                         0: switch_{{$veh_id}}_curve_rear;
