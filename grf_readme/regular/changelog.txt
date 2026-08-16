@@ -2,6 +2,8 @@ v0.2.4
 ------
 Add tail lights to container wagons.
 Buff blue pullman
+Correct D-Stock formation (added a 6 car bonus set)
+Correct C-Stock formation (4 and 6 car formations)
 
 v0.2.3
 ------
