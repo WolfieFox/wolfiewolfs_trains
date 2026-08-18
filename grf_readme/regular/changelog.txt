@@ -1,9 +1,10 @@
 v0.2.4
 ------
-Add tail lights to container wagons.
+Add tail lights to almost all the relevant wagons.
 Buff blue pullman
 Correct D-Stock formation (added a 6 car bonus set)
 Correct C-Stock formation (4 and 6 car formations)
+Move to only provide 4x EZ sprites (saves a bit of memory and lots of build time)
 
 v0.2.3
 ------

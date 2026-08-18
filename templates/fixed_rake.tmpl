@@ -21,7 +21,6 @@
     {{- $light_switch = "" -}}
 {{ else if eq .cargo_handling "Bulk" "SelfDischarge" -}}
     {{ $cargo_list = "bulk" }}
-    {{- $light_switch = "" -}}
 {{end -}}
 
 {{$full_headlights := ""}}
@@ -483,23 +482,23 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 
                 switch (FEAT_TRAINS, SELF, switch_{{$element}}_light_state, {{$condition}})
                 {
-                1: switch_{{$element}}_tlt_on_front_curve;
-                2: switch_{{$element}}_tlt_on_rear_curve;
+                1: switch_{{$element}}_tlt_on_rear_curve;
+                2: switch_{{$element}}_tlt_on_front_curve;
                 spriteset_invisible;
                 }
 
                 {{if gt $plen 8}}
                     switch (FEAT_TRAINS, SELF, switch_{{$element}}_light_state_front, {{$condition}})
                     {
-                    1: switch_{{$element}}_tlt_on_front_curve_front;
-                    2: switch_{{$element}}_tlt_on_rear_curve_front;
+                    1: switch_{{$element}}_tlt_on_rear_curve_front;
+                    2: switch_{{$element}}_tlt_on_front_curve_front;
                     spriteset_invisible;
                     }
 
                     switch (FEAT_TRAINS, SELF, switch_{{$element}}_light_state_rear, {{$condition}})
                     {
-                    1: switch_{{$element}}_tlt_on_front_curve_rear;
-                    2: switch_{{$element}}_tlt_on_rear_curve_rear;
+                    1: switch_{{$element}}_tlt_on_rear_curve_rear;
+                    2: switch_{{$element}}_tlt_on_front_curve_rear;
                     spriteset_invisible;
                     }
                 {{end}}
@@ -734,11 +733,20 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
                 ({{$index}} * 3) + 2: switch_{{$element}}_lights_rear;
             {{ end -}}
         {{else}}
-            ({{$index}} * 3) + 1: switch_{{$element}}_bulk_curve;
-            {{- if gt $plen 8}}
-                ({{$index}} * 3) + 0: switch_{{$element}}_bulk_curve_front;
-                ({{$index}} * 3) + 2: switch_{{$element}}_bulk_curve_rear;
-            {{ end -}}
+            {{if or (eq $index 0) (eq $index $lastindex)}}
+                ({{$index}} * 3) + 1: switch_{{$element}}_lights;
+                {{- if gt $plen 8}}
+                    ({{$index}} * 3) + 0: switch_{{$element}}_lights_front;
+                    ({{$index}} * 3) + 2: switch_{{$element}}_lights_rear;
+                {{- end}}
+            {{else}}
+                {{ $basegraphics := concat $element "_bulk_curve" }}
+                ({{$index}} * 3) + 1: switch_{{$basegraphics}};
+                {{- if gt $plen 8}}
+                    ({{$index}} * 3) + 0: switch_{{$basegraphics}}_front;
+                    ({{$index}} * 3) + 2: switch_{{$basegraphics}}_rear;
+                {{- end}}
+            {{- end}}
         {{end}}
     {{- end}}
     return spriteset_invisible;
@@ -750,10 +758,10 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
             {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
 
             {{if eq $element $static_vehicle}}
-                ({{$index}} * 3) + 1: switch_{{$element}}_curve;
+                ({{$index}} * 3) + 1: switch_{{$element}}_lights;
                 {{- if gt $plen 8}}
-                    ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
-                    ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
+                    ({{$index}} * 3) + 0: switch_{{$element}}_lights_front;
+                    ({{$index}} * 3) + 2: switch_{{$element}}_lights_rear;
                 {{ end -}}
             {{else}}
                 ({{$index}} * 3) + 1: switch_{{$element}}_graphics_{{$celement}};
