@@ -14,11 +14,14 @@
 {{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,salt,sand,sash,slag,sulp,toff,uran,whea" }}
 {{ $cargo_list := "" -}}
 {{$cargo_handling := .cargo_handling -}}
+{{- $light_switch := "1" -}}
 {{if eq .cargo_handling "Motorail" -}}
     // Vroom Vroom...
     {{- $cargo_list = "vehicle_pax_1960,vehicle_pax_1970,vehicle_pax_2010" }}
+    {{- $light_switch = "" -}}
 {{ else if eq .cargo_handling "Bulk" "SelfDischarge" -}}
     {{ $cargo_list = "bulk" }}
+    {{- $light_switch = "" -}}
 {{end -}}
 
 {{$full_headlights := ""}}
@@ -501,8 +504,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
                     }
                 {{end}}
 
-                {{if or (eq $element $static_vehicle)
-                        (or (eq $index 0) (eq $index $lastindex)) }}
+                {{if or (eq $element $static_vehicle) $light_switch }}
                     switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights, [
                     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
                     getbits(extra_callback_info1, 8, 8)
