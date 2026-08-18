@@ -105,6 +105,7 @@
             "zoom": "4",
             "bpp": "8"
         },
+        "single_zoom_level": true,
         "nestable_templates": [ 
             "nested/cargo_curve_switch_long",
             "nested/curve_switch_long",

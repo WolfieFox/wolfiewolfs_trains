@@ -37,11 +37,8 @@
     {{ end }}
 {{end -}}
 
-spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
-{ template_purchase_1x() }
-
-alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
-{ template_purchase_2x() }
+spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
+{ template_purchase_4x() }
 
 {{- $lastindex := 0}}
 {{range $index, $element := $layout -}}
@@ -505,8 +502,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
                 {{end}}
 
                 {{if or (eq $element $static_vehicle)
-                        (and (or (eq $index 0) (eq $index $lastindex))
-                        (not $cargo_list)) }}
+                        (or (eq $index 0) (eq $index $lastindex)) }}
                     switch(FEAT_TRAINS, SELF, switch_{{$element}}_lights, [
                     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
                     getbits(extra_callback_info1, 8, 8)
@@ -656,7 +652,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
     {{- range $veh_index, $veh_id := $layout -}}
         {{- $lsi := "" -}}
         {{- if or (eq $veh_index 0) (eq $veh_index $lastindex) -}}
-            {{- $lsi = "3" -}}
+            {{- $lsi = "2" -}}
         {{- else -}}
             {{- $lsi = "1" -}}
         {{end -}}

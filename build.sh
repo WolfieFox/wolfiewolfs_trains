@@ -28,23 +28,23 @@ echo "Compositing hill sprites"
 echo ""
 echo "Rendering regular sprites"
 
-ls intermediate/*.vox | xargs ../gorender/renderobject.exe -8 -r -s 4,2,1 -u -p
+ls intermediate/*.vox | xargs ../gorender/renderobject.exe -8 -r -s 4 -u -p
 
 echo ""
 echo "Rendering section sprites"
 
-ls intermediate/*.vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_sections.json -p -r -x _sections -s 4,2,1 -u
+ls intermediate/*.vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_sections.json -p -r -x _sections -s 4 -u
 
 
 echo ""
 echo "Rendering hill sprites"
 
-ls intermediate/hills/*.vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_hill.json -p -r -s 4,2,1 -u
+ls intermediate/hills/*.vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_hill.json -p -r -s 4 -u
 
 
 echo ""
 echo "Rendering purchase sprites"
-../purchaser/purchaser.exe unified.csv
+../purchaser/purchaser.exe -s 4 unified.csv
 
 echo "Compiling set"
 ../roadie/roadie.exe set.json
