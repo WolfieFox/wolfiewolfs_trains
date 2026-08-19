@@ -1,3 +1,7 @@
+v0.2.5
+------
+Fix Mk4 DVT Head/Tail lights
+
 v0.2.4
 ------
 Add tail lights to almost all the relevant wagons.
