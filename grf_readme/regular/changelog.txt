@@ -1,3 +1,9 @@
+v0.3.0
+------
+Add Tyneside Electric Units
+Add LNER Mikados (And W1)
+Add Fell Locomotive
+
 v0.2.5
 ------
 Fix Mk4 DVT Head/Tail lights
