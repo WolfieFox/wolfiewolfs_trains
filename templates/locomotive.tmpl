@@ -124,19 +124,6 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
     {{template "headlight_graphics_rev" . }}
 {{end}}
 
-// Articulation
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. {{if .tender}}5{{else}}2{{end}}: {{.id}};
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
-{
-    {{range $index, $element := slice .articulated_lengths -}}
-    {{$index }}: return {{ $element }};
-    {{end}}    
-}
-
 {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
 {{template "pantograph_switch" . }}
 {{ if .double_headed }}{{$rev := concat .id "_rev"}}
@@ -304,9 +291,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{- end}}
 
 {{template "visual_effect_power" . }}
-{{template "running_cost_switch" . }}
-
-{{if .inhibit_lead}}{{template "inhibit_lead_vehicle" .}}{{end}}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
@@ -384,14 +368,19 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         default:  switch_{{.id}}_graphics;   
         purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
-        articulated_part: switch_{{.id}}_articulation;
-        length: switch_{{.id}}_length;
-        running_cost_factor: switch_{{.id}}_running_cost;
+{{if .tender}}
+        articulated_part: procedure_loco_tender_articulation({{.id}});
+        length: procedure_loco_tender_length({{.articulated_lengths}});
+{{else}}
+        articulated_part: procedure_loco_articulation({{.id}});
+        length: procedure_loco_length({{.articulated_lengths}});
+{{end}}
+{{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
         {{if .secondary_power}}{{ if eq .type "dual_power" "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}
         {{if ne .capacity "0"}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
-        {{if .inhibit_lead}} start_stop: switch_{{.id}}_inhibit_lead;{{end}}
+        {{if .inhibit_lead}}start_stop: procedure_inhibit_lead;{{end}}
     }
 }
 

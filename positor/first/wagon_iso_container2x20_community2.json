@@ -12,18 +12,60 @@
             "file": "cargo/none/iso_container_2x20.vox"
         },
         {
-            "name": "_container_half",
+            "name": "_container_1_half",
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/half/iso_container_2x20.vox"
+            "file": "cargo/half/iso_container_2x20_1.vox"
         },
         {
-            "name": "_container_full",
+            "name": "_container_1_full",
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/full/iso_container_2x20.vox"
+            "file": "cargo/full/iso_container_2x20_1.vox"
+        },
+        {
+            "name": "_container_2_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/iso_container_2x20_2.vox"
+        },
+        {
+            "name": "_container_2_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_container_2x20_2.vox"
+        },
+        {
+            "name": "_tank_container_1_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/iso_tanktainer_2x20_1.vox"
+        },
+        {
+            "name": "_tank_container_1_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_tanktainer_2x20_1.vox"
+        },
+        {
+            "name": "_tank_container_2_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/iso_tanktainer_2x20_2.vox"
+        },
+        {
+            "name": "_tank_container_2_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_tanktainer_2x20_2.vox"
         }
     ]
 }

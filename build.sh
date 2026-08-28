@@ -44,12 +44,13 @@ ls intermediate/hills/*.vox | xargs ../gorender/renderobject.exe -8 -m files/man
 
 echo ""
 echo "Rendering purchase sprites"
-../purchaser/purchaser.exe -s 4 unified.csv
+../purchaser/purchaser.exe -s 4 -i "na,tender,badge" unified.csv
 
 echo "Compiling set"
 ../roadie/roadie.exe set.json
+
 echo "Compiling NML"
-time ../jgr-nml/nmlc.exe --no-palette-validation -p DEFAULT -c unified.nml
+time python ../jgr-nml/nmlc --no-palette-validation -p DEFAULT -c unified.nml
 
 echo "Building TAR"
 mkdir -p wuut

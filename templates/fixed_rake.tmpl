@@ -544,8 +544,6 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
     {{end}}
 {{end -}}
 
-{{template "running_cost_switch" . }}
-
 {{ if eq .cargo_handling "Motorail" }}
     {{ $has_cargo_switch = "1" }}
     {{ $palette := "PALETTE_USE_DEFAULT" }}
@@ -644,8 +642,8 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
     return spriteset_invisible;
     }
 
-    switch (FEAT_TRAINS, PARENT, switch_{{.id}}_passenger_cargo_age, hasbit(bitmask_consist_info, HAS_BUFFET_CAR) && cargo_type_in_veh == PASS) {
-        1: return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier * 5) / 8;
+    switch (FEAT_TRAINS, PARENT, switch_{{.id}}_motorail_cargo_age, hasbit(bitmask_consist_info, HAS_BUFFET_CAR) && cargo_type_in_veh == PASS) {
+        1: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
         return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier) / 2;
     }
 {{ else if eq .cargo_handling "Bulk" "SelfDischarge" }}
@@ -845,12 +843,10 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 {{ if eq .cargo_handling "Passengers" -}}
     {{ if eq .pax_special "nightstar" }}
         //var f4 is the power available on the train - formation_current_power after nmlc PR #419 is accepted
-        switch (FEAT_TRAINS, PARENT, switch_{{.id}}_passenger_cargo_age, hasbit(bitmask_consist_info, HAS_GENERATOR_CAR) | (var[0xF4] > 5000) ? 1 : 0) {
+        switch (FEAT_TRAINS, PARENT, switch_{{.id}}_nightstar_cargo_age, hasbit(bitmask_consist_info, HAS_GENERATOR_CAR) | (var[0xF4] > 5000) ? 1 : 0) {
             1: return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier * 5) / 8;
             return 185 * cargo_age_multiplier;
         }
-    {{ else }}
-        {{template "passenger_cargo_age_switch" . }}
     {{ end }}
 {{- end }}
 
@@ -928,15 +924,19 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
-        running_cost_factor: switch_{{.id}}_running_cost;
+{{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
 
         {{ if eq .cargo_handling "Passengers" -}}
-            cargo_age_period: switch_{{.id}}_passenger_cargo_age;
+            {{ if eq .pax_special "nightstar" }}
+                cargo_age_period: switch_{{.id}}_nightstar_cargo_age;
+            {{else}}
+                cargo_age_period: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
+            {{end}}
         {{else if eq .cargo_handling "Motorail" -}}
             cargo_capacity: return {{.capacity}} / 3;
-            cargo_age_period: switch_{{.id}}_passenger_cargo_age;
+            cargo_age_period: switch_{{.id}}_motorail_cargo_age;
         {{ else if eq .cargo_handling "Bulk" "SelfDischarge"  }}
             {{ range $index, $element := slice $bulk_cargos }}
                 {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}

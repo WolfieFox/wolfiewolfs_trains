@@ -72,20 +72,6 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{- $type := .type }}{{ $id := .id}}
 {{template "curve_switch_medium" .id }}
 
-// Articulation
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. 2: {{.id}};
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 3) 
-{
-    {{range $index, $element := slice .articulated_lengths -}}
-    {{$index }}: return {{ $element }};
-    {{end}}    
-}
-
-
 {{ $sprite := .id}}
 
 {{$anim := concat $sprite "_anim_1" }}
@@ -138,8 +124,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 }
 
 
-{{template "running_cost_switch" . }}
-
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
@@ -183,9 +167,9 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         default:  switch_{{.id}}_graphics;
         purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
-        articulated_part: switch_{{.id}}_articulation;
-        length: switch_{{.id}}_length;
-        running_cost_factor: switch_{{.id}}_running_cost;
+        articulated_part: procedure_loco_articulation({{.id}});
+        length: procedure_loco_length({{.articulated_lengths}});
+{{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         sound_effect: switch_horse_sound_fx;
     }

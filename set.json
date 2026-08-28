@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "WFY",
         "grf_id": 7,
-        "name": "Wolfie's Unified UK Trainset 0.2.5",
+        "name": "Wolfie's Unified UK Trainset 0.3.0",
         "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 4x zoom and extra rotation sprites.",
         "url": "https://github.com/WolfieFox/wolfiewolfs_trains",
         "min_compat_version": 1,
@@ -93,6 +93,13 @@
                 "desc": "Well you can tell by the way I use my walk, I'm a woman's honse, no time to talk.",
                 "type": "bool",
                 "default_value": 0
+            },
+            {
+                "id": "container_no_recolour",
+                "name": "Use company colours for containers",
+                "desc": "If set, don't randomise container colours, just use the company colours",
+                "type": "bool",
+                "default_value": 0
             }
         ]
     },
@@ -125,13 +132,9 @@
             "nested/headlight_switch_rev",
             "nested/headlight_graphics",
             "nested/headlight_graphics_rev",
-            "nested/running_cost_switch",
+            "nested/running_cost_cb",
             "nested/attach_mu_switch",
-            "nested/inhibit_lead_vehicle",
-            "nested/tare_speed_switch",
-            "nested/visual_effect_power",
-            "nested/preserved_cargo_age_switch",
-            "nested/passenger_cargo_age_switch"
+            "nested/visual_effect_power"
         ]
     },
     "static_templates": [
@@ -155,9 +158,6 @@
         },
         {
             "template": "templates/static/procedures.nml"
-        },
-        {
-            "template": "templates/static/procedures_addon.nml"
         },
         {
             "template": "templates/static/sprite_templates_hills.nml"

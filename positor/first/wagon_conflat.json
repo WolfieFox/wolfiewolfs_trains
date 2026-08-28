@@ -20,21 +20,133 @@
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/none/br_container.vox"
+            "file": "cargo/none/br_container_empty.vox"
         },
         {
-            "name": "_container_half",
+            "name": "_container_1_half",
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/half/br_container.vox"
+            "file": "cargo/half/br_container_1.vox"
         },
         {
-            "name": "_container_full",
+            "name": "_container_1_full",
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/full/br_container.vox"
+            "file": "cargo/full/br_container_1.vox"
+        },
+        {
+            "name": "_container_2_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_container_2.vox"
+        },
+        {
+            "name": "_container_2_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_container_2.vox"
+        },
+        {
+            "name": "_container_3_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_container_3.vox"
+        },
+        {
+            "name": "_container_3_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_container_3.vox"
+        },
+        {
+            "name": "_container_4_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_container_4.vox"
+        },
+        {
+            "name": "_container_4_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_container_4.vox"
+        },
+        {
+            "name": "_container_r_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_container_r.vox"
+        },
+        {
+            "name": "_container_r_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_container_r.vox"
+        },
+        {
+            "name": "_tank_1_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_tanktainer_1.vox"
+        },
+        {
+            "name": "_tank_1_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_tanktainer_1.vox"
+        },
+        {
+            "name": "_tank_2_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_tanktainer_2.vox"
+        },
+        {
+            "name": "_tank_2_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_tanktainer_2.vox"
+        },
+        {
+            "name": "_tank_3_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_tanktainer_3.vox"
+        },
+        {
+            "name": "_tank_3_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_tanktainer_3.vox"
+        },
+        {
+            "name": "_tank_4_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_tanktainer_4.vox"
+        },
+        {
+            "name": "_tank_4_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_tanktainer_4.vox"
         }
     ]
 }
