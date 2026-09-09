@@ -155,8 +155,8 @@ switch (FEAT_TRAINS, PARENT, procedure_speed_brakevan, speed, hasbit(bitmask_con
     return (speed * 8) / 5;
 }
 
-switch(FEAT_TRAINS, SELF, procedure_wagon_articulation, chain_switch, extra_callback_info1) {
-    0 .. 2: return chain_switch;
+switch(FEAT_TRAINS, SELF, procedure_wagon_articulation, vehicle_id, extra_callback_info1) {
+    0 .. 2: return vehicle_id;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -167,8 +167,8 @@ switch (FEAT_TRAINS, SELF, procedure_wagon_length, a, b, c, position_in_articula
     2: return c;
 }
 
-switch(FEAT_TRAINS, SELF, procedure_loco_articulation, chain_switch, extra_callback_info1) {
-    0 .. 2: return chain_switch;
+switch(FEAT_TRAINS, SELF, procedure_loco_articulation, vehicle_id, extra_callback_info1) {
+    0 .. 2: return vehicle_id;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -179,8 +179,8 @@ switch (FEAT_TRAINS, SELF, procedure_loco_length, a, b, c, position_in_articulat
     2: return c;
 }
 
-switch(FEAT_TRAINS, SELF, procedure_loco_tender_articulation, chain_switch, extra_callback_info1) {
-    0 .. 5: return chain_switch;
+switch(FEAT_TRAINS, SELF, procedure_loco_tender_articulation, vehicle_id, extra_callback_info1) {
+    0 .. 5: return vehicle_id;
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
