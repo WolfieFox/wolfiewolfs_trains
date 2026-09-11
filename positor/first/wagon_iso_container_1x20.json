@@ -1,8 +1,20 @@
 {
     "files": [
-        "cargo/mu/windhoff_mpv_single.vox"
+        "cargo/wagon/pfa_container_wagon.vox"
     ],
     "operations": [
+        {
+            "name": "_light",
+            "type": "produce_empty",
+            "input_ramps": ["200-206,82-88,217-222,223-228,255-255"],
+            "output_ramps": ["201-207,83-89,6-6,0-0,0-0"]
+        },
+        {
+            "name": "_dark",
+            "type": "produce_empty",
+            "input_ramps": ["201-207,83-89,217-222,223-228,255-255"],
+            "output_ramps": ["200-206,82-88,6-6,0-0,0-0"]
+        },
         {
             "name": "_none",
             "type": "repeat",
@@ -79,6 +91,34 @@
             "mask_original": true,
             "n": 0,
             "file": "cargo/full/wood_container_1x20.vox"
+        },
+        {
+            "name": "_bulk_1_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_bulk_1x20_1.vox"
+        },
+        {
+            "name": "_bulk_1_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_bulk_1x20_2.vox"
+        },
+        {
+            "name": "_bulk_2_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_bulk_1x20_1.vox"
+        },
+        {
+            "name": "_bulk_2_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/iso_bulk_1x20_2.vox"
         }
     ]
 }

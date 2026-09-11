@@ -136,6 +136,20 @@
             "mask_original": true,
             "n": 0,
             "file": "cargo/full/iso_tanktainer_4.vox"
+        },
+        {
+            "name": "_wood_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/wood_container_3x20.vox"
+        },
+        {
+            "name": "_wood_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/wood_container_3x20.vox"
         }
     ]
 }

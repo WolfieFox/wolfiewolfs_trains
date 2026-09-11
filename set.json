@@ -160,6 +160,9 @@
             "template": "templates/static/procedures.nml"
         },
         {
+            "template": "templates/static/procedures_sprites.nml"
+        },
+        {
             "template": "templates/static/sprite_templates_hills.nml"
         },
         {
