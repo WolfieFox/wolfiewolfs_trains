@@ -4,10 +4,6 @@
     ],
     "operations": [
         {
-            "name": "",
-            "type": "produce_empty"
-        },
-        {
             "name": "_none",
             "type": "repeat",
             "mask_original": true,

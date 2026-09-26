@@ -1,3 +1,31 @@
+v0.3.0
+------
+Add Tyneside Electric Units
+Add LNER Mikados (And W1)
+Add Fell Locomotive
+
+v0.2.5
+------
+Fix Mk4 DVT Head/Tail lights
+
+v0.2.4
+------
+Add tail lights to almost all the relevant wagons.
+Buff blue pullman
+Correct D-Stock formation (added a 6 car bonus set)
+Correct C-Stock formation (4 and 6 car formations)
+Move to only provide 4x EZ sprites (saves a bit of memory and lots of build time)
+
+v0.2.3
+------
+Fixed steam loco tenders having invalid lengths... (I HATE EXCEL)
+
+v0.2.2
+------
+Broke everything and apparently forgot to write a changelog
+Added the Class 895 HS2 train (thank you for finding the dox, Albion)
+Optimizations to draw fewer invisible sprites
+
 v0.2.1
 ------
 Fix head/tail lights on tube stock

@@ -6,10 +6,10 @@
     "static/carriage/*.vox",
     "static/tube/*.vox",
     "static/tender/*.vox",
-    "ng/*.vox",
     "garratt/*.vox",
     "dual_power/*.vox",
-    "*.vox"
+    "*.vox",
+    "ng/*.vox"
   ],
   "operations": [
     {

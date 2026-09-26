@@ -1,5 +1,0 @@
-switch (FEAT_TRAINS, SELF, switch_dandy_wagon_mapping, recolour_horses + ((get_parent_random_bits() + ((position_in_vehid_chain / 3) * (get_parent_random_bits() % 25))) % 25)) {
-    return;
-}
-
-concept_trains = param_concept_trains;

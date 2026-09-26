@@ -28,19 +28,14 @@ const HAS_BUFFET_CAR = 3;
 
 const HAS_GENERATOR_CAR = 7;
 
-//const CC_PASSENGERS = 0;
-//const CC_MAIL = 1;
-//const CC_EXPRESS = 2;
-//const CC_ARMOURED = 3;
-const CC_OPEN_BULK = 4;
-//const CC_PIECE_GOODS = 5;
-const CC_LIQUID_BULK = 6;
-//const CC_REFRIGERATED = 7;
-const CC_GAS_BULK = 8;
-const CC_COVERED_BULK = 9;
-const CC_FLATBED = 10;
-const CC_POWDER_BULK = 11;
-const CC_WEIRD = 12;
-//const CC_POTABLE = 13;
-//const CC_NON_POTABLE = 14;
-//const CC_SPECIAL = 15;
+// extra NML constants for Polar Fox 2024 cargo class names
+// these replace legacy NML cargo class names
+// add these near the top of your NML file, before using any cargo classes
+const CC_OPEN_BULK = 4; // remaps legacy NML class: CC_BULK
+const CC_COVERED_BULK = 9; // remaps legacy NML class: CC_COVERED
+const CC_POWDER_BULK = 11; // remaps legacy NML class: CC_POWDERIZED
+const CC_LIQUID_BULK = 6; // remaps legacy NML class: CC_LIQUID
+const CC_GAS_BULK = 8; // remaps legacy NML class: CC_HAZARDOUS
+const CC_FLATBED = 10; // remaps legacy NML class: CC_OVERSIZED
+const CC_WEIRD = 12; // remaps legacy NML class: CC_NON_POURABLE
+
