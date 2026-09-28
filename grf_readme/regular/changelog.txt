@@ -1,3 +1,7 @@
+v1.0.0
+------
+Further optimizations to reduce code size
+
 v0.3.0
 ------
 Add Tyneside Electric Units

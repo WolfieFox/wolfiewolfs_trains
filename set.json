@@ -134,7 +134,8 @@
             "nested/headlight_graphics_rev",
             "nested/running_cost_cb",
             "nested/attach_mu_switch",
-            "nested/visual_effect_power"
+            "nested/visual_effect_power",
+            "nested/additional_text"
         ]
     },
     "static_templates": [

@@ -249,12 +249,6 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 
 {{- $type := .type }}{{- $id := .id}}{{- $cars := .cars -}}
 
-// Articulation
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. ({{.cars}} * 3) - 1: {{.id}};
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
 {{ if .manual_lengths }}
 {{- $lengths := slice .manual_lengths }}
 // This MU has different lengths per unit
@@ -842,6 +836,8 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
     {{ end }}
 {{- end }}
 
+{{template "additional_text" . }}
+
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
@@ -913,8 +909,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     graphics {
         default:  switch_{{.id}}_graphics;
         purchase:  spriteset_{{.id}}_purchase;
-        additional_text: return {{.additional_text_string}};
-        articulated_part: switch_{{.id}}_articulation;
+        additional_text: switch_{{.id}}_additional_text;
+        articulated_part: procedure_mu_articulation({{.cars}}, {{.id}});
         length: {{ if .manual_lengths }}switch_{{.id}}_length;{{else}}procedure_loco_length({{.articulated_lengths}});{{end}}
 {{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};

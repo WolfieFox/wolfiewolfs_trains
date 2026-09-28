@@ -1407,6 +1407,8 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
     }
 {{- end}}
 
+{{template "additional_text" . }}
+
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 property {
 name:                         {{.name_string}};
@@ -1559,7 +1561,7 @@ graphics {
         {{- end -}}
     {{- end -}}
 {{- end }}
-additional_text: return {{.additional_text_string}};
+additional_text: switch_{{.id}}_additional_text;
 articulated_part: procedure_wagon_articulation({{.id}});
 length: procedure_wagon_length({{.articulated_lengths}});
 purchase:  spriteset_{{.id}}_purchase;

@@ -99,6 +99,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
     return spriteset_invisible;
 }
 
+{{template "additional_text" . }}
+
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
@@ -141,7 +143,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     graphics {
         default:  switch_{{.id}}_graphics;
         purchase:  spriteset_{{.id}}_purchase;
-        additional_text: return {{.additional_text_string}};
+        additional_text: switch_{{.id}}_additional_text;
         articulated_part: procedure_loco_articulation({{.id}});
         length: procedure_loco_length({{.articulated_lengths}});
 {{template "running_cost_cb" . }}

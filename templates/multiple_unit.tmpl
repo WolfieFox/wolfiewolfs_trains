@@ -145,12 +145,6 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{- $type := .type }}{{$pantograph_unit := .pantograph_unit -}}{{- $id := .id}}
 {{ if .pantograph_unit -}}{{template "pantograph_graphics" . }}{{end}}
 
-// Articulation
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. ({{.cars}} * 3) - 1: {{.id}};
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
 {{ if .manual_lengths }}
 {{- $lengths := slice .manual_lengths }}
 // This MU has different lengths per unit
@@ -402,6 +396,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 }
 
 {{template "visual_effect_power" . }}
+{{template "additional_text" . }}
 {{if not .use_mu_engine_logic}}{{template "attach_mu_switch" .}}{{end}}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
@@ -450,7 +445,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         refit_cost:                   0;
         track_type:                   {{ if eq .type "dual_power" -}}RAIL{{else}}{{.railtype}}{{end}};
-        dual_headed:                0;
+        dual_headed:                  0;
 
         {{if lt $speed 50 -}}
         air_drag_coefficient:         0.1;
@@ -460,7 +455,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         {{if .capacity}}
         cargo_capacity:               {{.capacity}} / 3;
-        {{if ne .capacity "0"}}
+        {{- if ne .capacity "0"}}
         default_cargo_type:           {{.default_cargo}};
         {{end}}{{end}}
         weight:                       {{.weight}} ton;
@@ -469,18 +464,18 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
         {{- end}}
 
-        {{if .badges}}
-            badges: ["_ww_type/multiple_unit",
+        {{- if .badges}}
+        badges: ["_ww_type/multiple_unit",
             {{- range $index, $element := slice .badges -}}
             {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
-        {{end}}
+        {{- end}}
     }
 
     graphics {
         default:  switch_{{.id}}_graphics;
         purchase:  spriteset_{{.id}}_purchase;
-        additional_text: return {{.additional_text_string}};
-        articulated_part: switch_{{.id}}_articulation;
+        additional_text: switch_{{.id}}_additional_text;
+        articulated_part: procedure_mu_articulation({{.cars}}, {{.id}});
         length: {{ if .manual_lengths }}switch_{{.id}}_length;{{else}}procedure_loco_length({{.articulated_lengths}});{{end}}
 {{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
@@ -489,8 +484,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{if .secondary_power}}{{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
         {{if not .use_mu_engine_logic}}can_attach_wagon: switch_{{.id}}_attach_wagons;{{end}}
-        {{if .inhibit_lead}}start_stop: procedure_inhibit_lead;{{end}}
-        {{ if eq .cargo_handling "Passengers" -}}
+        {{- if .inhibit_lead}}start_stop: procedure_inhibit_lead;{{end}}
+        {{- if eq .cargo_handling "Passengers" -}}
             cargo_age_period: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
         {{- end }}
     }

@@ -291,11 +291,12 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{- end}}
 
 {{template "visual_effect_power" . }}
+{{template "additional_text" . }}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        
+        climates_available:           {{ if .enable_param }}{{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
         introduction_date:            date({{.year}}, {{.intro_month}}, 1);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 4;
@@ -320,7 +321,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         engine_class:                 ENGINE_CLASS_DIESEL;
         {{- end}}
 
-        {{if .default_cargo -}}
+        {{- if .default_cargo -}}
         cargo_age_period:             ({{if .cargo_age_period -}}
             {{.cargo_age_period}}{{else}}185
         {{- end}} * cargo_age_multiplier) / 2;{{end}}
@@ -357,17 +358,17 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{end}}{{end}}
         weight:                       {{.weight}} {{if .tender_weight}} + {{.tender_weight}} {{end}} ton;
 
-        {{if .badges}}
-            badges: ["_ww_type/locomotive",
+        {{- if .badges}}
+        badges: ["_ww_type/locomotive",
             {{- range $index, $element := slice .badges -}}
             {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
-        {{end}}
+        {{- end}}
     }
 
         graphics {    
         default:  switch_{{.id}}_graphics;   
         purchase:  spriteset_{{.id}}_purchase;
-        additional_text: return {{.additional_text_string}};
+        additional_text: switch_{{.id}}_additional_text;
 {{if .tender}}
         articulated_part: procedure_loco_tender_articulation({{.id}});
         length: procedure_loco_tender_length({{.articulated_lengths}});

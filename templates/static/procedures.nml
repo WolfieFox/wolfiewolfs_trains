@@ -195,6 +195,11 @@ switch (FEAT_TRAINS, SELF, procedure_loco_tender_length, a, b, c, d, e, f, posit
     5: return f;
 }
 
+switch(FEAT_TRAINS, SELF, procedure_mu_articulation, cars, vehicle_id, extra_callback_info1 < (cars * 3)) {
+    1: vehicle_id;
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
  switch(FEAT_TRAINS, SELF, procedure_inhibit_lead, position_in_consist) {
     0:  return string(STR_CANNOT_LEAD);
     return CB_RESULT_NO_TEXT;
