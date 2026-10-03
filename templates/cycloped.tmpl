@@ -93,7 +93,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{$anim = concat $sprite "_anim_4_r" }}
 {{template "curve_switch_medium" $anim }}
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, procedure_loco_anim())
 {
     0: switch_{{$sprite}}_anim_1_curve;
     1: switch_{{$sprite}}_anim_1_r_curve;
@@ -128,7 +128,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}}ALL_CLIMATES{{ if .enable_param }} : NO_CLIMATE{{end}};
         introduction_date:            date({{.year}}, {{.intro_month}}, 5);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 -4;

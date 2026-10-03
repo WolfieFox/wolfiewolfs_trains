@@ -16,7 +16,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{- range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
 {{- if eq $newsprite "1" -}}
-{{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}
+{{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end -}}
 
 {{$template := concat "template_auto_" $len -}}
 {{if eq $bpp "32"}}{{ altsprites $element $template $zoom }}{{else}}{{ altsprites8 $element $template $zoom }}{{end}}
@@ -28,12 +28,12 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_2" }}{{end}}
 
 {{$template_turn = concat "template_auto_up_" $len -}}{{$hill := concat $element "_up" }}
-{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
+{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end -}}
 
 {{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $element "_down" }}
-{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
+{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end -}}
 
-{{$plen = parseint $len}}
+{{- $plen = parseint $len -}}
 {{ if gt $plen 8}}
 {{$sections := concat $element "_sections" -}}
 {{$template_turn = concat "template_auto_front_" $len -}}
@@ -174,7 +174,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 
 
-    switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+    switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, procedure_loco_anim())
     {
     0: switch_{{$element}}_anim_1_curve;
     1: switch_{{$element}}_anim_4_curve;
@@ -187,7 +187,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     }
 
     {{ if gt $plen 8}}
-        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, procedure_loco_anim())
         {
         0: switch_{{$element}}_anim_1_curve_front;
         1: switch_{{$element}}_anim_4_curve_front;
@@ -198,7 +198,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
         6: switch_{{$element}}_anim_4_curve_front;
         7: switch_{{$element}}_anim_1_curve_front;
         }
-        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, procedure_loco_anim())
         {
         0: switch_{{$element}}_anim_1_curve_rear;
         1: switch_{{$element}}_anim_4_curve_rear;
@@ -277,52 +277,48 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
             {{ $name = concat $element "_tlt_on_rear" }}
             {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 
-            {{$condition := "((vehicle_is_flipped ? position_in_consist_from_end : position_in_consist) < 3) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
-
-            switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state, {{$condition}})
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state, procedure_headlight_mu_front())
             {
-            1: switch_{{$element}}_hlt_on_front_curve;
-            2: switch_{{$element}}_tlt_on_front_curve;
+            WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_front_curve;
+            WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_front_curve;
             spriteset_invisible;
             }
 
             {{if gt $plen 8}}
-                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_front, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_front, procedure_headlight_mu_front())
                 {
-                1: switch_{{$element}}_hlt_on_front_curve_front;
-                2: switch_{{$element}}_tlt_on_front_curve_front;
+                WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_front_curve_front;
+                WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_front_curve_front;
                 spriteset_invisible;
                 }
 
-                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_rear, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_rear, procedure_headlight_mu_front())
                 {
-                1: switch_{{$element}}_hlt_on_front_curve_rear;
-                2: switch_{{$element}}_tlt_on_front_curve_rear;
+                WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_front_curve_rear;
+                WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_front_curve_rear;
                 spriteset_invisible;
                 }
             {{end}}
 
-            {{$condition = "((vehicle_is_flipped ? position_in_consist : position_in_consist_from_end) < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
-
-            switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state, {{$condition}})
+            switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state, procedure_headlight_mu_rear())
             {
-            1: switch_{{$element}}_hlt_on_rear_curve;
-            2: switch_{{$element}}_tlt_on_rear_curve;
+            WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_rear_curve;
+            WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_rear_curve;
             spriteset_invisible;
             }
 
             {{if gt $plen 8}}
-                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_front, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_front, procedure_headlight_mu_rear())
                 {
-                1: switch_{{$element}}_hlt_on_rear_curve_front;
-                2: switch_{{$element}}_tlt_on_rear_curve_front;
+                WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_rear_curve_front;
+                WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_rear_curve_front;
                 spriteset_invisible;
                 }
 
-                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_rear, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_rear, procedure_headlight_mu_rear())
                 {
-                1: switch_{{$element}}_hlt_on_rear_curve_rear;
-                2: switch_{{$element}}_tlt_on_rear_curve_rear;
+                WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_rear_curve_rear;
+                WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_rear_curve_rear;
                 spriteset_invisible;
                 }
             {{end}}
@@ -402,7 +398,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}}ALL_CLIMATES{{ if .enable_param }} : NO_CLIMATE{{end}};
         introduction_date:            date({{.year}}, {{.intro_month}}, 5);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 -4;
@@ -453,11 +449,11 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         air_drag_coefficient:         7 / ({{.speed}} * 1.6);
         {{- end}}
 
-        {{if .capacity}}
+        {{- if .capacity}}
         cargo_capacity:               {{.capacity}} / 3;
         {{- if ne .capacity "0"}}
         default_cargo_type:           {{.default_cargo}};
-        {{end}}{{end}}
+        {{- end -}}{{- end}}
         weight:                       {{.weight}} ton;
         {{- if .variant_group}}
         variant_group:                {{.variant_group}};
@@ -476,15 +472,15 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         purchase:  spriteset_{{.id}}_purchase;
         additional_text: switch_{{.id}}_additional_text;
         articulated_part: procedure_mu_articulation({{.cars}}, {{.id}});
-        length: {{ if .manual_lengths }}switch_{{.id}}_length;{{else}}procedure_loco_length({{.articulated_lengths}});{{end}}
+        length: {{ if .manual_lengths }}switch_{{.id}}_length;{{else}}procedure_loco_length({{.articulated_lengths}});{{end -}}
 {{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
-        {{ if .secondary_speed }}speed: switch_{{.id}}_speed;{{ end -}}
+        {{if .secondary_speed }}speed: switch_{{.id}}_speed;{{ end -}}
         {{if .secondary_power}}{{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
         {{if not .use_mu_engine_logic}}can_attach_wagon: switch_{{.id}}_attach_wagons;{{end}}
-        {{- if .inhibit_lead}}start_stop: procedure_inhibit_lead;{{end}}
+        {{ if .inhibit_lead}}start_stop: procedure_inhibit_lead;{{end}}
         {{- if eq .cargo_handling "Passengers" -}}
             cargo_age_period: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
         {{- end }}

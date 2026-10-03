@@ -204,3 +204,41 @@ switch(FEAT_TRAINS, SELF, procedure_mu_articulation, cars, vehicle_id, extra_cal
     0:  return string(STR_CANNOT_LEAD);
     return CB_RESULT_NO_TEXT;
  }
+
+// Siderod animations basically.
+switch(FEAT_TRAINS, SELF, procedure_loco_anim, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards)) {
+    return;
+}
+
+const WFY_LIGHTS_OFF = 0;
+const WFY_HEADLIGHT_ON = 1;
+const WFY_TAILLIGHT_ON = 2;
+
+switch(FEAT_TRAINS, SELF, procedure_headlight_mu_front, ((vehicle_is_flipped ? position_in_consist_from_end : position_in_consist) < 3) ? (train_is_driving_backwards ? WFY_TAILLIGHT_ON : WFY_HEADLIGHT_ON) : WFY_LIGHTS_OFF) {
+    return;
+}
+
+switch(FEAT_TRAINS, SELF, procedure_headlight_mu_rear, ((vehicle_is_flipped ? position_in_consist : position_in_consist_from_end) < 3) ? (train_is_driving_backwards ? WFY_HEADLIGHT_ON : WFY_TAILLIGHT_ON) : WFY_LIGHTS_OFF) {
+    return;
+}
+
+switch(FEAT_TRAINS, SELF, procedure_headlight_loco_front, ((vehicle_is_flipped ? position_in_consist_from_end : position_in_consist) < 3) ? (train_is_driving_backwards ^ vehicle_is_flipped ? WFY_TAILLIGHT_ON : WFY_HEADLIGHT_ON) : WFY_LIGHTS_OFF) {
+    return;
+}
+
+switch(FEAT_TRAINS, SELF, procedure_headlight_loco_rear, ((vehicle_is_flipped ? position_in_consist : position_in_consist_from_end) < 3) ? (train_is_driving_backwards ^ vehicle_is_flipped ? WFY_HEADLIGHT_ON : WFY_TAILLIGHT_ON) : WFY_LIGHTS_OFF) {
+    return;
+}
+
+switch(FEAT_TRAINS, SELF, procedure_headlight_coach_front, ((vehicle_is_flipped ? position_in_consist_from_end : position_in_consist) < 3) ? (train_is_driving_backwards ? WFY_TAILLIGHT_ON : WFY_HEADLIGHT_ON) : WFY_LIGHTS_OFF) {
+    return;
+}
+
+switch(FEAT_TRAINS, SELF, procedure_headlight_coach_rear, ((vehicle_is_flipped ? position_in_consist : position_in_consist_from_end) < 3) ? (train_is_driving_backwards ? WFY_HEADLIGHT_ON : WFY_TAILLIGHT_ON) : WFY_LIGHTS_OFF) {
+    return;
+}
+
+// Wagon lights are different because there's no way (atm) for a wagon to show lights at both ends. So this is just "which end should have the tail lamp on?" predicate.
+switch(FEAT_TRAINS, SELF, procedure_wagon_lights, train_is_driving_backwards ? (position_in_consist < 3) * 2 : (position_in_consist_from_end < 3)) {
+    return;
+}

@@ -1,13 +1,13 @@
 {{ $zoom := parseint .globals.zoom }}
 
-{{$len := .ttd_len}}{{$plen := parseint .ttd_len}}
-{{$template := concat "template_auto_" .ttd_len -}}
-{{$template_turn_1 := concat "template_auto_turn_1_" .ttd_len -}}
-{{$template_turn_2 := concat "template_auto_turn_2_" .ttd_len -}}
-{{$template_up := concat "template_auto_up_" .ttd_len -}}
-{{$template_down := concat "template_auto_down_" .ttd_len -}}
-{{$cargo_handling := .cargo_handling -}}
-{{$running_cost := parseint .running_cost -}}{{$cost := parseint .cost -}}
+{{- $len := .ttd_len}}{{$plen := parseint .ttd_len}}
+{{- $template := concat "template_auto_" .ttd_len -}}
+{{- $template_turn_1 := concat "template_auto_turn_1_" .ttd_len -}}
+{{- $template_turn_2 := concat "template_auto_turn_2_" .ttd_len -}}
+{{- $template_up := concat "template_auto_up_" .ttd_len -}}
+{{- $template_down := concat "template_auto_down_" .ttd_len -}}
+{{- $cargo_handling := .cargo_handling -}}
+{{- $running_cost := parseint .running_cost -}}{{$cost := parseint .cost -}}
 {{ $has_cargo_switch := "" -}}
 
 {{ $id := .id -}}
@@ -15,9 +15,9 @@
 {{ $replace_last_wagon := "" }}
 {{ $random_flip_vehicle := "" }}
 
-{{ if .wagon_formation_modifier}}
-    // wfm {{.wagon_formation_modifier}}
-    {{ $split := slice .wagon_formation_modifier -}}
+{{- if .wagon_formation_modifier}}
+    {{- /*// wfm {{.wagon_formation_modifier}} */ -}}
+    {{- $split := slice .wagon_formation_modifier -}}
     {{ if eq (index $split 0) "replace_last" }}
         // Replace_last {{index $split 1}}
         {{ $replace_last_wagon = index $split 1 -}}
@@ -25,7 +25,7 @@
         // Random_flip_vehicle {{index $split 1}}
         {{ $random_flip_vehicle = index $split 1 -}}
     {{ end }}
-{{end}}
+{{end -}}
 
 {{- $additional_vehicle := $replace_last_wagon }}
 {{if $replace_last_wagon}}
@@ -39,12 +39,10 @@
 {{- $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc" }}
 {{- $early_liquids := "acid,beer,chlo,coat,cola,ctar,dyes,eoil,fzdr,lye_,milk,nh3_,o2__,n7__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
 {{- $early_cargos := "lvst,barrels" }}
-
-{{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
+{{- $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
 
 spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
 { template_purchase_4x() }
-
 {{ if not .reuse_sprites }}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn_1 $zoom "_turn_1" }}{{end}}
@@ -54,7 +52,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_down $zoom  }}{{else}}{{ altsprites8 $hill $template_down $zoom }}{{end}}
 
 {{ if and (ne .cargo_handling "Passengers") (ne .cargo_handling "Parcel") (ne .cargo_handling "NGPassengers") }}
-    {{$variant := concat .id "_light"}}
+    {{- $variant := concat .id "_light"}}
     {{if eq .globals.bpp "32"}}{{ altsprites $variant $template $zoom }}{{else}}{{ altsprites8 $variant $template $zoom }}{{end}}
     {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n $variant $template_turn_1 $zoom "_turn_1" }}{{end}}
     {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n $variant $template_turn_2 $zoom "_turn_2" }}{{end}}
@@ -72,7 +70,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{ end }}
 
 {{ if .has_aged_variant }}
-    {{$variant := concat .id "_aged"}}
+    {{- $variant := concat .id "_aged"}}
     {{if eq .globals.bpp "32"}}{{ altsprites $variant $template $zoom }}{{else}}{{ altsprites8 $variant $template $zoom }}{{end}}
     {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n $variant $template_turn_1 $zoom "_turn_1" }}{{end}}
     {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n $variant $template_turn_2 $zoom "_turn_2" }}{{end}}
@@ -81,7 +79,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
     {{$hill = concat $variant "_down"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_down $zoom  }}{{else}}{{ altsprites8 $hill $template_down $zoom }}{{end}}
 
     {{ if and (ne .cargo_handling "Passengers") (ne .cargo_handling "Parcel") (ne .cargo_handling "NGPassengers") }}
-        {{$variant := concat .id "_aged_light"}}
+        {{- $variant := concat .id "_aged_light"}}
         {{if eq .globals.bpp "32"}}{{ altsprites $variant $template $zoom }}{{else}}{{ altsprites8 $variant $template $zoom }}{{end}}
         {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n $variant $template_turn_1 $zoom "_turn_1" }}{{end}}
         {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n $variant $template_turn_2 $zoom "_turn_2" }}{{end}}
@@ -89,15 +87,15 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         {{$hill = concat $variant "_up"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_up $zoom }}{{else}}{{ altsprites8 $hill $template_up $zoom }}{{end}}
         {{$hill = concat $variant "_down"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_down $zoom }}{{else}}{{ altsprites8 $hill $template_down $zoom  }}{{end}}
 
-        {{$variant = concat .id "_aged_dark"}}
+        {{- $variant = concat .id "_aged_dark"}}
         {{if eq .globals.bpp "32"}}{{ altsprites $variant $template $zoom }}{{else}}{{ altsprites8 $variant $template $zoom }}{{end}}
         {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n $variant $template_turn_1 $zoom "_turn_1" }}{{end}}
         {{if eq .globals.bpp "32"}}{{ altspritesn $variant $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n $variant $template_turn_2 $zoom "_turn_2" }}{{end}}
 
         {{$hill = concat $variant "_up"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_up $zoom }}{{else}}{{ altsprites8 $hill $template_up $zoom }}{{end}}
         {{$hill = concat $variant "_down"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_down $zoom }}{{else}}{{ altsprites8 $hill $template_down $zoom  }}{{end}}
-    {{ end }}
-{{ end }}
+    {{- end }}
+{{- end }}
 
 {{ if gt $plen 8}}
     {{$sections := concat .id "_sections" -}}
@@ -150,10 +148,10 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
                 {{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_mid" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}{{end}}
                 {{$template_turn = concat "template_auto_rear_" .ttd_len -}}
                 {{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_rear" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}{{end}}
-            {{ end }}
-        {{ end }}
-    {{ end }}
-{{end}}
+            {{- end }}
+        {{- end }}
+    {{- end }}
+{{- end}}
 
 {{if $additional_vehicle}}
     // Extra vehicle
@@ -218,10 +216,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         {{ $name = concat $additional_vehicle "_tlt_on_rear" }}
         {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 
-        {{$condition := "train_is_driving_backwards ? (position_in_consist < 3) * 2 : (position_in_consist_from_end < 3)"}}
-
-
-        switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_light_state, {{$condition}})
+        switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_light_state, procedure_wagon_lights())
         {
         1: switch_{{$additional_vehicle}}_tlt_on_rear_curve;
         2: switch_{{$additional_vehicle}}_tlt_on_front_curve;
@@ -229,22 +224,22 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         }
 
         {{if gt $plen 8}}
-            switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_light_state_front, {{$condition}})
+            switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_light_state_front, procedure_wagon_lights())
             {
             1: switch_{{$additional_vehicle}}_tlt_on_rear_curve_front;
             2: switch_{{$additional_vehicle}}_tlt_on_front_curve_front;
             spriteset_invisible;
             }
 
-            switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_light_state_rear, {{$condition}})
+            switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_light_state_rear, procedure_wagon_lights())
             {
             1: switch_{{$additional_vehicle}}_tlt_on_rear_curve_rear;
             2: switch_{{$additional_vehicle}}_tlt_on_front_curve_rear;
             spriteset_invisible;
             }
-        {{end}}
-    {{end}}
-{{end}}
+        {{- end}}
+    {{- end}}
+{{- end}}
 
 {{ if and (ne .cargo_handling "Passengers") (ne .cargo_handling "Parcel") (ne .cargo_handling "NGPassengers") }}
     {{if gt $plen 8}}{{template "curve_switch_long_weathered" .id }}{{else if gt $plen 4 }}{{template "curve_switch_medium_weathered" .id }}{{else}}{{template "curve_switch_short_weathered" .id }}{{end}}
@@ -336,10 +331,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         {{ $name = concat $sprite "_tlt_on_rear" }}
         {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 
-        {{$condition := "train_is_driving_backwards ? (position_in_consist < 3) * 2 : (position_in_consist_from_end < 3)"}}
-
-
-        switch (FEAT_TRAINS, SELF, switch_{{$sprite}}_light_state, {{$condition}})
+        switch (FEAT_TRAINS, SELF, switch_{{$sprite}}_light_state, procedure_wagon_lights())
         {
         1: switch_{{$sprite}}_tlt_on_rear_curve;
         2: switch_{{$sprite}}_tlt_on_front_curve;
@@ -347,14 +339,14 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         }
 
         {{if gt $plen 8}}
-            switch (FEAT_TRAINS, SELF, switch_{{$sprite}}_light_state_front, {{$condition}})
+            switch (FEAT_TRAINS, SELF, switch_{{$sprite}}_light_state_front, procedure_wagon_lights())
             {
             1: switch_{{$sprite}}_tlt_on_rear_curve_front;
             2: switch_{{$sprite}}_tlt_on_front_curve_front;
             spriteset_invisible;
             }
 
-            switch (FEAT_TRAINS, SELF, switch_{{$sprite}}_light_state_rear, {{$condition}})
+            switch (FEAT_TRAINS, SELF, switch_{{$sprite}}_light_state_rear, procedure_wagon_lights())
             {
             1: switch_{{$sprite}}_tlt_on_rear_curve_rear;
             2: switch_{{$sprite}}_tlt_on_front_curve_rear;
@@ -508,7 +500,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 
 // End cargo sprites
 
-{{ if eq .cargo_handling "EarlyOpen" }}
+{{- if eq .cargo_handling "EarlyOpen" }}
     {{ range $index, $element := slice $early_cargos }}
         switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
         STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
@@ -558,7 +550,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{end}}
 
 
-{{ if eq .cargo_handling "Bulk" "EarlyOpen" }}
+{{- if eq .cargo_handling "Bulk" "EarlyOpen" }}
     {{ $has_aged_variant := .has_aged_variant }}
     switch(FEAT_TRAINS, SELF, switch_{{$id}}_bulk, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 2 ? LOAD_TEMP(0) : PALETTE_USE_DEFAULT), 0x100),
@@ -609,7 +601,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
     return spriteset_invisible;
     }
 
-{{else if eq .cargo_handling "Steel" "Torpedo" }}
+{{- else if eq .cargo_handling "Steel" "Torpedo" }}
     {{ $has_aged_variant := .has_aged_variant }}
     {{ range $index, $element := slice $metal_cargos }}
         {{ $palette := printf "recolour_metal + %d" $index }}
@@ -663,7 +655,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         return spriteset_invisible;
         }
     {{ end }}
-{{else if eq .cargo_handling "DandyWagon" }}
+{{- else if eq .cargo_handling "DandyWagon" }}
 
     switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_pony, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 2 ? switch_dandy_wagon_mapping() : PALETTE_USE_DEFAULT), 0x100),
@@ -688,7 +680,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
     1: switch_{{$id}}_graphics_speed;
     return spriteset_invisible;
     }
-{{ else if eq .cargo_handling "Bolster" }}
+{{- else if eq .cargo_handling "Bolster" }}
     {{ range $index, $element := slice $bolster_cargos }}
         {{ $palette := "PALETTE_USE_DEFAULT" }}{{ $cargosprite := $element }}
 
@@ -837,7 +829,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         return spriteset_invisible;
         }
     {{ end }}
-{{ else if eq .cargo_handling "Motorail" }}
+{{- else if eq .cargo_handling "Motorail" }}
     {{ $palette := "PALETTE_USE_DEFAULT" }}
 
     {{if gt $plen 4 }}
@@ -915,7 +907,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
         return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier) / 2;
     }
 
-{{ else if or (eq .cargo_handling "Container") (eq .cargo_handling "ContainerBulk") }}
+{{- else if or (eq .cargo_handling "Container") (eq .cargo_handling "ContainerBulk") }}
 
     {{- $containers := "container_1,container_2,container_3,container_4" -}}
     {{- $tanktainers := "tank_1,tank_2,tank_3,tank_4" -}}
@@ -1112,7 +1104,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
     }
 {{ end }}
 
-{{end}}
+{{- end}}
 
 {{ if not .reuse_sprites }}
 {{ if not (or (eq .cargo_handling "Container") (eq .cargo_handling "ContainerBulk")) }}
@@ -1187,9 +1179,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
                 {{ $name = concat $additional_vehicle "_tlt_on_rear" }}
                 {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 
-                {{$condition := "((vehicle_is_flipped ? position_in_consist_from_end : position_in_consist) < 3) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
-
-                switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_front_light_state, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_front_light_state, procedure_headlight_coach_front())
                 {
                 1: switch_{{$additional_vehicle}}_hlt_on_front_curve;
                 2: switch_{{$additional_vehicle}}_tlt_on_front_curve;
@@ -1197,14 +1187,14 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
                 }
 
                 {{if gt $plen 8}}
-                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_front_light_state_front, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_front_light_state_front, procedure_headlight_coach_front())
                     {
                     1: switch_{{$additional_vehicle}}_hlt_on_front_curve_front;
                     2: switch_{{$additional_vehicle}}_tlt_on_front_curve_front;
                     spriteset_invisible;
                     }
 
-                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_front_light_state_rear, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_front_light_state_rear, procedure_headlight_coach_front())
                     {
                     1: switch_{{$additional_vehicle}}_hlt_on_front_curve_rear;
                     2: switch_{{$additional_vehicle}}_tlt_on_front_curve_rear;
@@ -1212,9 +1202,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
                     }
                 {{end}}
 
-                {{$condition = "((vehicle_is_flipped ? position_in_consist : position_in_consist_from_end) < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
-
-                switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_rear_light_state, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_rear_light_state, procedure_headlight_coach_rear())
                 {
                 1: switch_{{$additional_vehicle}}_hlt_on_rear_curve;
                 2: switch_{{$additional_vehicle}}_tlt_on_rear_curve;
@@ -1222,14 +1210,14 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
                 }
 
                 {{if gt $plen 8}}
-                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_rear_light_state_front, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_rear_light_state_front, procedure_headlight_coach_rear())
                     {
                     1: switch_{{$additional_vehicle}}_hlt_on_rear_curve_front;
                     2: switch_{{$additional_vehicle}}_tlt_on_rear_curve_front;
                     spriteset_invisible;
                     }
 
-                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_rear_light_state_rear, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$additional_vehicle}}_rear_light_state_rear, procedure_headlight_coach_rear())
                     {
                     1: switch_{{$additional_vehicle}}_hlt_on_rear_curve_rear;
                     2: switch_{{$additional_vehicle}}_tlt_on_rear_curve_rear;
@@ -1410,166 +1398,171 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{template "additional_text" . }}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
-property {
-name:                         {{.name_string}};
-climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
-introduction_date:            date({{.year}}, {{.intro_month}}, 5);
-model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
-retire_early:                 -4;
-vehicle_life:                 {{.vehicle_life}};
+    property {
+        name:                         {{.name_string}};
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}}ALL_CLIMATES{{ if .enable_param }} : NO_CLIMATE{{end}};
+        introduction_date:            date({{.year}}, {{.intro_month}}, 5);
+        model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
+        retire_early:                 -4;
+        vehicle_life:                 {{.vehicle_life}};
 
 {{if eq .default_cargo "BRAKE"}}
-    bitmask_vehicle_info:         bitmask(HAS_BRAKE_VAN);
-    default_cargo_type:           PASS;
+        bitmask_vehicle_info:         bitmask(HAS_BRAKE_VAN);
+        default_cargo_type:           PASS;
 {{- else if eq .default_cargo "DANDY"}}
-    default_cargo_type:           PASS;
+        default_cargo_type:           PASS;
 {{- else }}
-    default_cargo_type:           {{.default_cargo}};
+        default_cargo_type:           {{.default_cargo}};
 {{- end}}
 {{- if eq .pax_special "buffet" }}
-    bitmask_vehicle_info:         bitmask(HAS_BUFFET_CAR);
+        bitmask_vehicle_info:         bitmask(HAS_BUFFET_CAR);
 {{- else if eq .pax_special "generator_car" }}
-    bitmask_vehicle_info:         bitmask(HAS_GENERATOR_CAR);
+        bitmask_vehicle_info:         bitmask(HAS_GENERATOR_CAR);
 {{- end}}
-    engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
+        engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
 {{if eq .cargo_handling "Passengers" }}
-    refittable_cargo_classes: bitmask(CC_PASSENGERS);
-    cargo_allow_refit: [ YETI, YETY ];
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ];
 {{else if eq .cargo_handling "NGPassengers" }}
-    refittable_cargo_classes: bitmask(CC_PASSENGERS);
-    cargo_allow_refit: [ YETI, YETY ];
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ];
 {{else if eq .cargo_handling "Bulk" }}
-    refittable_cargo_classes: bitmask(CC_BULK);
-    cargo_allow_refit: [FRUT];
+        refittable_cargo_classes: bitmask(CC_BULK);
+        cargo_allow_refit: [FRUT];
 {{else if eq .cargo_handling "Covered" }}
-    refittable_cargo_classes: bitmask(CC_COVERED_BULK);
-    cargo_allow_refit: [ GRAI, CMNT, NITR, POTA ];
-    cargo_disallow_refit: [WOOL];
+        refittable_cargo_classes: bitmask(CC_COVERED_BULK);
+        cargo_allow_refit: [ GRAI, CMNT, NITR, POTA ];
+        cargo_disallow_refit: [WOOL];
 {{else if eq .cargo_handling "Powder" }}
-    refittable_cargo_classes: bitmask(CC_POWDER_BULK);
-    cargo_allow_refit: [ACID,CHLO,CBLK,CMNT,POTA,NITR,QLME,SALT,SASH];
+        refittable_cargo_classes: bitmask(CC_POWDER_BULK);
+        cargo_allow_refit: [ACID,CHLO,CBLK,CMNT,POTA,NITR,QLME,SALT,SASH];
 {{else if eq .cargo_handling "EarlyOpen" }}
-    refittable_cargo_classes: bitmask(CC_BULK, CC_LIQUID_BULK);
-    cargo_allow_refit: [ACID, CHLO, FRUT, LVST];
+        refittable_cargo_classes: bitmask(CC_BULK, CC_LIQUID_BULK);
+        cargo_allow_refit: [ACID, CHLO, FRUT, LVST];
 {{else if eq .cargo_handling "Van" }}
-    refittable_cargo_classes: bitmask(CC_COVERED, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
+        refittable_cargo_classes: bitmask(CC_COVERED, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
 {{else if eq .cargo_handling "Parcel" }}
-    refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED);
+        refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED);
 {{else if eq .cargo_handling "Siphon" }}
-    refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED, CC_REFRIGERATED);
-    cargo_allow_refit: [MILK];
+        refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED, CC_REFRIGERATED);
+        cargo_allow_refit: [MILK];
 {{else if eq .cargo_handling "Steel" }}
-    cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STSE, STST, ZINC];
+        cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STSE, STST, ZINC];
 {{else if eq .cargo_handling "SteelCovered" }}
-    cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STSE, STST, ZINC];
+        cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STSE, STST, ZINC];
 {{else if eq .cargo_handling "Torpedo" }}
-    cargo_allow_refit: [ALUM, STEL, METL, COPR, IRON, STAL, STCB, STST, ZINC];
+        cargo_allow_refit: [ALUM, STEL, METL, COPR, IRON, STAL, STCB, STST, ZINC];
 {{else if eq .cargo_handling "Container" }}
-    refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID_BULK, CC_GAS_BULK, CC_COVERED_BULK);
+        refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID_BULK, CC_GAS_BULK, CC_COVERED_BULK);
 {{else if eq .cargo_handling "ContainerBulk" }}
-    refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID_BULK, CC_GAS_BULK, CC_OPEN_BULK, CC_COVERED_BULK);
-    cargo_allow_refit: [WOOD];
+        refittable_cargo_classes: bitmask(CC_EXPRESS, CC_LIQUID_BULK, CC_GAS_BULK, CC_OPEN_BULK, CC_COVERED_BULK);
+        cargo_allow_refit: [WOOD];
 {{else if eq .cargo_handling "Bolster" }}
-    refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
-    cargo_disallow_refit: [ACID,CHLO,LVST,ACID,CBLK,CMNT,POTA,QLME,SALT,SASH];
+        refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
+        cargo_disallow_refit: [ACID,CHLO,LVST,ACID,CBLK,CMNT,POTA,QLME,SALT,SASH];
 {{else if eq .cargo_handling "Motorail" }}
-    refittable_cargo_classes: bitmask(CC_PASSENGERS);
-    cargo_allow_refit: [VEHI, PASS];
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [VEHI, PASS];
 {{else if eq .cargo_handling "Tanker" }}
-    refittable_cargo_classes: bitmask(CC_LIQUID_BULK);
-    cargo_allow_refit: [ACID, CHLO];
+        refittable_cargo_classes: bitmask(CC_LIQUID_BULK);
+        cargo_allow_refit: [ACID, CHLO];
 {{end}}
 {{ if or (eq .cargo_handling "Passengers") (eq .cargo_handling "NGPPassengers") -}}
 {{- else }}
-cargo_age_period:             ({{if .cargo_age_period -}}
+        cargo_age_period:             ({{if .cargo_age_period -}}
             {{.cargo_age_period}}{{else}}185
         {{- end}} * cargo_age_multiplier) / 2;
 {{end}}
 
-power:                        0 hp;
-{{if .speed}}speed:                        {{.speed}} mph;{{end}}
-reliability_decay:            20;
-{{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
-{{if le $cost 255}}cost_factor:                  {{.cost}};{{end}}
-{{if le $running_cost 255}}running_cost_factor:          {{.running_cost}};{{end}}
-sprite_id:                    SPRITE_ID_NEW_TRAIN;
-misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
-refit_cost:                   0;
-track_type:                   {{.railtype}};
-running_cost_base:            RUNNING_COST_STEAM;
-cargo_capacity:               {{.capacity}} / 3;
-weight:                       {{.weight}} ton;
+        power:                        0 hp;
+{{if .speed}}        speed:                        {{.speed}} mph;{{end}}
+        reliability_decay:            20;
+{{if .loading_speed}}        loading_speed:                {{.loading_speed}};{{end}}
+{{if le $cost 255}}        cost_factor:                  {{.cost}};{{end}}
+{{if le $running_cost 255}}        running_cost_factor:          {{.running_cost}};{{end}}
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_AUTOREFIT, TRAIN_FLAG_SPRITE_STACK);
+        refit_cost:                   0;
+        track_type:                   {{.railtype}};
+        running_cost_base:            RUNNING_COST_STEAM;
+        cargo_capacity:               {{.capacity}} / 3;
+        weight:                       {{.weight}} ton;
 {{- if .variant_group}}
-variant_group:                {{.variant_group}};
-extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+        variant_group:                {{.variant_group}};
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
 {{- end}}
 
-{{if .badges}}
-    badges: [
+{{- if .badges}}
+        badges:                       [
     {{- range $index, $element := slice .badges -}}
     {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
 {{end}}
-}
+    }
 
-graphics {
-{{ if eq .cargo_handling "NGPassengers" -}}
-    cargo_age_period: procedure_preserved_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
-{{ else if eq .cargo_handling "Passengers" -}}
-    cargo_age_period: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
-{{- end }}
+    graphics {
+    {{- if eq .cargo_handling "NGPassengers" -}}
+        cargo_age_period: procedure_preserved_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
+    {{ else if eq .cargo_handling "Passengers" -}}
+        cargo_age_period: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
+    {{- end }}
 
-{{ if or (eq .cargo_handling "Container") (eq .cargo_handling "ContainerBulk") }}
-    cargo_capacity: return {{.capacity}} / 3;
-    default:  switch_{{$id}}_graphics_container;
-{{ else if eq .cargo_handling "Motorail" }}
-    cargo_capacity: return {{.capacity}} / 3;
-    default:  switch_{{$sprite}}_graphics;
-    PASS:  switch_{{$sprite}}_graphics_pass;
-    VEHI:  switch_{{$sprite}}_graphics_pass;
-    cargo_age_period: switch_{{.id}}_motorail_cargo_age;
-{{ else if eq .cargo_handling "Van" }}
-    cargo_capacity: return {{.capacity}} / 3;
-    default:  switch_{{$sprite}}_graphics;
-{{else}}
-    default:  switch_{{$sprite}}_graphics;
-{{end}}
-{{ if eq .cargo_handling "EarlyOpen" }}
-    {{ range $index, $element := slice $early_liquids }}
-        {{ toupper $element }}: switch_{{$id}}_graphics_barrels;{{end}}
-    LVST: switch_{{$id}}_graphics_lvst;
-{{ end }}
-{{ if eq .cargo_handling "Bulk" "EarlyOpen"  }}
-    {{ range $index, $element := slice $bulk_cargos }}
-        {{ toupper $element }}: procedure_{{$id}}_bulk_cargo(recolour_bulk + {{$index}});{{end}}
-{{ else if eq .cargo_handling "Bolster" }}
-    {{ range $index, $element := slice $bolster_cargos }}
-        {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
-    // Manual re-used bolster cargo
-    BRCK: switch_{{$id}}_graphics_bdmt;
-{{ else if eq .cargo_handling "Steel" "Torpedo" }}
-    {{ range $index, $element := slice $metal_cargos }}
-        {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
-{{end}}
-
-{{- $speed := parseint .speed -}}
-{{- if lt $speed 60 }}
-    {{- if and (ne .default_cargo "BRAKE") (ne .default_cargo "DANDY")}}
-        {{if ne .railtype "NARROW_GAUGE" }}
-    speed: procedure_speed_brakevan_ng({{.speed}});
-        {{ else if lt $speed 45 }}
-    speed: procedure_speed_brakevan({{.speed}});
-        {{- end -}}
+    {{- if or (eq .cargo_handling "Container") (eq .cargo_handling "ContainerBulk") }}
+        cargo_capacity: return {{.capacity}} / 3;
+        default:  switch_{{$id}}_graphics_container;
+    {{- else if eq .cargo_handling "Motorail" }}
+        cargo_capacity: return {{.capacity}} / 3;
+        default:  switch_{{$sprite}}_graphics;
+        PASS:  switch_{{$sprite}}_graphics_pass;
+        VEHI:  switch_{{$sprite}}_graphics_pass;
+        cargo_age_period: switch_{{.id}}_motorail_cargo_age;
+    {{- else if eq .cargo_handling "Van" }}
+        cargo_capacity: return {{.capacity}} / 3;
+        default:  switch_{{$sprite}}_graphics;
+    {{- else}}
+        default:  switch_{{$sprite}}_graphics;
     {{- end -}}
-{{- end }}
-additional_text: switch_{{.id}}_additional_text;
-articulated_part: procedure_wagon_articulation({{.id}});
-length: procedure_wagon_length({{.articulated_lengths}});
-purchase:  spriteset_{{.id}}_purchase;
-purchase_cargo_capacity: spriteset_{{$sprite}};
-{{if .speed}}purchase_speed: return ({{.speed}} * 8) / 5;{{end}}
-{{if eq .default_cargo "DANDY"}}bitmask_vehicle_info: switch_{{.id}}_dandy_wagon_behaviour;{{end}}
-{{if eq .cargo_handling "Brakevan"}}colour_mapping: procedure_brakevan_colour_mapping;{{end}}
-{{if gt $cost 255}}cost_factor:                  return {{.cost}};{{end}}
-{{if gt $running_cost 255}}running_cost_factor:          return {{.running_cost}};{{end}}
-}
+    {{ if eq .cargo_handling "EarlyOpen" }}
+        {{ range $index, $element := slice $early_liquids }}
+            {{ toupper $element }}: switch_{{$id}}_graphics_barrels;{{end}}
+        LVST: switch_{{$id}}_graphics_lvst;
+    {{ end }}
+    {{- if eq .cargo_handling "Bulk" "EarlyOpen"  }}
+        {{ range $index, $element := slice $bulk_cargos }}
+            {{ toupper $element }}: procedure_{{$id}}_bulk_cargo(recolour_bulk + {{$index}});{{end}}
+    {{- else if eq .cargo_handling "Bolster" }}
+        {{ range $index, $element := slice $bolster_cargos }}
+            {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
+        // Manual re-used bolster cargo
+        BRCK: switch_{{$id}}_graphics_bdmt;
+    {{- else if eq .cargo_handling "Steel" "Torpedo" }}
+        {{ range $index, $element := slice $metal_cargos }}
+            {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
+    {{end}}
+
+    {{- $speed := parseint .speed -}}
+    {{- if lt $speed 60 }}
+        {{- if and (ne .default_cargo "BRAKE") (ne .default_cargo "DANDY")}}
+            {{- if ne .railtype "NARROW_GAUGE" }}
+        speed: procedure_speed_brakevan_ng({{.speed}});
+            {{ else if lt $speed 45 }}
+        speed: procedure_speed_brakevan({{.speed}});
+            {{- end -}}
+        {{- end -}}
+    {{- end }}
+        additional_text: switch_{{.id}}_additional_text;
+        articulated_part: procedure_wagon_articulation({{.id}});
+        length: procedure_wagon_length({{.articulated_lengths}});
+        purchase:  spriteset_{{.id}}_purchase;
+        purchase_cargo_capacity: spriteset_{{$sprite}};
+    {{- if .speed}}
+        purchase_speed: return ({{.speed}} * 8) / 5;{{end -}}
+    {{- if eq .default_cargo "DANDY"}}
+        bitmask_vehicle_info: switch_{{.id}}_dandy_wagon_behaviour;{{end -}}
+    {{- if eq .cargo_handling "Brakevan"}}
+        colour_mapping: procedure_brakevan_colour_mapping;{{end -}}
+    {{- if gt $cost 255}}
+        cost_factor:                  return {{.cost}};{{end -}}
+    {{- if gt $running_cost 255}}
+        running_cost_factor:          return {{.running_cost}};{{end}}
+    }
 }

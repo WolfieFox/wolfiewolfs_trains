@@ -1,4 +1,5 @@
 {{define "additional_text" -}}
+
 // Slightly odd undocumented? workaround. We're using it because it avoids using up the (precious) D0XX string range.
 // Instead returned values are in the DCXX string range, which is 10x bigger.
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_additional_text,

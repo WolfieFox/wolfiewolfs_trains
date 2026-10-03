@@ -277,7 +277,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{$anim = concat $element "_anim_4" }}
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, procedure_loco_anim())
 {
     0: switch_{{$element}}_anim_1_curve;
     1: switch_{{$element}}_anim_4_curve;
@@ -290,7 +290,7 @@ switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, ((motion_counter % 4) 
 }
 
 {{ if gt $plen 8}}
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, procedure_loco_anim())
 {
     0: switch_{{$element}}_anim_1_curve_front;
     1: switch_{{$element}}_anim_4_curve_front;
@@ -301,7 +301,7 @@ switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, ((motion_counter
     6: switch_{{$element}}_anim_4_curve_front;
     7: switch_{{$element}}_anim_1_curve_front;
 }
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, procedure_loco_anim())
 {
     0: switch_{{$element}}_anim_1_curve_rear;
     1: switch_{{$element}}_anim_4_curve_rear;
@@ -376,52 +376,48 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
             {{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 
             {{if $full_headlights}}
-                {{$condition := "((vehicle_is_flipped ? position_in_consist_from_end : position_in_consist) < 3) ? (train_is_driving_backwards ? 2 : 1) : 0"}}
-
-                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state, procedure_headlight_mu_front())
                 {
-                1: switch_{{$element}}_hlt_on_front_curve;
-                2: switch_{{$element}}_tlt_on_front_curve;
+                WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_front_curve;
+                WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_front_curve;
                 spriteset_invisible;
                 }
 
                 {{if gt $plen 8}}
-                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_front, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_front, procedure_headlight_mu_front())
                     {
-                    1: switch_{{$element}}_hlt_on_front_curve_front;
-                    2: switch_{{$element}}_tlt_on_front_curve_front;
+                    WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_front_curve_front;
+                    WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_front_curve_front;
                     spriteset_invisible;
                     }
 
-                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_rear, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_front_light_state_rear, procedure_headlight_mu_front())
                     {
-                    1: switch_{{$element}}_hlt_on_front_curve_rear;
-                    2: switch_{{$element}}_tlt_on_front_curve_rear;
+                    WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_front_curve_rear;
+                    WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_front_curve_rear;
                     spriteset_invisible;
                     }
                 {{end}}
 
-                {{$condition = "((vehicle_is_flipped ? position_in_consist : position_in_consist_from_end) < 3) ? (train_is_driving_backwards ? 1 : 2) : 0"}}
-
-                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state, {{$condition}})
+                switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state, procedure_headlight_mu_rear())
                 {
-                1: switch_{{$element}}_hlt_on_rear_curve;
-                2: switch_{{$element}}_tlt_on_rear_curve;
+                WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_rear_curve;
+                WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_rear_curve;
                 spriteset_invisible;
                 }
 
                 {{if gt $plen 8}}
-                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_front, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_front, procedure_headlight_mu_rear())
                     {
-                    1: switch_{{$element}}_hlt_on_rear_curve_front;
-                    2: switch_{{$element}}_tlt_on_rear_curve_front;
+                    WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_rear_curve_front;
+                    WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_rear_curve_front;
                     spriteset_invisible;
                     }
 
-                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_rear, {{$condition}})
+                    switch (FEAT_TRAINS, SELF, switch_{{$element}}_rear_light_state_rear, procedure_headlight_mu_rear())
                     {
-                    1: switch_{{$element}}_hlt_on_rear_curve_rear;
-                    2: switch_{{$element}}_tlt_on_rear_curve_rear;
+                    WFY_HEADLIGHT_ON: switch_{{$element}}_hlt_on_rear_curve_rear;
+                    WFY_TAILLIGHT_ON: switch_{{$element}}_tlt_on_rear_curve_rear;
                     spriteset_invisible;
                     }
                 {{end}}
@@ -841,7 +837,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}}ALL_CLIMATES{{ if .enable_param }} : NO_CLIMATE{{end}};
         introduction_date:            date({{.year}}, {{.intro_month}}, 5);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 -4;

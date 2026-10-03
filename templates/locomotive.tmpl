@@ -144,7 +144,7 @@ spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.i
 {{$anim = concat $sprite "_anim_4" }}
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, procedure_loco_anim())
 {
 0: switch_{{.id}}_anim_1_curve;
 1: switch_{{.id}}_anim_4_curve;
@@ -157,7 +157,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) 
 }
 
 {{ if gt $plen 8}}
-    switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_front, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_front, procedure_loco_anim())
     {
     0: switch_{{.id}}_anim_1_curve_front;
     1: switch_{{.id}}_anim_4_curve_front;
@@ -168,7 +168,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) 
     6: switch_{{.id}}_anim_4_curve_front;
     7: switch_{{.id}}_anim_1_curve_front;
     }
-    switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_rear, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_rear, procedure_loco_anim())
     {
     0: switch_{{.id}}_anim_1_curve_rear;
     1: switch_{{.id}}_anim_4_curve_rear;
@@ -296,7 +296,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           {{ if .enable_param }}{{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}}ALL_CLIMATES{{ if .enable_param }} : NO_CLIMATE{{end}};
         introduction_date:            date({{.year}}, {{.intro_month}}, 1);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 4;
@@ -320,8 +320,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{else -}}
         engine_class:                 ENGINE_CLASS_DIESEL;
         {{- end}}
-
-        {{- if .default_cargo -}}
+        {{if .default_cargo -}}
         cargo_age_period:             ({{if .cargo_age_period -}}
             {{.cargo_age_period}}{{else}}185
         {{- end}} * cargo_age_multiplier) / 2;{{end}}
@@ -356,7 +355,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{if ne .capacity "0"}}
         default_cargo_type:           {{.default_cargo}};
         {{end}}{{end}}
-        weight:                       {{.weight}} {{if .tender_weight}} + {{.tender_weight}} {{end}} ton;
+        weight:                       {{.weight}} {{if .tender_weight}}+ {{.tender_weight}} {{end}}ton;
 
         {{- if .badges}}
         badges: ["_ww_type/locomotive",
@@ -375,7 +374,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 {{else}}
         articulated_part: procedure_loco_articulation({{.id}});
         length: procedure_loco_length({{.articulated_lengths}});
-{{end}}
+{{- end -}}
 {{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
