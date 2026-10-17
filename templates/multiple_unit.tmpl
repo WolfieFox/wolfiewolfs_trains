@@ -8,7 +8,7 @@
 {{- $man_ttd_len := slice .manual_ttd_len -}}
 {{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
 {{ $railtype := .railtype }}
-{{$speed := parseint .speed -}}
+{{$speed := parseint .speed_mph -}}
 
 spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
 { template_purchase_4x() }
@@ -431,7 +431,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         tractive_effort_coefficient:  {{.te_coeff}};
 
         power:                        {{.power}} hp;
-        speed:                        {{.speed}} mph;
+        speed:                        {{.speed_mph}} mph;
         reliability_decay:            20;
         {{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
         cost_factor:                  {{.cost}};
@@ -446,7 +446,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{if lt $speed 50 -}}
         air_drag_coefficient:         0.1;
         {{- else -}}
-        air_drag_coefficient:         7 / ({{.speed}} * 1.6);
+        air_drag_coefficient:         7 / ({{.speed_mph}} * 1.6);
         {{- end}}
 
         {{- if .capacity}}

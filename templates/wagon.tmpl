@@ -1475,7 +1475,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 {{end}}
 
         power:                        0 hp;
-{{if .speed}}        speed:                        {{.speed}} mph;{{end}}
+{{if .speed_mph}}        speed:                        {{.speed_mph}} mph;{{end}}
         reliability_decay:            20;
 {{if .loading_speed}}        loading_speed:                {{.loading_speed}};{{end}}
 {{if le $cost 255}}        cost_factor:                  {{.cost}};{{end}}
@@ -1539,13 +1539,13 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
             {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
     {{end}}
 
-    {{- $speed := parseint .speed -}}
+    {{- $speed := parseint .speed_mph -}}
     {{- if lt $speed 60 }}
         {{- if and (ne .default_cargo "BRAKE") (ne .default_cargo "DANDY")}}
             {{- if ne .railtype "NARROW_GAUGE" }}
-        speed: procedure_speed_brakevan_ng({{.speed}});
+        speed: procedure_speed_brakevan_ng({{.speed_mph}});
             {{ else if lt $speed 45 }}
-        speed: procedure_speed_brakevan({{.speed}});
+        speed: procedure_speed_brakevan({{.speed_mph}});
             {{- end -}}
         {{- end -}}
     {{- end }}
@@ -1554,10 +1554,10 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         length: procedure_wagon_length({{.articulated_lengths}});
         purchase:  spriteset_{{.id}}_purchase;
         purchase_cargo_capacity: spriteset_{{$sprite}};
-    {{- if .speed}}
-        purchase_speed: return ({{.speed}} * 8) / 5;{{end -}}
     {{- if eq .default_cargo "DANDY"}}
         bitmask_vehicle_info: switch_{{.id}}_dandy_wagon_behaviour;{{end -}}
+    {{- if .speed_mph}}
+        purchase_speed: return ({{.speed_mph}} * 8) / 5;{{end -}}
     {{- if eq .cargo_handling "Brakevan"}}
         colour_mapping: procedure_brakevan_colour_mapping;{{end -}}
     {{- if gt $cost 255}}

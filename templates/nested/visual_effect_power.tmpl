@@ -40,7 +40,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, tile_powers_railtype("ELRL")) {
 
 {{- if .secondary_speed }}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_speed, tile_powers_railtype("THIRD_RAIL")) {
-    1: return {{ .kmhish_speed }};
+    1: return ({{.speed_mph}} * 8) / 5;
     return {{ .secondary_speed }};
 }
 {{- end }}

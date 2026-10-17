@@ -8,7 +8,7 @@
 {{- $manual_ttd_len := .manual_ttd_len -}}
 {{- $man_ttd_len := slice .manual_ttd_len -}}
 {{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
-{{$speed := parseint .speed -}}
+{{$speed := parseint .speed_mph -}}
 {{ $has_cargo_switch := "" -}}
 
 {{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,salt,sand,sash,slag,sulp,toff,uran,whea" }}
@@ -866,7 +866,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         running_cost_base:            RUNNING_COST_DIESEL;
 
         power:                        0 hp;
-        speed:                        {{.speed}} mph;
+        speed:                        {{.speed_mph}} mph;
         reliability_decay:            20;
         {{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
         cost_factor:                  {{.cost}};
@@ -881,7 +881,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{if lt $speed 50 -}}
         air_drag_coefficient:         0.1;
         {{- else -}}
-        air_drag_coefficient:         7 / ({{.speed}} * 1.6);
+        air_drag_coefficient:         7 / ({{.speed_mph}} * 1.6);
         {{- end}}
 
         {{if .capacity}}

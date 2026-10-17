@@ -1,6 +1,7 @@
 v1.0.0
 ------
 Further optimizations to reduce code size
+Add Class 303, Class 320, LNER Teak Coaches and a Narrow-Gauge treat.
 
 v0.3.0
 ------

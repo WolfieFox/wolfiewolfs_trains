@@ -116,7 +116,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  {{.te_coeff}};
         power:                        {{.power}} hp;
-        speed:                        {{.speed}} mph;
+        speed:                        {{.speed_mph}} mph;
         reliability_decay:            20;
 
         cost_factor:                  {{.cost}};
@@ -152,8 +152,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         purchase_colour_mapping: return recolour_horses;
         sound_effect: switch_horse_sound_fx;
         {{- if eq .railtype "NARROW_GAUGE"}}
-        speed: procedure_speed_brakevan_ng({{.speed}});
-        purchase_speed: return {{.kmhish_speed}};
+        speed: procedure_speed_brakevan_ng({{.speed_mph}});
+        purchase_speed: return ({{.speed_mph}} * 8) / 5;
         {{end -}}
     }
 }
