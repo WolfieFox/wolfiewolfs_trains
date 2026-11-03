@@ -87,7 +87,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) 
 7: switch_{{$sprite}}_4_r_curve;
 }
 
-switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed, current_speed > 8 && hasbit(bitmask_consist_info, HAS_DANDY_WAGON) ? 1 : 0) 
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed, current_speed > 8 && count_has_badge("_ww_special/dandy") > (count_veh_id(pony) / 2))
 {
     1: return spriteset_invisible;
     switch_{{.id}}_animation;

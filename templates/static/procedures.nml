@@ -2,7 +2,7 @@ switch (FEAT_TRAINS, PARENT, get_parent_random_bits, random_bits) { return; }
 
 switch (FEAT_TRAINS, PARENT, get_parent_age_proportion, age_in_days / (max_age_in_days / 10)) { return; }
 
-switch (FEAT_TRAINS, PARENT, parent_has_dandy_wagon, hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) { return; }
+switch (FEAT_TRAINS, PARENT, parent_has_dandy_wagon, count_has_badge("_ww_special/dandy") > 0) { return; }
 
 switch (FEAT_TRAINS, SELF, switch_horse_colour_mapping, recolour_horses + ((parent_has_dandy_wagon() ? get_parent_random_bits() + ((position_in_vehid_chain / 6) * ((get_parent_random_bits() % 25) + 1)) : random_bits) % 25)) {
     return;
@@ -91,7 +91,7 @@ random_switch (FEAT_TRAINS, BACKWARD_SELF(1), random_16_backward) {
 cargo_age_multiplier = param_slower_cargo_aging == 0 ? 2 : 
     (param_slower_cargo_aging == 1 ? 1 : param_slower_cargo_aging * 2);
 
-switch (FEAT_TRAINS, PARENT, procedure_passenger_cargo_age, cargo_age_period, hasbit(bitmask_consist_info, HAS_BUFFET_CAR)) {
+switch (FEAT_TRAINS, PARENT, procedure_passenger_cargo_age, cargo_age_period, count_has_badge("_ww_special/buffet") > 0) {
     1: return (cargo_age_period * cargo_age_multiplier * 5) / 8;
     return (cargo_age_period * cargo_age_multiplier) / 2;
 }
@@ -145,12 +145,12 @@ switch (FEAT_TRAINS, PARENT, procedure_preserved_cargo_age, cargo_age_period, ag
     );
  }
 
-switch (FEAT_TRAINS, PARENT, procedure_speed_brakevan_ng, speed, hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) {
+switch (FEAT_TRAINS, PARENT, procedure_speed_brakevan_ng, speed, count_has_badge("_ww_special/dandy") > 0) {
     1: return 72;
     return (speed * 8) / 5;
 }
 
-switch (FEAT_TRAINS, PARENT, procedure_speed_brakevan, speed, hasbit(bitmask_consist_info, HAS_BRAKE_VAN)) {
+switch (FEAT_TRAINS, PARENT, procedure_speed_brakevan, speed, count_has_badge("_ww_special/brake") > 0) {
     1: return ((speed + 5) * 8) / 5;
     return (speed * 8) / 5;
 }

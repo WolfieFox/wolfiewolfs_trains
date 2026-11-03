@@ -407,9 +407,6 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         {{if eq .default_cargo "PASS" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
         cargo_allow_refit: [ YETI, YETY ];
-            {{ if eq .pax_special "buffet" }}
-                bitmask_vehicle_info:         bitmask(HAS_BUFFET_CAR);
-            {{end -}}
         {{ else if eq .default_cargo "MAIL" }}
         refittable_cargo_classes: bitmask(CC_MAIL);
         {{end}}
@@ -460,11 +457,16 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
         {{- end}}
 
-        {{- if .badges}}
-        badges: ["_ww_type/multiple_unit",
-            {{- range $index, $element := slice .badges -}}
-            {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
-        {{- end}}
+
+{{- $implicit_badges := "" }}
+{{- if eq .pax_special "buffet" }}
+    {{- $implicit_badges = concat $implicit_badges ",_ww_special/buffet" }}
+{{- end}}
+{{- if .badges}}
+        badges:                       ["_ww_type/multiple_unit",
+    {{- range $index, $element := slice (concat .badges $implicit_badges) -}}
+        {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
+{{end}}
     }
 
     graphics {

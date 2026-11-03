@@ -22,12 +22,6 @@ traininfo_y_offset=4;
      PR_RUNNING_TRAIN_DIESEL: param_running_costs;    // Train running costs
  }
 
-const HAS_BRAKE_VAN = 1;
-const HAS_DANDY_WAGON = 2;
-const HAS_BUFFET_CAR = 3;
-
-const HAS_GENERATOR_CAR = 7;
-
 // extra NML constants for Polar Fox 2024 cargo class names
 // these replace legacy NML cargo class names
 // add these near the top of your NML file, before using any cargo classes

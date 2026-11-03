@@ -624,7 +624,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
     return spriteset_invisible;
     }
 
-    switch (FEAT_TRAINS, PARENT, switch_{{.id}}_motorail_cargo_age, hasbit(bitmask_consist_info, HAS_BUFFET_CAR) && cargo_type_in_veh == PASS) {
+    switch (FEAT_TRAINS, PARENT, switch_{{.id}}_motorail_cargo_age, count_has_badge("_ww_special/buffet") && cargo_type_in_veh == PASS) {
         1: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
         return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier) / 2;
     }
@@ -825,7 +825,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 {{ if eq .cargo_handling "Passengers" -}}
     {{ if eq .pax_special "nightstar" }}
         //var f4 is the power available on the train - formation_current_power after nmlc PR #419 is accepted
-        switch (FEAT_TRAINS, PARENT, switch_{{.id}}_nightstar_cargo_age, hasbit(bitmask_consist_info, HAS_GENERATOR_CAR) | (var[0xF4] > 5000) ? 1 : 0) {
+        switch (FEAT_TRAINS, PARENT, switch_{{.id}}_nightstar_cargo_age, count_has_badge("_ww_special/generator") > 0 | (var[0xF4] > 5000) ? 1 : 0) {
             1: return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier * 5) / 8;
             return 185 * cargo_age_multiplier;
         }

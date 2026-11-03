@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if test -f "/c/Program\ Files/LibreOffice/program/scalc.exe"; then
+  echo "Exporting Tracking Table..."
+  . "/c/Program\ Files/LibreOffice/program/scalc.exe" --convert-to csv Tracking\ Table.xlsm
+fi
+
 # Create directories
 mkdir -p intermediate
 mkdir -p intermediate/hills

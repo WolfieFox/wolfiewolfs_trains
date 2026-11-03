@@ -1,6 +1,47 @@
 badgetable {
     "flag",
-    "flag/GB",
+    "flag/AL", // Albania
+    "flag/AT", // Austria
+    "flag/BA", // Bosnia and Herzegovina
+    "flag/BE", // Belgium
+    "flag/BG", // Bulgaria
+    "flag/BY", // Belarus
+    "flag/CH", // Switzerland
+    "flag/CZ", // Czech Republic
+    "flag/DE", // Germany
+    "flag/DK", // Denmark
+    "flag/EE", // Estonia
+    "flag/ES", // Spain
+    "flag/europe", // European Union
+    "flag/FI", // Finland
+    "flag/FR", // France
+    "flag/GB", // United Kingdom
+    "flag/GR", // Greece
+    "flag/HR", // Croatia
+    "flag/HU", // Hungary
+    "flag/IE", // Ireland
+    "flag/IT", // Italy
+    "flag/LI", // Liechtenstein
+    "flag/LT", // Lithuania
+    "flag/LU", // Luxembourg
+    "flag/LV", // Latvia
+    "flag/MC", // Monaco
+    "flag/MD", // Moldova
+    "flag/ME", // Montenegro
+    "flag/MK", // North Macedonia
+    "flag/NL", // Netherlands
+    "flag/NO", // Norway
+    "flag/PL", // Poland
+    "flag/PT", // Portugal
+    "flag/RO", // Romania
+    "flag/RS", // Serbia
+    "flag/RU", // Russia
+    "flag/SE", // Sweden
+    "flag/SI", // Slovenia
+    "flag/SK", // Slovakia
+    "flag/TR", // Türkiye
+    "flag/UA", // Ukraine
+    "flag/VA", // Holy See
     "power",
     "power/steam",
     "power/diesel",
@@ -31,5 +72,14 @@ badgetable {
     "_ww_livery/provincial",
     "_ww_livery/nse",
     "_ww_livery/intercity",
-    "_ww_livery/overground"
+    "_ww_livery/overground",
+    "_ww_special",
+    "_ww_special/brake",
+    "_ww_special/dandy",
+    "_ww_special/buffet",
+    "_ww_special/generator",
+    "_ww_special/commuter",
+    "_ww_special/luxury",
+    "_ww_special/tilt",
+    "_ww_special/driving_trailer",
 }

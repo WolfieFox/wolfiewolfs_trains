@@ -110,7 +110,8 @@
         "additional_text_format": "%s",
         "globals": {
             "zoom": "4",
-            "bpp": "8"
+            "bpp": "8",
+            "speed": "mph"
         },
         "single_zoom_level": true,
         "nestable_templates": [ 
@@ -178,7 +179,6 @@
     ],
     "fixed_strings": {
         "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type.",
-        "str_first_class_cannot_attach": "No more than 50% of a train may be first class carriages.",
         "str_cannot_lead": "This vehicle cannot lead the train."
     },
     "cargo_table": [        
